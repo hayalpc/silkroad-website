@@ -1,0 +1,10 @@
+<ol class="breadcrumb">
+    <li class="">
+        <a href="/panel">Anasayfa</a>
+    </li>
+    <?foreach (Helper::$BREAD as $b) {?>
+        <li class="<?=strlen($b['class'])?$b['class']:''?>">
+            <?=strlen($b['icon'])?'<i class="'.$b['icon'].'"></i>':''?> <?=strlen($b['url'])?'<a href="'.$b['url'].'">'.$b['name'].'</a>':'<strong>'.$b['name'].'</strong>';?>
+        </li>
+    <?}?>
+</ol>

@@ -1,0 +1,141 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: erdinc.karaman
+ * Date: 7.02.2019
+ * Time: 12:57
+ */
+
+?>
+<div class="page-header row no-gutters py-4 mb-3 border-bottom">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Site Ayarları</span>
+        <h3 class="page-title">Ayarlar</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card card-small">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Ayarlar</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item p-3">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="OyunAd">OyunAd</label>
+                                        <input type="text" class="form-control" id="OyunAd" name="OyunAd" placeholder="OyunAd" value="<?=$settings->OyunAd?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                <label for="">Slider</label>
+                                                <div class="custom-control custom-toggle custom-toggle-sm mb-1">
+                                                    <input type="checkbox" id="Slider" name="Slider" class="custom-control-input" <?=$settings->Slider == 'on' ? 'checked' : ''?>>
+                                                    <label class="custom-control-label" for="Slider"> &nbsp;</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="">Bakım Modu</label>
+                                                <div class="custom-control custom-toggle custom-toggle-sm mb-1">
+                                                    <input type="checkbox" id="BakimModu" name="BakimModu" class="custom-control-input" <?=$settings->BakimModu == 'on' ? 'checked' : ''?>>
+                                                    <label class="custom-control-label" for="BakimModu"> &nbsp;</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label for="">Kayıt Açık</label>
+                                                <div class="custom-control custom-toggle custom-toggle-sm mb-1">
+                                                    <input type="checkbox" id="KayitAcik" name="KayitAcik" class="custom-control-input" <?=$settings->KayitAcik == 'on' ? 'checked' : ''?>>
+                                                    <label class="custom-control-label" for="KayitAcik"> &nbsp;</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="FacebookLink">FacebookLink</label>
+                                        <input type="text" class="form-control" id="FacebookLink" name="FacebookLink" placeholder="FacebookLink" value="<?=$settings->FacebookLink?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="ForumLink">ForumLink</label>
+                                        <input type="text" class="form-control" id="ForumLink" name="ForumLink" placeholder="ForumLink" value="<?=$settings->ForumLink?>">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="OyunLogo1">OyunLogo1</label>
+                                        <input type="text" class="form-control" id="OyunLogo1" name="OyunLogo1" placeholder="OyunLogo1" value="<?=$settings->OyunLogo1?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="OyunLogo2">OyunLogo2</label>
+                                        <input type="text" class="form-control" id="OyunLogo2" name="OyunLogo2" placeholder="OyunLogo2" value="<?=$settings->OyunLogo2?>">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label for="DownloadAciklama">DownloadAciklama</label>
+                                            <textarea class="form-control" id="DownloadAciklama" name="DownloadAciklama" placeholder="DownloadAciklama"><?=$settings->DownloadAciklama?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label for="MarketAciklama">MarketAciklama</label>
+                                            <textarea class="form-control" id="MarketAciklama" name="MarketAciklama" placeholder="MarketAciklama"><?=$settings->MarketAciklama?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label for="IletisimAciklama">IletisimAciklama</label>
+                                            <textarea class="form-control" id="DownloadAciklama" name="IletisimAciklama" placeholder="IletisimAciklama"><?=$settings->IletisimAciklama?></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <div class="form-group">
+                                            <label for="BakiyeYukleDetail">BakiyeYukleDetail</label>
+                                            <textarea class="form-control" id="BakiyeYukleDetail" name="BakiyeYukleDetail" placeholder="BakiyeYukleDetail"><?=$settings->BakiyeYukleDetail?></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="BeginSilk">BeginSilk</label>
+                                        <input type="text" class="form-control" id="BeginSilk" name="BeginSilk" placeholder="BeginSilk" value="<?=$settings->BeginSilk?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="BeginSilk">Tema</label>
+                                        <select name="Theme" id="Theme" class="form-control">
+                                            <option value="tema1" <?=$settings->Theme == 'tema1' ? 'selected' : ''?>>Tema1</option>
+                                            <option value="tema2" <?=$settings->Theme == 'tema2' ? 'selected' : ''?>>Tema2</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Maxigame_api_user">Maxigame_api_user</label>
+                                        <input type="text" class="form-control" id="Maxigame_api_user" name="Maxigame_api_user" placeholder="Maxigame_api_user" value="<?=$settings->Maxigame_api_user?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Maxigame_api_pass">Maxigame_api_pass</label>
+                                        <input type="text" class="form-control" id="Maxigame_api_pass" name="Maxigame_api_pass" placeholder="Maxigame_api_pass" value="<?=$settings->Maxigame_api_pass?>">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

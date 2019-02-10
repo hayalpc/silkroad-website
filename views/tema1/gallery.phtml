@@ -1,0 +1,24 @@
+<?php include "layouts/header.phtml"; ?>
+    <div class="ConLeft">
+        <h1>Oyuncularımızdan Gelen Resimler</h1>
+        <div class="spacer"></div>
+        <link rel="stylesheet" href="css/slide/vlb_files1/vlightbox1.css" type="text/css"/>
+        <link rel="stylesheet" href="css/slide/vlb_files1/visuallightbox.css" type="text/css" media="screen"/>
+        <script src="css/slide/vlb_engine/jquery.min.js" type="text/javascript"></script>
+        <script src="css/slide/vlb_engine/visuallightbox.js" type="text/javascript"></script>
+
+        <div id="Galeri">
+
+            <?php
+            $images = Gallery::getImages();
+            foreach ($images as $image) { ?>
+                <a class="vlightbox1" href="<?= $image['Resim_Url'] ?>" title="Yükleyen : <?= $image['Yukleyen'] ?>">
+                    <img width="194" height="102" src="<?= $image['Resim_Url'] ?>" alt="<?= $image['Yukleyen'] ?>">
+                </a>
+
+            <? } ?>
+        </div>
+        <script src="/assets/css/slide/vlb_engine/vlbdata1.js" type="text/javascript"></script>
+
+    </div>
+<?php include "layouts/footer.phtml"; ?>

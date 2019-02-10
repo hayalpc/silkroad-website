@@ -1,0 +1,92 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 9.02.2019
+ * Time: 21:54
+ */?>
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Overview</span>
+        <h3 class="page-title">Ticket</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card card-small mb-4">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Destek Talepleri</h6>
+            </div>
+            <div class="card-body p-0 pb-3 text-center">
+                <table class="table mb-0">
+                    <thead class="bg-light">
+                    <tr>
+                        <th scope="col" class="border-0">#</th>
+                        <th scope="col" class="border-0">Gönderen</th>
+                        <th scope="col" class="border-0">Mesaj</th>
+                        <th scope="col" class="border-0">Durum</th>
+                        <th scope="col" class="border-0">Tarih</th>
+                        <th scope="col" class="border-0"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?
+                    if(isset($tickets) && count($tickets) > 0){
+                        foreach ($tickets as $ticket) {?>
+                            <tr>
+                                <td><?=$ticket->id?></td>
+                                <td><?=$ticket->CharName16?></td>
+                                <td><?=$ticket->Message?></td>
+                                <td><?=$ticket->Status?></td>
+                                <td><?=$ticket->CreateTime?></td>
+                                <td>
+                                    <a onclick="return confirm('Emin misiniz?');" class="btn btn-danger btn-xs" href="/panel/tickets/sil/<?=$ticket->id?>">Sil</a>
+                                    <a class="btn btn-primary text-white btn-xs" onclick="return openModel('<?=$ticket->id?>','<?=$ticket->CharName16?>');">Yanıtla</a>
+                                    <a onclick="return confirm('Emin misiniz?');" class="btn btn-warning btn-xs" href="/panel/tickets/kapat/<?=$ticket->id?>">Kapat</a>
+                                </td>
+                            </tr>
+                        <?}
+                    }else{?>
+                        <tr>
+                            <td colspan="7">Kayıt bulunamadı</td>
+                        </tr>
+                    <?}?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function openModel(id,CharName16){
+        $("#exampleModal").modal('show');
+        $("#CharName16").val(CharName16);
+        $("#formModal").attr('action',"/panel/tickets/yanitla/" + id );
+    }
+</script>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form method="post" id="formModal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Ticket Cevap</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="CharName16" class="form-control" id="CharName16">
+                <textarea name="Message" id="Message" class="form-control"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Yanıtla</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

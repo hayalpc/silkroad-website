@@ -1,0 +1,1 @@
+(function(e){e.fn.extend({center:function(){return this.each(function(){var t=(e(window).height()-e(this).outerHeight())/2;var n=(e(window).width()-e(this).outerWidth())/2;e(this).css({position:"absolute",margin:0,top:(t>0?t:0)+"px",left:(n>0?n:0)+"px"})})}})})(jQuery)

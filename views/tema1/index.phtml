@@ -1,0 +1,30 @@
+<?php renderPartial("layouts/header") ?>
+<div class="ConLeft">
+    <?php if (Settings::getConfig('Slider') == "on") {
+        renderPartial("slider");
+    } ?>
+
+
+    <ul id="haberler">
+        <?php
+        foreach (Settings::getNews() as $news) { ?>
+            <li>
+                <img src="<?= $news['Resim'] ?>" alt="<?= $news['Baslik'] ?>"
+                     title="<?= $news['Baslik'] ?>"
+                     width="230" height="120" style="border-radius: 10px;">
+                <h2><a href="/haberler/<?= $news['ID'] ?>"><?= $news['Baslik'] ?></a></h2>
+                <div>
+                    <?= $news['Tanim'] ?>
+                    <small><?= $news['Tarih'] ?></small>
+                </div>
+            </li>
+            <li class="Spacer"></li>
+        <? } ?>
+    </ul>
+    <iframe width="620" height="350" src="https://www.youtube.com/embed/o24uEc93YQo" frameborder="0"
+            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+</div>
+
+
+<?php renderPartial("layouts/footer") ?>

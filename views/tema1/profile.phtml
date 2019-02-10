@@ -1,0 +1,45 @@
+<?php include "layouts/header.phtml"; ?>
+    <div class="ConLeft">
+        <h1>Profilim</h1>
+        <div id="ProfilePage">
+            <div id="MyProfilePage">
+                <? if (getMessage('error')) { ?>
+                    <div class="msg errorMsg">
+                        <?= getMessage('error', true) ?>
+                    </div>
+                <? } ?>
+                <? if (getMessage('success')) { ?>
+                    <div class="msg successMsg">
+                        <?= getMessage('success', true) ?>
+                    </div>
+                <? } ?>
+                <div id="Profild">
+                    <span id="username"><?php echo $user->StrUserID ?>
+                        <div style="font-size:12px;"><?php echo $user->Email ?></div>
+                    </span>
+                    <span id="logbilgi">
+                        <em id="tlB">TL: <?php echo $user->BakiyeTL ?></em>
+                        <em id="SilkB">Silk: <?php echo $user->BakiyeSilk ?></em>
+                    </span>
+                    <span class="charList">
+                        <ul>
+                            <?foreach (Admin::getChars($user->JID) as $getChar) {?>
+                                    <li><img style="float: left" src="/assets/img/char/<?=$getChar['RefObjID']?>.gif"> <span style="    height: 50px;padding-left: 5px;"><?=$getChar['CharName16']?></span></li>
+                            <?}?>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+            <div class="Seperator"></div>
+            <ul id="ProfileMenu">
+                <li id="BuyGold"><a href="/destek/bug">Karakterimi Bugdan Kurtar</a></li>
+                <li id="MyHistory" class="NoWindow"><a href="/profilim/gecmis">İşlem Geçmişim</a></li>
+                <li id="ChangePassword"><a href="/profilim/sifre-degistir">Şifre değiştir</a></li>
+<!--                <li id="PaymentNotify" class="NoWindow"><a href="islem.php?islem=OdemeBildirimi">Ödeme bildirimi</a> </li>-->
+                <li id="UseEpin"><a href="/epin-yukle">EPin Yükle</a></li>
+<!--                <li id="Awaken" class="NoWindow"><a href="awaken.php">Awaken Sistem</a></li>-->
+            </ul>
+
+        </div>
+    </div>
+<?php include "layouts/footer.phtml"; ?>

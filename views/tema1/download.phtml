@@ -1,0 +1,62 @@
+<?php include "layouts/header.phtml"; ?>
+    <div class="ConLeft">
+    <h1><?php echo Settings::getConfig('OyunAd') ?> Client İndirme Linkleri</h1>
+    <div class="msg errorMsg">
+        <h2>DIKKAT</h2>
+        Silkroad.exe çalışmayı durdurdu hatası alan kullanıcılarımızın aşağıdaki linkde paylaşılan işlemleri uygulaması gerekmektedir.<br>
+        Link: <a target="_blank" href="https://youtu.be/gU88uV9pu-s?t=1m5s">https://youtu.be/gU88uV9pu-s?t=1m5s</a><br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/gU88uV9pu-s?start=65" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div id="Dosyalar">
+        <?php foreach (Settings::getDownload() as $download) { ?>
+            <a href="<?= $download['Dosya_Url'] ?>" target="_blank" class="<?= $download['Dosya_Type'] ?>"><span>İndirme Sitesi</span><em><?= $download['Dosya_Host'] ?></em></a>
+        <? } ?>
+    </div>
+    <br><br><br>
+    <div id="SystemRequirements">
+
+        <h1>Sistem Gereksinimleri</h1>
+        <table>
+            <tbody>
+            <tr id="FirstInformationBox">
+                <td width="120">Sınıf</td>
+                <td width="230">Minimum</td>
+                <td width="225">Tavsiye Edilen</td>
+            </tr>
+            <tr>
+                <td class="FirstInfoColumn">CPU</td>
+                <td>Pentium 3 800MHz yada üstü</td>
+                <td>Pentium 4 2.4GHz yada üstü</td>
+            </tr>
+            <tr>
+                <td class="FirstInfoColumn">RAM</td>
+                <td>256MB</td>
+                <td>512MB</td>
+            </tr>
+            <tr>
+                <td class="FirstInfoColumn">VGA</td>
+                <td>3D speed over GeForce2 yada ATI 9000</td>
+                <td>3D speed over GeForce FX 5600 yada ATI9500</td>
+            </tr>
+            <tr>
+                <td class="FirstInfoColumn">SOUND</td>
+                <td>DirectX 9.0c Compatibility Card</td>
+                <td>DirectX 9.0c Compatibility Card</td>
+            </tr>
+            <tr>
+                <td class="FirstInfoColumn">HDD</td>
+                <td>4GB yada üstü</td>
+                <td>4GB yada üstü</td>
+            </tr>
+            <tr>
+                <td class="FirstInfoColumn">OS</td>
+                <td>Windows 2000, XP, Vista, 7, 8</td>
+                <td>Windows 2000, XP, Vista, 7, 8</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+    <script src="css/slide/vlb_engine/vlbdata1.js" type="text/javascript"></script>
+
+    </div><?php include "layouts/footer.phtml"; ?>

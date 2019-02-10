@@ -1,0 +1,67 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 10.02.2019
+ * Time: 21:50
+ */
+
+?>
+
+<div class="page-header row no-gutters py-4">
+    <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle">Yeni Duyuru</span>
+        <h3 class="page-title">Duyurular</h3>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card card-small">
+            <div class="card-header border-bottom">
+                <h6 class="m-0">Yeni duyuru</h6>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item p-3">
+                    <div class="row">
+                        <div class="col">
+                            <form method="post">
+
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Baslik">Baslik</label>
+                                        <input type="text" class="form-control" id="Baslik" name="Baslik" placeholder="Baslik" value="<?=isset($settings->Baslik) ? $settings->Baslik : ''?>">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Tanim">Tanım</label>
+                                        <input type="text" class="form-control" id="Tanim" name="Tanim" placeholder="Tanim" value="<?=isset($settings->Tanim) ? $settings->Tanim : ''?>">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Metin">Metin</label>
+                                    <textarea class="form-control" id="Metin" name="Metin" placeholder="Metin"><?=isset($settings->Tanim) ? $settings->Tanim : ''?></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="OyunLogo1">Resim</label>
+                                    <input type="text" class="form-control" id="Resim" name="Resim" placeholder="Resim" value="<?=isset($settings->Resim) ? $settings->Resim : ''?>">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="">Durum</label>
+                                    <div class="custom-control custom-toggle custom-toggle-sm mb-1">
+                                        <input type="checkbox" id="Service" name="Service" class="custom-control-input" <?=$settings->Service == '1' ? 'checked' : ''?>>
+                                        <label class="custom-control-label" for="Service"> &nbsp;</label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

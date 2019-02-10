@@ -1,0 +1,34 @@
+<?php include "layouts/header.phtml"; ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<div class="ConLeft">
+    <h1>Giriş Yap</h1>
+    <div id="Pageislem">
+        <span id="beginislembg"></span>
+        <div class="islemicerik">
+            <? if (getMessage('error')) { ?>
+                <div class="msg errorMsg">
+                    <?= getMessage('error', true) ?>
+                </div>
+            <? } ?>
+            <form class="SifremiDegistir" action="" method="post">
+                <span>
+                    <label class="label1">Kullanıcı Adı :</label>
+                    <input class="inputstil" type="text" required name="UserName" minlength=1 maxlength=16/>
+                </span>
+                <span>
+                    <label class="label1">Şifre :</label>
+                    <input class="inputstil" type="password" required name="Password" minlength=1 maxlength=16/>
+                </span>
+                <span>
+                    <div style="margin-left: 210px;" class="g-recaptcha"
+                         data-sitekey="6LeCbVwUAAAAAPNdbSdajFGsNBbAWO75xAuwfOz8"></div>
+                </span>
+                <em style=" padding-left:200px;">
+                    <input class="sendstil" type="submit" value="GİRİŞ YAP"/>
+                </em>
+            </form>
+        </div>
+        <span id="endislembg"></span>
+    </div>
+</div>
+<?php include "layouts/footer.phtml"; ?>

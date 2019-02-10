@@ -1,0 +1,12 @@
+RewriteEngine On
+ErrorDocument 404 /panel/controllers/error.php?action=404
+RewriteRule ^$ controllers/index.php [L]
+
+RewriteRule ^login$ controllers/login.php
+RewriteRule ^logout$ controllers/logout.php
+RewriteRule ^settings$ controllers/settings.php
+RewriteRule ^tickets$ controllers/tickets.php
+
+RewriteRule ^([a-zA-Z-_]*)$ controllers/$1.php
+RewriteRule ^([a-zA-Z-_]*)/([a-zA-Z-_]*)$ controllers/$1.php?action=$2
+RewriteRule ^([a-zA-Z-_]*)/([a-zA-Z_-]*)/([0-9]*)$ controllers/$1.php?action=$2&id=$3

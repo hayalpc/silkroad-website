@@ -1,0 +1,55 @@
+<?php include "layouts/header.phtml"; ?>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<div class="ConLeft">
+    <h1>Kaydol</h1>
+    <div id="Pageislem">
+        <span id="beginislembg"></span>
+        <div class="islemicerik">
+            <? if (getMessage('error')) { ?>
+                <div class="msg errorMsg">
+                    <?= getMessage('error', true) ?>
+                </div>
+            <? } ?>
+            <form class="SifremiDegistir" action="" method="post">
+                <span>
+                    <label class="label1">Kullanıcı Adı :</label>
+                    <input class="inputstil" type="text" required name="UserName" minlength=4 maxlength=16
+                           value="<?= isset($_POST['UserName']) ? $_POST['UserName'] : '' ?>"/>
+                </span>
+                <span>
+                    <label class="label1">Şifre :</label>
+                    <input class="inputstil" type="password" required name="Password1" minlength=4 maxlength=16/>
+                </span>
+                <span>
+                    <label class="label1">Şifre Tekrar :</label>
+                    <input class="inputstil" type="password" required name="Password2" minlength=4 maxlength=16/>
+                </span>
+                <span>
+                    <label class="label1">Gizli Yanıt :</label>
+                    <input class="inputstil" type="text" required name="GizliYanit" minlength=4 maxlength=16
+                           value="<?= isset($_POST['GizliYanit']) ? $_POST['GizliYanit'] : '' ?>"/>
+                </span>
+                <span>
+                    <label class="label1" for="Email">Email :</label>
+                    <input class="inputstil" type="email" required id="Email" name="Email"
+                           value="<?= isset($_POST['Email']) ? $_POST['Email'] : '' ?>"/>
+                </span>
+                <span>
+                    <div style="margin-left: 210px;" class="g-recaptcha"
+                         data-sitekey="6LeCbVwUAAAAAPNdbSdajFGsNBbAWO75xAuwfOz8"></div>
+                </span>
+                <span>
+                    <label style="margin-left: 205px;">
+                        <input type="checkbox" required name="Sozleme" value="1" id="Sozlesme">
+                        <em><b><a style="color:#3C9;" href="#">Üyelik sözleşmesini</a></b> okudum ve onaylıyorum</em>
+                    </label>
+                </span>
+                <em style=" padding-left:200px;">
+                    <input class="sendstil" type="submit" value="KAYDOL"/>
+                </em>
+            </form>
+        </div>
+        <span id="endislembg"></span>
+    </div>
+</div>
+<?php include "layouts/footer.phtml"; ?>

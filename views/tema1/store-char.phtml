@@ -1,0 +1,25 @@
+<?php include "layouts/header.phtml"; ?>
+
+<div class="ConLeft" id="Market">
+    <h1>Web Market Item Mall
+        <span style="float:right;">
+            <a href="/profilim">
+                <img src="/assets/img/ui/Back_icon.png" width="24" height="24" title="Geri Dön" alt="Geri Dön"/>
+            </a>
+        </span>
+        <small>Bakiyeniz : <?php echo user()->BakiyeTL ?> TL</small>
+    </h1>
+    <div class="Seperator"></div>
+    <br>
+    <form method="post">
+        Lütfen Char Seçiniz:<br>
+        <select name="char">
+            <?foreach (Admin::getChars(user()->JID) as $getChar) {?>
+                <option><?=$getChar['CharName16']?></option>
+            <?}?>
+        </select>
+        <button>Gönder</button>
+    </form>
+
+</div>
+<?php include "layouts/footer.phtml"; ?>

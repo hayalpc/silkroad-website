@@ -1,0 +1,120 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="Content-Language" content="TR"/>
+
+    <meta name="description" content="<?php echo Settings::getConfig('OyunAd') ?> | Efsanelerin dünyası"/>
+    <meta name="keywords" content="Silkroad Online, Silkroad Private Server, 110 Cap best Silkroad Server, bedava silk server, emek server"/>
+
+    <meta property="og:url"                content="https://legendary.bubblysilkroad.com/" />
+    <meta property="og:type"                content="website" />
+    <meta property="og:title"              content="<?php echo Settings::getConfig('OyunAd') ?> | Efsanelerin dünyası" />
+    <meta property="og:description"        content="Silkroad Online, Silkroad Private Server, 110 Cap best Silkroad Server, bedava silk server, emek server" />
+    <meta property="og:image" content="https://legendary.bubblysilkroad.com/assets/img/logo.png"/>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
+    <link href="/assets/css/style.css?<?= time() ?>" rel="stylesheet" type="text/css" media="screen"/>
+    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <title><?php echo Settings::getConfig('OyunAd') ?> | Silkroad Private Server</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68588354-4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-68588354-4');
+
+    </script>
+</head>
+<body>
+
+<div id="HeaderWrap">
+    <div class="Header">
+        <div id="logo"
+             style="background:url('<?php echo Settings::getConfig('OyunLogo1') ?>');background-repeat: no-repeat;background-size: 100%;margin-top: 15px;">
+            <a href="/"
+               title="<?php echo Settings::getConfig('OyunAd') ?> Web Sitesi"><?php echo Settings::getConfig('OyunAd') ?>
+                Web Sitesi</a>
+        </div>
+
+        <div id="HeadMiddle">
+            <form action="javascript:;">
+                <input type="text" disabled="disabled" placeholder="" id="Charname" name="Charname">
+                <input type="submit" id="CharSearchSubmitButton" value="Ara">
+            </form>
+
+
+            <div class="Clear"></div>
+            <ul id="FortressOwners">
+<!--                <li id="Jangan">--><?php //echo $JanganFortress['Name'] ?: 'Boş' ?><!--</li>-->
+                <li id="Hotan"><?php echo $HotanFortress['Name'] ?: 'Boş' ?></li>
+<!--                <li id="Bandit">--><?php //echo $BanditFortress['Name'] ?: 'Boş' ?><!--</li>-->
+                <li class="Clear"></li>
+            </ul>
+        </div>
+        <div id="Headerright">
+            <?php
+            $eu = Settings::getToplamOnlineEU();
+            $ch = Settings::getToplamOnlineCH();
+            $toplamChar = $eu + $ch;
+            ?>
+            <div id="OnlineOyuncular">
+                <ul>
+                    <li id="onlineeu">
+                        <span class="bold">EU <?php echo $eu?></span>
+                    </li>
+                    <li id="onlinetotal">
+                        <a href="/server-durumu"
+                           title="Tüm Online Oyuncular"><?php echo $toplamChar?></a>
+                        <small>Online</small>
+                    </li>
+                    <li id="onlinech">
+                        <span class="bold"><?=$ch?> CH</span>
+                    </li>
+                </ul>
+            </div>
+            <?php if(!user()){ ?>
+                <div id="GirisButon">
+                    <a class="loginbutonn" href="/giris-yap">Giriş Yap</a>
+                </div>
+                <div id="fade" class="black_overlay"></div>
+            <?php } else { ?>
+                <div id="CikisButon"><a href="/cikis-yap">Çıkış Yap</a></div>
+            <?php } ?>
+
+
+        </div>
+    </div>
+
+
+
+
+</div>
+</div>
+<div align="center" id="LogoBig">
+    <!--    --><?php //if(Settings::getConfig('OyunLogo1') == "Yok"){ ?>
+    <!--        <p class="logobig">--><?php //echo Settings::getConfig('OyunAd') ?><!-- </p>-->
+    <!--    --><?php //} else { ?>
+    <!--        <img src="--><?php //echo Settings::getConfig('OyunLogo2') ?><!--"/>-->
+    <!--    --><?php //} ?>
+</div>
+
+<div id="conwrap">
+    <?php if(!user()){ ?>
+        <div id="kaydolbuton"><a href="/kayit">Kayıt Ol</a></div>
+    <?php } else { ?>
+        <div id="MyProfile"><a href="/profilim">Profilim</a></div>
+    <?php } ?>
+    <div id="serversaat">Server Time <?php echo $date = date('H:i:s'); ?></div>
+    <ul id="Menu">
+        <li id="HomePage"><a href="/">Anasayfa</a></li>
+        <li id="Gallery"><a href="/galeri">Galeri</a></li>
+        <li id="Market"><a href="/market">Market</a></li>
+        <li id="Rank"><a href="/rank/AlchemyRank">Rank</a></li>
+        <li id="Download"><a href="/download">Download</a></li>
+        <li id="Loh"><a href="/aktiviteler">League of <?php echo Settings::getConfig('OyunAd') ?></a></li>
+        <li id="Help"><a href="/epin-yukle">Bakiye Yükle</a></li>
+        <li id="Forum"><a href="/sss">Forum</a></li>
+        <li id="Contact"><a href="<?php echo Settings::getConfig('FacebookLink') ?>" target="_blank">Facebook</a></li>
+    </ul>
