@@ -1,0 +1,320 @@
+<html>
+<head>
+    <link rel='shortcut icon' href='/assets/<?= getTheme() ?>/img/favicon.ico' type='image/x-icon'>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'>
+    <meta name='description'
+          content="Risesro Online is a MMORPG (Massively Multiplayer Online RPG) that puts the player deep into ancient Chinese, Islamic, and European civilizations.">
+    <meta name='keywords'
+          content='goplay, go play, play sro, play, Risesro, private server, fun server, nice community, silk road, high rate, instant, pvp server, best, biggest, sro, playsro, kraft, Risesro, jangan, donwhang, hotan, arabia update, 13 degree, 14 degree, nuker, blader, no lag, no downtime, anti-ddos, elder'>
+    <title><?= Settings::getConfig('OyunAd') ?> <?= getTitle() ?></title>
+    <meta property='fb:admins' content=''>
+
+    <link href='/assets/<?= getTheme() ?>/css/global_css.css?<?= time() ?>' rel='stylesheet' type='text/css'>
+    <link href='/assets/<?= getTheme() ?>/css/custom.css?<?= time() ?>' rel='stylesheet' type='text/css'>
+    <script src="//code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
+
+</head>
+<body>
+<div>
+    <div id='fb-root'></div>
+    <div id="loading" class="loading-invisible">
+        <img src="/assets/<?= getTheme() ?>/img/loading56.gif" width="40" Alt="Loading page ..."> <span
+                style="color:#ee7744;font-size:30px;"> <br><b>Lütfen Bekleyiniz...</b></span>
+    </div>
+    <div id="main">
+        <div id='menu'>
+            <div class="part_top" id='part1'>
+                <ul id="css3menu1" style="padding:0;">
+                    <li class="topfirst" onclick='location="/"'><a title=Home><span
+                                    style="font-size:17px;">ANASAYFA</span></a>
+                    </li>
+                    <li class="topfirst" style="position: relative;">
+                        <a title="Account Options"><span style="font-size:17px;">HESABIM</span></a>
+                        <ul>
+                            <li class="subfirst" onclick='location="/sifre-unuttum"'><a title="Change Passowrd">SIFRE
+                                    DEGISTIR</a>
+                            </li>
+                            <li class="subfirst" onclick='location="/kayit"'><a title="Register a new account">KAYIT
+                                    OL</a>
+                            </li>
+                            <li onclick='location="/giris-yap"'><a title="Reset your password">GIRIS YAP</a></li>
+                        </ul>
+                    </li>
+                    <li class="topfirst" onclick='location="/epin-yukle"'><a title="TL Yükle"><span
+                                    style="font-size:17px;">TL YÜKLE</span></a>
+                    </li>
+                    <li class="topfirst" style="    height: 100px;text-align: center;">
+                        <a href="/" style="width: 290px;text-align: center;"><img style="margin-top: -50px;"
+                                                                                  src="/assets/tema2/img/logo.png"></a>
+                    </li>
+
+                    <li class="topfirst" onclick='location="/download"'><a title="Client İndir"><span
+                                    style="font-size:17px;">INDIR</span></a>
+                    </li>
+                    <li class="topfirst">
+                        <a title="Forum"><span style="font-size:17px;">FORUM</span></a>
+                        <ul>
+                            <li class="subfirst" onclick='location="/MaxiGame"'><a title="MaxiGame">MaxiGame</a>
+                            </li>
+                            <li class="subfirst" onclick='location="/ExtraLoob"'><a title="ExtraLoob">ExtraLoob</a>
+                            </li>
+                            <li onclick='location="/Joymax"'><a title="Joymax">Joymax</a></li>
+                        </ul>
+                    </li>
+                    <li class="topfirst" onclick='location="/destek"'><a title="DESTEK"><span
+                                    style="font-size:17px;">DESTEK</span></a>
+                    </li>
+                </ul>
+                <!--      <div class="social_networks">
+                          <div style='margin-left:0px;width:36px;height:37px;background:url(/assets/img/right_panel/youtube.png) no-repeat center;float:left;cursor:pointer'
+                               onclick="window.open('');"></div>
+                          <div style='margin-left:10px;width:36px;height:37px;background:url(/assets/img/right_panel/facebook.png) no-repeat center;float:left;cursor:pointer'
+                               onclick="window.open('');"></div>
+                      </div>-->
+                <div class="" style="">
+                    0<br>Online User
+                </div>
+
+            </div>
+        </div>
+        <div id="content">
+            <div id="left_side">
+                <?php if (!user()) { ?>
+                    <form method='post' autocomplete="off" action="/giris-yap">
+                        <input autocomplete="off" type="hidden">
+                        <div id="box1a">
+                            <div style='width:10px;height:10px;margin:20px 15px;float:left;'>
+                                <input placeholder="Kullanıcı Adı" name='username' id="username" type="text"
+                                       class="log_imp clearAutoComplete" autocomplete="off" value=""
+                                       disabled="disabled">
+                                <input placeholder="Şifre" name='password' id="password" type="password"
+                                       class="log_imp clearAutoComplete"
+                                       autocomplete="off" value="" disabled="disabled">
+                            </div>
+                            <input type='submit' value='' name='submit' id='login' style='border:none;'/>
+                            <div style='height:40px;margin:80px 0 0 14px;width:230px;'>
+                                <div id="reg" onclick='location="/kayit"'>KAYIT OL</div>
+                                <div id="fpw" onclick='location="/profilim/sifre-degistir"'>ŞİFRE SIFIRLA</div>
+                            </div>
+                        </div>
+
+                    </form>
+                <? } else { ?>
+                    <div id='box1c'>
+                        <div style='color:#fff0a9;font-size:18px;margin:10px 15px 0;text-align:center;'>
+                            Hoşgeldin, <?= user()->StrUserID ?>.
+                        </div>
+                        <div onclick='location="/profilim"' id='donate' class='left_panel_format rtl'
+                             style='margin-left:17px; margin-top: 5px;'>Pofilim
+                        </div>
+                        <div onclick='location="/profilim/sifre-degistir"' id='myacc' class='left_panel_format rtr'
+                             style='margin-top: 5px;'>Şifre Değiştir
+                        </div>
+                        <div onclick='location="/cikis"' id='loff' class='left_panel_format rbl'
+                             style='margin-left:17px;color:#544b3d;'>Çıkış Yap
+                        </div>
+                        <div onclick='location="/epin-yukle"' id='myfrnd' class='left_panel_format rbr'>TL Yükle</div>
+                    </div>
+                <? } ?>
+                <div id="leftimg1" onclick='location="./?pg=download"'>
+                    <span style='color:#817865;font-size:15px;'>&nbsp;</span>
+                </div>
+                <div id="leftimg3" onclick='location="./?pg=donate"'>
+                    <span style='color:#817865;font-size:15px;'>&nbsp;</span>
+                </div>
+                <div id="leftimg2" onclick='location="./?pg=vote"'>
+                    <span style='color:#817865;font-size:15px;'>&nbsp;</span></div>
+
+                <div id="box2">
+                    <div class="box2_t">
+                        <span style='color:#fff0a9;font-size:28px;'>
+                            HELP BOARD
+                        </span>
+                        <br>
+                        <span style='color:#fff0a9;font-size:13px;'>
+                            READ THE MOST IMPORTANT ARTICLES</br> FORUM WILL ADD SOON
+                        </span>
+                    </div>
+                    <div class="box2_l" onclick="window.open('');">
+                        Test
+                    </div>
+                    <div class="box2_b"></div>
+                    <br><br>
+                    <div class="box2_t">
+                        <span style='color:#fff0a9;font-size:28px;'>BACK LINKS</span>
+                        <br/>
+                    </div>
+                    <div class="box2_l" onclick="window.open('');">
+                        Elitepvpers
+                    </div>
+                    <div class="box2_l" onclick="window.open('http://www.sroinfo.com');">
+                        SroInfo
+                    </div>
+                    <div class="box2_b"></div>
+                    <br><br>
+                </div>
+            </div>
+
+            <div id="right_side">
+                <div id="video" onclick="window.open('http://www.youtube.com/watch?v=5ppgKwtwhcs');"></div>
+                <div id="boxsupport">
+                    <span style='color:#847454;font-size:18px;'><img src="/assets/<?= getTheme() ?>/img/reportbug.gif"
+                                                                     alt="Support"/></span>
+                </div>
+
+                <div class="time_right_side">
+                    <div class="time_head"></div>
+                    <div class="time_body">
+                        <div class='ql0'>
+                            <div style="width:160px; margin:0 auto; padding-left:15px;">
+                                <span id='svtm' style='font-size:24px;'><?=date('H:i:s')?></span>&nbsp;&nbsp;(GMT +2)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time_foot">
+                    </div>
+                </div>
+
+                <div class="info_right_side">
+                    <div class="info_head"></div>
+                    <div class='info_body'>
+                        <div class='acc'>
+                            <div class='server_status_lines2' style='float:right'>
+                                <?php echo Settings::getSWStatus() ?>
+                            </div>
+                            <div class='server_name'
+                                 style='float:right'><?php echo Settings::getConfig('OyunAd') ?></div>
+                            <br class='clr'/>
+                            <div style='line-height:18px;text-align:center;'>
+                                <!--<span id='server1' style='cursor:pointer'>Server info</span>&nbsp;|&nbsp;<span id='fortres1' style='cursor:pointer'>Fort info</span>-->
+                            </div>
+                            <? $hotanFW = Settings::getFortress(3); ?>
+                            <? $properties = Settings::getSwProperties(); ?>
+
+                            <center>
+                                <div id='infof1' style='*display:none; '>
+                                    <div class='info_body_content' style=' margin-right: 10px;'>
+                                        <p>Kayıt: <span class='orange'>Her Salı-Cuma Arası</span></p>
+                                        <p>Başlama: <span class='orange'>Her Cumartesi 20:00</span></p>
+                                        <table border='0' bordercolor='#FFCC00' style='color:#c0c0c0; font-size:14px;'
+                                               width='210' cellpadding='0' cellspacing='0'>
+                                            <tr>
+                                                <td class='orange_m'>Hotan:</td>
+                                                <td><img src='/assets/<?= getTheme() ?>/img/fort-hotan.png'/>
+                                                    <?php echo $hotanFW['Name'] == 'Dummy' ? '< Hiç kimse >' : $hotanFW['Name'] ?>
+                                                </td>
+                                                <td style='color:#ffa800;font-size:13px;'>
+                                                    Vergi: <?php echo $hotanFW['Tax'] ?>%
+                                                </td>
+                                            </tr>
+                                            <!--                                            <tr>-->
+                                            <!--                                                <td class='orange_m'>Jangan:</td>-->
+                                            <!--                                                <td><img src='/assets/-->
+                                            <? //= getTheme() ?><!--/img/fort-jangan.png'/>-->
+                                            <!--                                                    $fortjanIDN-->
+                                            <!--                                                </td>-->
+                                            <!--                                                <td style='color:#ffa800;font-size:13px;'>Tax: 20%</td>-->
+                                            <!--                                            </tr>-->
+                                            <!--                                            <tr>-->
+                                            <!--                                                <td class='orange_m'>Bandit:</td>-->
+                                            <!--                                                <td><img src='/assets/-->
+                                            <? //= getTheme() ?><!--/img/fort-bandit.png'/>-->
+                                            <!--                                                    $fortbanIDN-->
+                                            <!--                                                </td>-->
+                                            <!--                                                <td style='color:#ffa800;font-size:13px;'>Tax: 20%</td>-->
+                                            <!--                                            </tr>-->
+                                        </table>
+                                    </div>
+                                </div>
+                                <div id='infos1' style='*display:none'>
+                                    <div class='info_body_content'>
+                                        <table cellspacing='0' cellpadding='0' border='0' color='fff' align='center'>
+                                            <tr>
+                                                <td style='font-size:15px;color:white;font-weight: bold;'>
+                                                    EXP:<BR>
+                                                    Party EXP:<BR>
+                                                    SP:<BR>
+                                                    ITEM drop:<BR>
+                                                    GOLD drop:<BR>
+                                                    <br>
+                                                    Level cap:<BR>
+                                                    Alchemy:<BR>
+                                                    Version:<BR>
+                                                </td>
+                                                <td>
+                                                    <span style='color:#ffa800'><?= $properties['exp'] ?> </span><br>
+                                                    <span style='color:#ffa800'><?= $properties['ptexp'] ?></span><br>
+                                                    <span style='color:#ffa800'><?= $properties['sp'] ?></span><br>
+                                                    <span style='color:#ffa800'><?= $properties['drop'] ?></span><br>
+                                                    <span style='color:#ffa800'><?= $properties['golddrop'] ?></span><br>
+                                                    <br>
+                                                    <b><span style='color:lime'><?= $properties['cap'] ?></span></b><br>
+                                                    <b><span style='color:lime'><?= $properties['alchemy'] ?></span></b><br>
+                                                    <b><span style='color:lime'><?= $properties['version'] ?></span></b><br>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </center>
+                        </div>
+                        <CENTER>
+                            <SPAN style='color: rgb(255, 230, 162);font-size:14px;padding-left:5px;'> Online Oyuncu: <b
+                                        style='font-size:15px;'> <?= Settings::getToplamOnlineOyuncu() ?> </b> / <?= Settings::getConfig('Capacity') ?> </SPAN>
+                        </CENTER>
+                        <div class='clr'></div>
+                    </div>
+                    <div class="info_foot"></div>
+                </div>
+
+                <div id="box3">
+                    <span style='color:#847454;font-size:18px;'></span>
+                </div>
+
+                <div id="box4">
+                    <span style='color:#847454;font-size:18px;'></span>
+                </div>
+
+            </div>
+            <div id="page">
+                <div id="page_top"></div>
+                <div id="page_m">
+                    <div id="page_content" style="min-height: 860px;">
+                        <div style="color:#987d48; width:460px;height:auto;margin-left:15px;font-size:14px;"></div>
+                        <div style="background:url('/assets/<?= getTheme() ?>/img/news_top.png') no-repeat;width:481px;height:32px;margin-left:11px;color:#987d48">
+                            <div style="background:url('/assets/<?= getTheme() ?>/img/news_p.png') left no-repeat;width:400px;height:17px;margin-left:15px;margin-top:10px;float:left;font-size:14px;padding-left:20px;">
+                                <?= strtoupper(getTitle()) ?>
+                            </div>
+                        </div>
+                        <? if (getMessage('error')) { ?>
+                            <div class="msg errorMsg">
+                                <?= getMessage('error', true) ?>
+                            </div>
+                        <? } ?>
+                        <div class="page-content">
+                            <?= $content ?>
+                        </div>
+                    </div>
+                </div>
+                <div id='page_btm'></div>
+            </div>
+            <div id='foot'>
+                <div id='foot_box' style="width: 500px; margin: 0 auto;">
+                    <div style='text-align:center;color:#ddd;font-size:13px;padding-left:30px;'>
+                        <div style='margin-top:4px;'></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="/assets/<?= getTheme() ?>/js/func3860.js?v=1"></script>
+<script type="text/javascript" src='/assets/<?= getTheme() ?>/js/highstock.src.js'></script>
+<script type="text/javascript" src='/assets/<?= getTheme() ?>/js/themes/gray.js'></script>
+<script type="text/javascript" src='/assets/<?= getTheme() ?>/js/custom.js'></script>
+<script type="text/javascript" src="/assets/<?= getTheme() ?>/js/jquery.selectbox-0.2.js"></script>
+</html>
+

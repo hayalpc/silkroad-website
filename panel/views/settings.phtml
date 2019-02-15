@@ -56,6 +56,7 @@
 
                                     </div>
                                 </div>
+
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="FacebookLink">FacebookLink</label>
@@ -64,6 +65,16 @@
                                     <div class="form-group col-md-6">
                                         <label for="ForumLink">ForumLink</label>
                                         <input type="text" class="form-control" id="ForumLink" name="ForumLink" placeholder="ForumLink" value="<?=$settings->ForumLink?>">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="Server_ip">Server_IP</label>
+                                        <input type="text" class="form-control" id="Server_ip" name="Server_ip" placeholder="Server_ip" value="<?=$settings->Server_ip?>">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="Server_port">Server_Port</label>
+                                        <input type="text" class="form-control" id="Server_port" name="Server_port" placeholder="Server_port" value="<?=$settings->Server_port?>">
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -106,11 +117,15 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-3">
+                                        <label for="Capacity">Capacity</label>
+                                        <input type="text" class="form-control" id="Capacity" name="Capacity" placeholder="Capacity" value="<?=$settings->Capacity?>">
+                                    </div>
+                                    <div class="form-group col-md-3">
                                         <label for="BeginSilk">BeginSilk</label>
                                         <input type="text" class="form-control" id="BeginSilk" name="BeginSilk" placeholder="BeginSilk" value="<?=$settings->BeginSilk?>">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-3">
                                         <label for="BeginSilk">Tema</label>
                                         <select name="Theme" id="Theme" class="form-control">
                                             <option value="tema1" <?=$settings->Theme == 'tema1' ? 'selected' : ''?>>Tema1</option>
@@ -120,13 +135,37 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
+                                        <label for="">Maxigame Açık</label>
+                                        <div class="custom-control custom-toggle custom-toggle-sm mb-1">
+                                            <input type="checkbox" id="Maxigame_aktif" name="Maxigame_aktif" class="custom-control-input" <?=$settings->Maxigame_aktif == 'on' ? 'checked' : ''?>>
+                                            <label class="custom-control-label" for="Maxigame_aktif"> &nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
                                         <label for="Maxigame_api_user">Maxigame_api_user</label>
                                         <input type="text" class="form-control" id="Maxigame_api_user" name="Maxigame_api_user" placeholder="Maxigame_api_user" value="<?=$settings->Maxigame_api_user?>">
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-4">
                                         <label for="Maxigame_api_pass">Maxigame_api_pass</label>
                                         <input type="text" class="form-control" id="Maxigame_api_pass" name="Maxigame_api_pass" placeholder="Maxigame_api_pass" value="<?=$settings->Maxigame_api_pass?>">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="">Paywant Açık</label>
+                                        <div class="custom-control custom-toggle custom-toggle-sm mb-1">
+                                            <input type="checkbox" id="Paywant_aktif" name="Paywant_aktif" class="custom-control-input" <?=$settings->Paywant_aktif == 'on' ? 'checked' : ''?>>
+                                            <label class="custom-control-label" for="Paywant_aktif"> &nbsp;</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="Paywant_apiKey">Paywant_apiKey</label>
+                                        <input type="text" class="form-control" id="Paywant_apiKey" name="Paywant_apiKey" placeholder="Paywant_apiKey" value="<?=$settings->Paywant_apiKey?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="Paywant_apiSecret">Paywant_apiSecret</label>
+                                        <input type="text" class="form-control" id="Paywant_apiSecret" name="Paywant_apiSecret" placeholder="Paywant_apiSecret" value="<?=$settings->Paywant_apiSecret?>">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Kaydet</button>

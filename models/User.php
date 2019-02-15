@@ -232,4 +232,21 @@ class User
         ]);
     }
 
+
+    public static function getJobHonorBuffList()
+    {
+        $sql = 'SELECT
+                    c.CharID,c.CharName16,c.NickName16, ctj.JobType,c.CurLevel,sks.silk_gift,ctj.Level
+                FROM
+                    SRO_VT_SHARD.dbo._Char c
+                    JOIN SRO_VT_SHARD.dbo._CharTrijob ctj ON ctj.CharID=c.CharID 
+                    JOIN SRO_VT_SHARD.dbo._User u ON u.CharID=c.CharID
+                    JOIN SRO_VT_ACCOUNT.dbo.SK_Silk sks ON sks.JID=u.UserJID
+                WHERE ctj.Level>=1 AND sks.silk_gift>=100 AND c.CurLevel>=105 AND LEN(c.NickName16)>1 ORDER BY ctj.Level DESC,sks.silk_gift DESC,c.CharName16 ASC';
+        $con = DB::getConnection();
+        $sta = $con->prepare($sql);
+        $sta->execute();
+        return $sta->fetchAll(PDO::FETCH_ASSOC);
+    }
+
 }

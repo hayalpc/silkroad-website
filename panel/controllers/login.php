@@ -5,7 +5,7 @@
  * Date: 3.10.2017
  * Time: 17:12
  */
-require_once "../../libs/loader.php";
+require_once "../libs/loader.php";
 require_once "../models/Admin.php";
 
 if(check_login(true)){
@@ -24,4 +24,4 @@ if(!empty($_POST)){
         addMessage('error','Lütfen istenilen tüm alanları doldurunuz.');
     }
 }
-include_once "../views/login.phtml";
+renderPartial("login");

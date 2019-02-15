@@ -7,5 +7,5 @@
  */
 
 require_once "../libs/loader.php";
-
+setTitle('Anasayfa');
 render("index");

@@ -11,11 +11,11 @@ require_once "../models/EPinKod.php";
 if(!check_login()){
     redirectLogin('/market');
 }
-
 switch($_GET['action']){
     case "satin-al":
+        setTitle('TL Yükle');
         if($_GET['id']>0){
-            if($_POST['char']) {
+            if(!empty($_POST['char'])) {
                 $mall = Store::get($_GET['id']);
                 $user = User::get(user()->JID);
                 if ($mall && $mall->Fiyat <= $user['BakiyeTL']) {
@@ -35,12 +35,14 @@ switch($_GET['action']){
                     redirect("/market");
                 }
             }else{
-                include "../views/store-char.phtml";
+                render("store-char");
             }
             die();
         }
         break;
 }
+setTitle('Mağaza');
+
 $urunler = Store::getMall();
-include "../views/store.phtml";
+render("store");
 

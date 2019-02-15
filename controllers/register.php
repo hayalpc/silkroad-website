@@ -90,4 +90,4 @@ if (!empty($_POST)) {
         addMessage("error","Lütfen captcha doğrulamasını yapınız!");
     }
 }
-include "../views/register.phtml";
+render("register");

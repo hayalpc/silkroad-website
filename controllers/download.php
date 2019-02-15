@@ -6,5 +6,5 @@
  * Time: 00:57
  */
 require_once "../libs/loader.php";
-
-include "../views/download.phtml";
+setTitle('Client İndir');
+render("download");

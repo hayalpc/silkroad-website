@@ -1,0 +1,33 @@
+<div class="ConLeft">
+    <h1>
+        Hesap İşlem Geçmişim
+        <span style="float:right;">
+            <a href="/profilim">
+                <img src="/assets/tema1/img/ui/Back_icon.png" width="24" height="24" title="Geri Dön" alt="Geri Dön"/>
+            </a>
+        </span>
+    </h1>
+    <div id="Pageislem">
+        <span id="beginislembg"></span>
+        <div class="islemicerik">
+            <div id="phptag">
+            </div>
+            <table class="islemtable" border="0" cellspacing="0" cellpadding="0">
+                <tr class="begin">
+                    <td class="islem">İşlem</td>
+                    <td class="tarih">IP</td>
+                    <td class="tarih">Tarih</td>
+                </tr>
+                <?php
+                foreach ($histories as $history) {?>
+                    <tr class="listislem">
+                        <td class="islem"><?=$history["Durum"]?></td>
+                        <td class="tarih"><?=$history["IP"]?></td>
+                        <td class="tarih"><?=date('H:i d-m-Y',strtotime($history["Time"]))?></td>
+                    </tr>
+                <?}?>
+            </table>
+        </div>
+        <span id="endislembg"></span>
+    </div>
+</div>

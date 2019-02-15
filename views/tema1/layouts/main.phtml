@@ -12,9 +12,9 @@
     <meta property="og:description"        content="Silkroad Online, Silkroad Private Server, 110 Cap best Silkroad Server, bedava silk server, emek server" />
     <meta property="og:image" content="https://legendary.bubblysilkroad.com/assets/img/logo.png"/>
 
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css"/>
-    <link href="/assets/css/style.css?<?= time() ?>" rel="stylesheet" type="text/css" media="screen"/>
-    <script type="text/javascript" src="/assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/assets/<?=getTheme()?>/css/bootstrap.min.css"/>
+    <link href="/assets/<?=getTheme()?>/css/style.css?<?= time() ?>" rel="stylesheet" type="text/css" media="screen"/>
+    <script type="text/javascript" src="/assets/<?=getTheme()?>/js/jquery.min.js"></script>
     <title><?php echo Settings::getConfig('OyunAd') ?> | Silkroad Private Server</title>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68588354-4"></script>
@@ -40,16 +40,16 @@
 
         <div id="HeadMiddle">
             <form action="javascript:;">
-                <input type="text" disabled="disabled" placeholder="" id="Charname" name="Charname">
+                <input type="text" disabled="disabled"  placeholder="" id="Charname" name="Charname">
                 <input type="submit" id="CharSearchSubmitButton" value="Ara">
             </form>
 
 
             <div class="Clear"></div>
             <ul id="FortressOwners">
-<!--                <li id="Jangan">--><?php //echo $JanganFortress['Name'] ?: 'Boş' ?><!--</li>-->
+                <!--                <li id="Jangan">--><?php //echo $JanganFortress['Name'] ?: 'Boş' ?><!--</li>-->
                 <li id="Hotan"><?php echo $HotanFortress['Name'] ?: 'Boş' ?></li>
-<!--                <li id="Bandit">--><?php //echo $BanditFortress['Name'] ?: 'Boş' ?><!--</li>-->
+                <!--                <li id="Bandit">--><?php //echo $BanditFortress['Name'] ?: 'Boş' ?><!--</li>-->
                 <li class="Clear"></li>
             </ul>
         </div>
@@ -113,8 +113,66 @@
         <li id="Market"><a href="/market">Market</a></li>
         <li id="Rank"><a href="/rank/AlchemyRank">Rank</a></li>
         <li id="Download"><a href="/download">Download</a></li>
-        <li id="Loh"><a href="/aktiviteler">League of <?php echo Settings::getConfig('OyunAd') ?></a></li>
+        <li id="Loh"><a href="/aktiviteler">League of <?php echo Settings::getConfig('ServerAd') ?></a></li>
         <li id="Help"><a href="/epin-yukle">Bakiye Yükle</a></li>
         <li id="Forum"><a href="/sss">Forum</a></li>
         <li id="Contact"><a href="<?php echo Settings::getConfig('FacebookLink') ?>" target="_blank">Facebook</a></li>
     </ul>
+
+    <?=$content?>
+    <div style="float: right;margin-right: 100px;padding-top:10px;position: relative">
+
+        <div style="text-align: center; margin-bottom: 10px">
+            <a href="https://www.maxigame.com/odeme-secenekleri.html" title="Maxigame Ödeme Seçenekleri" target="_blank">
+                <img src="/assets/<?=getTheme()?>/img/maxigame_satis.gif">
+            </a>
+        </div>
+
+
+        <h4 style="text-align: center;color: #c2843b;font-size: 25px;border-bottom: 2px solid;">
+            Sponsorlar
+        </h4>
+        <div style="text-align: center; margin-bottom: 10px">
+            <a href="http://www.maxigame.org" title="Maxigame" target="_blank">
+                <img src="https://www.maxigame.com/img/logo.png" style="width: 160px; height: auto;">
+            </a>
+        </div>
+        <div style="text-align: center; margin-bottom: 10px">
+            <a href="http://www.joymax.org" title="Joymax.org" target="_blank">
+                <img src="/assets/<?=getTheme()?>/img/joymax.png" style="width: 160px; height: auto;">
+            </a>
+        </div>
+        <div style="text-align: center; margin-bottom: 20px">
+            <a href="https://www.extraloob.com/forums/" title="ExtraLoob" target="_blank">
+                <img src="https://www.extraloob.com/logo/exlmavioptimize.png" style="width: 150px; height: auto;">
+            </a>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div id="footer">
+    <div id="fleft">
+        İçerik <a style="font-weight:bold;" target="_blank" href="https://bubblysilkroad.com">BubblyGame</a>'e Aittir İzinsiz
+        Kopyalanması ve Kullanılması Yasaktır. <br>&copy; BubblyGame 2018<br>
+
+        <a href="/">Anasayfa</a> |
+        <a href="/galeri">Galeri</a> |
+        <a href="/market">Market</a> |
+        <a href="/rank/AlchemyRank">Rank</a> |
+        <a href="/download">Download</a> |
+        <a href="/destek">Yardım</a> |
+
+
+    </div>
+    <div id="fright">
+        <img src="<?=Settings::getConfig('OyunLogo1')?>" height="70px"/>
+        <img src="/assets/<?=getTheme()?>/img/bubbly.png" height="70px"/>
+    </div>
+</div>
+</body>
+<script src="/assets/<?=getTheme()?>/js/bootstrap.min.js"></script>
+</html>

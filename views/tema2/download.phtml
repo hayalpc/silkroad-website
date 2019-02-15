@@ -1,0 +1,73 @@
+<div class="ConLeft">
+    <h1 style="color:white;text-align: center;">Full Client Dosyaları</h1>
+
+    <div id="Dosyalar" style="padding: 0 15px;">
+        <div style='background:url("/assets/<?= getTheme() ?>/img/page_fade.png") no-repeat;width:100%;padding: 15px 0; text-align: center'>
+            <?php foreach (Settings::getDownload() as $download) { ?>
+                <a href='<?= $download['Dosya_Url'] ?>' class="<?= $download['Dosya_Type'] ?>" target="_blank"
+                   style='display: inline-block; border:2px solid #321;border-radius:7px;cursor:pointer;margin:0 auto;width:80%;height:20px;color:#66DD33;text-align:center;font-size:15px;margin-bottom:10px;'> <?= $download['Dosya_Host'] ?> </a>
+            <? } ?>
+        </div>
+    </div>
+
+    <div class="msg errorMsg">
+        <h2>DIKKAT</h2>
+        Silkroad.exe çalışmayı durdurdu hatası alan kullanıcılarımızın aşağıdaki linkde paylaşılan işlemleri uygulaması
+        gerekmektedir.<br>
+        Link: <a target="_blank" href="https://youtu.be/gU88uV9pu-s?t=1m5s">https://youtu.be/gU88uV9pu-s?t=1m5s</a><br>
+        <iframe width="100%" height="315" src="https://www.youtube.com/embed/gU88uV9pu-s?start=65" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+
+    <div id="SystemRequirements">
+        <h1 style="color:white;text-align: center;">Sistem Gereksinimleri</h1>
+        <div class="pcSetting">
+            <table>
+                <colgroup>
+                    <col width="100">
+                    <col width="251">
+                    <col width="251">
+                </colgroup>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th style='border-right: 1px solid #1b150a;'>Minimum</th>
+                    <th>Recommended</th>
+                </tr>
+                </thead>
+
+                <tr>
+                    <td class="part">CPU</td>
+                    <td>Pentium 3 800MHz</td>
+                    <td>Pentium 4 2.4GHz</td>
+                </tr>
+                <tr>
+                    <td class="part">RAM</td>
+                    <td>256 MB</td>
+                    <td>512 MB</td>
+                </tr>
+                <tr>
+                    <td class="part">VGA</td>
+                    <td>GeForce2 or ATI 9000</td>
+                    <td>GeForce FX 5600 or ATI 9500</td>
+                </tr>
+                <tr>
+                    <td class="part">Sound</td>
+                    <td>DirectX 9.0c Sound Card</td>
+                    <td>DirectX 9.0c Sound Card</td>
+                </tr>
+                <tr>
+                    <td class="part">HDD</td>
+                    <td>4GB</td>
+                    <td>4GB</td>
+                </tr>
+                <tr>
+                    <td class="part">OS</td>
+                    <td>Windows 2000, XP, Vista, 7</td>
+                    <td>Windows 2000, XP, Vista, 7</td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>

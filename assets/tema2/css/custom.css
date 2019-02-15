@@ -1,0 +1,228 @@
+div.loading-invisible {
+    display: none;
+}
+
+div.loading-visible {
+    display: block;
+    position: fixed;
+    top: 320px;
+    left: 50%;
+    width: 240px;
+    hight: 100px;
+    margin-left: -100px;
+    right: 0;
+    text-align: center;
+    background: #fff;
+    filter: alpha(opacity=75);
+    -khtml-opacity: 0.75;
+    -moz-opacity: 0.75;
+    opacity: 0.75;
+    border: 2px solid #fff;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+}
+
+div.maintenance {
+    background: yellow;
+    border: 1px solid red;
+    width: 1010px;
+    margin: 0 auto;
+    margin-top: 5px;
+    color: red;
+    text-align: center;
+    padding: 2px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+div.sitelocku {
+    position: fixed;
+    bottom: 0%;
+    right: 0%;
+    right: 0;
+}
+.info_right_side .info_body .acc .server_status_lines2 {
+    width: 115px;
+    height: 14px;
+    float: left;
+    margin-top: 0px;
+    margin-left: 10px
+}
+
+.info_right_side .info_body .acc .server_status_lines2 .lines2 {
+    float: left;
+    background: url(../img/status.png) no-repeat;
+    width: 65px;
+    height: 14px;
+    overflow: hidden;
+    background-position: 0 0;
+    background-position: 0 0px;
+    margin-top: 5px
+}
+
+.newserver {
+    margin-left: 10px;
+    color: rgb(255, 230, 162);
+    font-size: 14px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.newserver:hover {
+    color: gold;
+    font-size: 15px;
+}
+
+.shadow-box{
+    background:url(../img/beta/bg_chenar.png) no-repeat center -30px;
+    height:240px;
+    margin-left:auto;
+    margin-top:10px;
+    text-align: center;
+}
+.sb2{
+    height:280px;
+}
+.shadow-box #regbox1, .shadow-box #regbox2, .shadow-box #regbox3,  .shadow-box #regbox4 {
+    overflow:hidden;
+    margin:auto;
+    margin-top:52px;
+    width:230px;
+    height:128px;
+    color:#ac9669;
+    text-align:center;
+}
+.shadow-box input{
+    background:transparent url(../img/beta/chenar_input.png) no-repeat center;
+    width:143px;
+    padding:0 3px;
+    color:#474747;
+    /*font-style:italic;*/
+    height:23px;
+    border:0;
+    margin-left:5px;
+}
+.shadow-box input[type=password]{
+    font-style:normal;
+}
+#next1,#next2,#next3,#next4{
+    background:transparent url(../img/beta/Buton_signUp.png) no-repeat center top;
+    margin:auto;
+    cursor:pointer;
+    width:100px;
+    height:30px;
+    padding:4px;
+    margin-top: 5px;
+    color:#ac9669;
+}
+.shadow-box .rslider{
+    /*width:9999px;*/
+}
+.step-text{
+    color:#777;
+    font-size:13px;
+}
+.shadow-box #loading1, .shadow-box #loading3, .shadow-box #loading2{
+    display:none;
+    position:relative;
+    margin:auto;
+    bottom:128px;
+    height:130px;
+    width:230px;
+    background:#eee;
+    opacity:0.5;
+}
+.shadow-box #loading1 img, .shadow-box #loading2 img{
+    position:relative;
+    top:44px;
+    left:100px;
+}
+.step-text a:link,#step-text a:visited{
+    color:#ac9669;
+    text-decoration:none;
+}
+.step-text a:hover{
+    color:#eee;
+    text-decoration:underline;
+}
+.step-text b{
+    color:#ac9669;
+}
+
+.charList{
+    position: absolute;
+    bottom: 50px;
+}
+
+.charList ul{
+    list-style-type: none;
+}
+
+.charList ul li{
+    float: left;
+    margin-right: 20px;
+    font-size: 15px;
+}
+
+.charList ul li img{
+    width:40px;
+}
+
+
+
+#MyProfilePage { padding:10px;}
+#MyProfilePage #Profild {width: 100%;height: 179px;background: url('/assets/tema1/img/ui/metop.png');    position: relative;background-size: 100%;background-repeat: no-repeat;}
+#MyProfilePage #Profild span{font-family: "Cuprum","Tahoma";color: #c7c1be;display: table-cell;vertical-align: middle;}
+
+#MyProfilePage #Profild span#username{background: url('/assets/tema1/img/ui/sword.png') no-repeat 0 0;position: relative;top: 15px;bottom: 0;right: 0;left: 20px;width: 40%;height: 30px;font-size: 19px;padding-left: 42px;float:left;}
+#MyProfilePage #Profild span#logbilgi{color: #e49c3b;padding-left: 20px;display: inline-block;width: auto;height: 17px;position: relative;top: 15px;right: 15px;float:right;}
+#MyProfilePage #Profild span#logbilgi em { display:block;}
+#MyProfilePage #Profild span#logbilgi em#silkb{background: url('/assets/tema1/img/ui/hitcash_profile.png') no-repeat 0 0; padding-left:20px;}
+#MyProfilePage #Profild span#logbilgi em#tlb{background: url('/assets/tema1/img/ui/hitcashico.png') no-repeat 0 0; padding-left:20px;}
+
+#ProfilePage ul#ProfileMenu{margin-top: 10px;margin-left: 5px; list-style:none;}
+#ProfilePage ul#ProfileMenu li{display: inline-block;    width: 190px;height: 110px;margin-right: 10px;margin-bottom: 10px;}
+#ProfilePage ul#ProfileMenu li a{display: inline-block;text-indent: -99999px;background: url('/assets/tema1/img/ui/mebuttons.png') no-repeat 0 0;width: 192px;height: 113px;}
+
+
+#ProfilePage ul#ProfileMenu li#MyHistory a{background-position:-192px 0;}
+#ProfilePage ul#ProfileMenu li#MyHistory a:hover{background-position:-192px -113px;}
+#ProfilePage ul#ProfileMenu li#ChangePassword a{background-position:-384px 0;}
+#ProfilePage ul#ProfileMenu li#ChangePassword a:hover{background-position:-384px -113px;}
+#ProfilePage ul#ProfileMenu li#UseEpin a{background-position:0 -226px;}
+#ProfilePage ul#ProfileMenu li#UseEpin a:hover{background-position:0 -339px;}
+#ProfilePage ul#ProfileMenu li#UseGiftCode a{background-position:-192px -226px;}
+#ProfilePage ul#ProfileMenu li#UseGiftCode a:hover{background-position:-192px -339px;}
+#ProfilePage ul#ProfileMenu li#BuyEpinCode a{background-position:-384px -226px;}
+#ProfilePage ul#ProfileMenu li#BuyEpinCode a:hover{background-position:-384px -339px;}
+#ProfilePage ul#ProfileMenu li#Awaken a{background-position:0px -678;}
+#ProfilePage ul#ProfileMenu li#Awaken  a:hover{background-position:0px -791px;}
+#ProfilePage ul#ProfileMenu li#BuyGold a{background-position:0 -452px;}
+#ProfilePage ul#ProfileMenu li#BuyGold a:hover{background-position:0 -565px;}
+#ProfilePage ul#ProfileMenu li#BuySP a{background-position:-192px -452px;}
+#ProfilePage ul#ProfileMenu li#BuySP a:hover{background-position:-192px -565px;}
+#ProfilePage ul#ProfileMenu li#BuyHwan a{background-position:-384px -452px;}
+#ProfilePage ul#ProfileMenu li#BuyHwan a:hover{background-position:-384px -565px;}
+#ProfilePage ul#ProfileMenu li#AdvRemover a{background-position:0 -678px;}
+#ProfilePage ul#ProfileMenu li#AdvRemover a:hover{background-position:0 -791px;}
+#ProfilePage ul#ProfileMenu li#ItemLock a{background-position:-192px -678px;}
+#ProfilePage ul#ProfileMenu li#ItemLock a:hover{background-position:-192px -791px;}
+#ProfilePage ul#ProfileMenu li#SkinBox a{background-position:-384px -678px;}
+#ProfilePage ul#ProfileMenu li#SkinBox a:hover{background-position:-384px -791px;}
+#ProfilePage ul#ProfileMenu li#PaymentNotify a{background-position:-192px -904px;}
+#ProfilePage ul#ProfileMenu li#PaymentNotify a:hover{background-position:0 -904px;}
+
+
+#Pageislem .islemicerik form .SifremiDegistir{}
+#Pageislem .islemicerik  .SifremiDegistir .label1{ width: 200px;float: left; margin-left:10px;padding-top: 10px;}
+#Pageislem .islemicerik  .SifremiDegistir span{ display:block; padding-bottom:5px;}
+#Pageislem .islemicerik  .SifremiDegistir .inputstil{ background-image: url(/assets/tema1/img/ui/inputform.png);background-repeat: no-repeat;border: 0;width: 282px;height: 43px;background-color: transparent;font-size: 14px;color: #BBA375;padding-left: 10px;padding-right: 14px;outline: none;}
+#Pageislem .islemicerik  .SifremiDegistir .sendstil{ margin-left:10px; background-image: url(/assets/tema1/img/ui/sendform.png); background-position:0 -45px; background-repeat: no-repeat;border: 0;width: 282px;height: 43px;background-color: transparent;font-size: 19px;color: #000000;padding-left: 10px;padding-right: 14px;outline: none; font-family:Cuprum;}
+#Pageislem .islemicerik  .SifremiDegistir .sendstil:hover{ background-position:0 0}
+#Pageislem #bakiyeyukle {padding-left: 1px;width: 595px;color: #000000;font-family: Cuprum, Tahoma;font-size: 16px; margin-bottom:20px;}
+#Pageislem .islemicerik #bankbg {background-image:url(/assets/tema1/img/ui/bankbg.png); background-repeat:no-repeat; width:290px; height:150px; display:inline-block; }
+#Pageislem .islemicerik #bankbg span {color: #CAC6C6;}
+#Pageislem .islemicerik #bankbg span.bankname {float: left;margin-top: 12px;text-decoration: underline;width: 295px;text-align: center;margin-bottom: 7px;}
+#Pageislem .islemicerik #bankbg span.hesapno {float: left;width: 295px;text-align: center;margin-bottom: 7px;}
+#Pageislem .islemicerik #bankbg span.hesapno em{ color:#F99818;}

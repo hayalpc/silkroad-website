@@ -1,7 +1,4 @@
 RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-
 ErrorDocument 404 /controllers/error.php?action=404
 
 RewriteRule ^$ /controllers/index.php [L]
@@ -17,7 +14,7 @@ RewriteRule ^profilim/([a-z-]*)$ /controllers/profile.php?action=$1 [L]
 RewriteRule ^kayit$ /controllers/register.php [L]
 RewriteRule ^epin-yukle$ /controllers/balance.php [L]
 RewriteRule ^giris-yap$ /controllers/login.php [L]
-RewriteRule ^cikis-yap$ /controllers/logout.php [L]
+RewriteRule ^cikis /controllers/logout.php [L]
 
 
 

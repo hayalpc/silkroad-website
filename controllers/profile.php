@@ -12,11 +12,11 @@ if (!check_login()) {
     redirectLogin();
 }
 $user = user();
-
+setTitle('Profilim');
 switch ($_GET['action']) {
     case 'gecmis':
         $histories = User::getHistory($user->StrUserID);
-        include "../views/profile-history.phtml";
+        render('profile-history',['histories'=>$histories]);
         break;
     case "sifre-degistir":
         if(!empty($_POST)){
@@ -51,9 +51,9 @@ switch ($_GET['action']) {
                 addMessage('error','Lütfen captcha doğrulamasını yapınız!');
             }
         }
-        include "../views/profile-password.phtml";
+        render('profile-password');
         break;
     default:
-        include "../views/profile.phtml";
+        render('profile',['user'=>user()]);
         break;
 }

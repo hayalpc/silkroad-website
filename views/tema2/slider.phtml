@@ -1,0 +1,38 @@
+﻿<link href="/assets/<?=getTheme()?>/css/slider.css?<?= time() ?>" rel="stylesheet" type="text/css" media="screen"/>
+<script src="/assets/<?=getTheme()?>/js/slider.js?<?= time() ?>"></script>
+<div id="issue-banner">
+    <div class="img-banner">
+        <span class="issue-img">
+            <a href="" id="BbannerLink" target="_self" style="width: 646px;overflow: hidden;height: 310px;display: block;">
+                <img src="" alt="">
+            </a>
+        </span>
+        <div class="txt">
+            <div class="txt-align">
+                <div class="valign">
+                    <div>
+                        <h3></h3>
+                        <p style="display: block;"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- // #banner1 -->
+
+    <ul class="banner-tab">
+        <? foreach (Settings::getSliders() as $item) { ?>
+            <li>
+                <a href="<?= $item['Url'] ?>" target="_self" class="">
+                    <span class="png"></span><img src="<?= $item['Thumb'] ?>" alt="" style="width: 130px;height: 51px;">
+                </a>
+                <input type="hidden" value="<?= $item['Title'] ?>" name="issue_show_name">
+                <input type="hidden" value="<?= $item['Description'] ?>"
+                       name="issue_show_txt">
+                <input type="hidden" value="_self" name="issue_target">
+                <input type="hidden" value="<?= $item['Url'] ?>" name="issue_show_lnk">
+                <input type="hidden" value="<?= $item['ResimUrl'] ?>" name="issue_banner_img">
+            </li>
+        <? } ?>
+    </ul>
+</div>
+<!--IssueBanner Area-->

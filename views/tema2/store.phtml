@@ -1,0 +1,35 @@
+
+<div class="ConLeft" id="Market">
+    <h1>Web Market Item Mall
+        <span style="float:right;">
+            <a href="/profilim">
+                <img src="/assets/tema1/img/ui/Back_icon.png" width="24" height="24" title="Geri Dön" alt="Geri Dön"/>
+            </a>
+        </span>
+        <small>Bakiyeniz : <?php echo user()->BakiyeTL ?> TL</small>
+    </h1>
+    <p class="Notice"><?php echo $ShopAciklama ?></p>
+    <div class="Seperator"></div>
+    <ul id="MarketItemler">
+        <? foreach($urunler as $Market) { ?>
+
+            <li>
+                <h2>
+                    <span><?=$Market['ItemName'] ?></span>
+                </h2>
+                <div class="SunBG">
+                    <img src="<?=$Market['ItemResim'] ?>" width="32" height="32" alt="">
+                </div>
+                <em>
+                    <span>Fiyat: <?=$Market['Fiyat']?> TL</span>
+                </em>
+                <span class="IconList">
+                    <?=isset($Market['Irk']) ? '<img src="/assets/img/ui/shop/'.strtolower($Market['Irk']).'.png" alt="'.$Market['Irk'].'" title="'.$Market['Irk'].'" width="22" height="22"/>' : ''?>
+                    <?=isset($Market['Cinsiyet']) ? '<img src="/assets/img/ui/shop/'.strtolower($Market['Cinsiyet']).'.png" alt="'.$Market['Cinsiyet'].'" title="'.$Market['Cinsiyet'].'" width="22" height="22"/>' : ''?>
+                    <?=isset($Market['Sox']) ? '<img src="/assets/img/ui/shop/'.strtolower($Market['Sox']).'.png" alt="'.$Market['Sox'].'" title="'.$Market['Sox'].'" width="22" height="22"/>' : ''?>
+                    <?=isset($Market['Cins']) ? '<img src="/assets/img/ui/shop/'.strtolower($Market['Cins']).'.png" alt="'.$Market['Cins'].'" title="'.$Market['Cins'].'" width="22" height="22"/>' : ''?>
+                </span>
+                <a class="AddBasket" href="/market/satin-al/<?=$Market['ID']?>">Ürünü Satın Al</a></li>
+        <? } ?>
+    </ul>
+</div>

@@ -109,4 +109,4 @@ if(!empty($_POST)){
     }
 }
 
-include_once "../views/balance.phtml";
+render("balance");

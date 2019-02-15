@@ -62,7 +62,7 @@ class Settings
 
     public static function getFortress($id)
     {
-        $sql = "SELECT _Guild.Name,_SiegeFortress.Tax FROM SRO_VT_SHARD.dbo._SiegeFortress,SRO_VT_SHARD.dbo._Guild WHERE FortressID = :FortressID";
+        $sql = "SELECT _Guild.Name,_SiegeFortress.Tax FROM SRO_VT_SHARD.dbo._SiegeFortress,SRO_VT_SHARD.dbo._Guild WHERE GuildID=ID AND FortressID = :FortressID";
         $con = DB::getConnection();
         $sta = $con->prepare($sql);
         $sta->execute([':FortressID'=>$id]);
@@ -83,5 +83,26 @@ class Settings
         $sta = $con->prepare($sql);
         $sta->execute();
         return $sta->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function getSWStatus()
+    {
+        $timeout = 1;
+        $socket = fsockopen(self::getConfig('Server_ip'),self::getConfig('Server_port'),$errno,$errstr,$timeout);
+        return $socket ? 'Online' : 'Offline';
+    }
+
+    public static function getSwProperties()
+    {
+        return [
+            'exp'=>'25x',
+            'ptexp'=>'35x',
+            'sp'=>'10x',
+            'drop'=>'10x',
+            'golddrop'=>'10x',
+            'cap'=>'110',
+            'alchemy'=>'+10(+2 ADV)',
+            'version'=>'1.4xx'
+        ];
     }
 }

@@ -28,9 +28,9 @@ if(Settings::getConfig('BakimModu') == 'on'){
 
 setTheme(Settings::getConfig('Theme'));
 
-$JanganFortress = Settings::getFortress(1);
-$HotanFortress = Settings::getFortress(3);
-$BanditFortress = Settings::getFortress(6);
+//$JanganFortress = Settings::getFortress(1);
+//$HotanFortress = Settings::getFortress(3);
+//$BanditFortress = Settings::getFortress(6);
 
 function runSlack($message = null){
     if(!$message){
@@ -75,8 +75,8 @@ function check_login($admin = false)
  */
 function user()
 {
-    if (isset($_SESSION['Admin'])) {
-        return json_decode(json_encode($_SESSION['Admin']));
+    if (isset($_SESSION['User'])) {
+        return json_decode(json_encode($_SESSION['User']));
     }
     return false;
 }
@@ -168,7 +168,7 @@ function get_client_ip()
     return $last;
 }
 
-function render($view,array $data = null,$return=false,$layout = "layouts/main"){
+function render($view,array $data = null,$return=false,$layout = "main"){
     try{
         $output = renderPartial($view,$data,true);
         if(($layoutFile = getLayoutFile($layout)) !== false) {
@@ -220,16 +220,15 @@ function getLayoutFile($layout) {
     if(!strlen($layout))
         return false;
     if(substr($layout,0,1) != "/"){
-        $layout = "layout/$layout";
+        $layout = "layouts/$layout";
     }else{
         $layout = trim($layout,"/");
     }
-    if(is_file(__DIR__."/../views/".getTheme()."/$layout.php")){
-        return __DIR__."/../views/".getTheme()."/$layout.php";
+    if(is_file(__DIR__."/../views/".getTheme()."/$layout.phtml")){
+        return __DIR__."/../views/".getTheme()."/$layout.phtml";
     }else{
         return false;
     }
-
 }
 
 function getTitle(){

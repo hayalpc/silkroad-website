@@ -1,0 +1,42 @@
+<? if (getMessage('error')) { ?>
+    <div class="msg errorMsg">
+        <?= getMessage('error', true) ?>
+    </div>
+<? } ?>
+<!--<script src='https://www.google.com/recaptcha/api.js'></script>-->
+<form method="post">
+    <div id="register">
+        <div class="register_box">
+            <div class="reg_label">Kullanıcı Adı</div>
+            <div><input minlength=4 maxlength=16 required name='UserName' class="clearAutoComplete" disabled onfocus="clearText(this);" value="<?= isset($_POST['UserName']) ? $_POST['UserName'] : '' ?>" type="text" id="run" placeholder="Kullanıcı Adı"></div>
+        </div>
+        <div class="register_box">
+            <div class="reg_label">Şifre</div>
+            <div><input minlength=4 maxlength=16 required onfocus="clearText(this);" class="clearAutoComplete" disabled type="password" name='password'  placeholder="Şifre"></div>
+        </div>
+        <div class="register_box">
+            <div class="reg_label">Şifre Tekrar</div>
+            <div><input minlength=4 maxlength=16 required onfocus="clearText(this);" class="clearAutoComplete" disabled type="password" name='password2' placeholder="Şifre Tekrar"></div>
+        </div>
+        <div class="register_box">
+            <div class="reg_label">Gizli Yanıt</div>
+            <div><input minlength=4 maxlength=16 required onfocus="clearText(this);" class="clearAutoComplete" disabled type="text" value="<?= isset($_POST['GizliYanit']) ? $_POST['GizliYanit'] : '' ?>" name='GizliYanit' placeholder="Gizli Yanıt"></div>
+        </div>
+        <div class="register_box">
+            <div class="reg_label">Email</div>
+            <div><input minlength=4 maxlength=16 required onfocus="clearText(this);" class="clearAutoComplete" disabled type="email" value="<?= isset($_POST['Email']) ? $_POST['Email'] : '' ?>" name='Email' placeholder="Email"></div>
+        </div>
+
+        <div class="register_box2">
+            <label style="">
+                <input type="checkbox" required name="Sozleme" value="1" id="Sozlesme">
+                <em><b><a style="color:#3C9;" href="#">Üyelik sözleşmesini</a></b> okudum ve onaylıyorum</em>
+            </label>
+        </div>
+        <div class="register_box2" align="center">
+            <input type="submit" style="margin:0 auto;" class="silk_bt" id="register_bt" name="register_bt" value="KAYIT OL">
+        </div>
+    </div>
+</form>
+
+
