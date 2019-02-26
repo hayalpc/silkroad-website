@@ -1,5 +1,5 @@
 /* #issue-banner */
-#issue-banner { position:relative; width:100%;  margin-bottom:30px; background-color:#323232; border:2px solid #ccc; *margin-left:55px;overflow: hidden;}
+#issue-banner { position:relative; *width:100%;  margin-bottom:30px; background-color:#323232; border:2px solid #ccc; *margin-left:55px;overflow: hidden;}
 #issue-banner .img-banner { width:100%; height:245px; }
 #issue-banner .txt { position:absolute; left:0; bottom:53px; width:100%; height:75px; padding:0; background:url('../img/bg_issue_banner.png') repeat-y left bottom; }
 #issue-banner .txt-align { height:75px; display:table; *display:block; *position:relative; padding: 0 15px;}

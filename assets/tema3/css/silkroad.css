@@ -1,0 +1,110 @@
+#silkroadMap {
+    background-color: white;
+    background-image: url("../img/map/map.jpg");
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+    height: 150px;
+    width: 150px;
+}
+
+.bg-slider-5{
+    background-image:url('../img/slider/slide-5.jpg');
+}
+.bg-slider-6{
+    background-image:url('../img/slider/slide-6.jpg');
+}
+.bg-slider-4{
+    background-image:url('../img/slider/slide-4.jpg');
+}
+
+.navbar-brand>img{
+    height: 100%;
+}
+
+.navbar-default .navbar-brand{
+    padding: 0;
+
+}
+
+body{
+    background: #375a7f;
+    color:black;
+}
+
+.well{
+    color:white;
+    padding:0;
+    border:none;
+}
+.well .well-content{
+    padding: 15px;
+}
+.well .well-title{
+    background: #375a7f;
+    margin: 0;
+    padding: 10px 15px;
+}
+.panel-default>.panel-heading{
+    background: #375a7f;
+}
+
+
+.container{
+    -webkit-box-shadow: 0 10px 20px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0 10px 20px 1px rgba(0,0,0,0.75);
+    box-shadow: 0 10px 20px 1px rgba(0,0,0,0.75);
+    background: #eaeaea;
+}
+.navbar-default .navbar-nav>li>a{
+    color:black;
+    font-weight: bold;
+}
+
+footer{
+    margin-top: 0!important;
+    padding: 10px!important;
+    background: #303030!important;
+    color: white!important;
+}
+
+.register-white{
+    color:white;
+}
+
+.progress-bar-default {
+    background-color: #949494;
+}
+
+.progress .progress-bar{
+    line-height: 15px;
+}
+.progress{
+    height: 15px;
+}
+
+
+header.carousel{
+    height: 35%;
+}
+
+.btn-group-vertical>.btn, .btn-group-vertical>.btn-group, .btn-group-vertical>.btn-group>.btn{
+    margin-bottom: 5px;
+}
+
+.form-group{
+    margin-bottom: 0;
+}
+
+.font13{
+    font-size: 13px;
+}
+
+.text-white{
+    color:white;
+}
+.text-black{
+    color:black;
+}

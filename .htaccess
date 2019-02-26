@@ -2,23 +2,37 @@ RewriteEngine On
 ErrorDocument 404 /controllers/error.php?action=404
 
 RewriteRule ^$ /controllers/index.php [L]
-RewriteRule ^download$ /controllers/download.php [L]
 
 
-RewriteRule ^profilim$ /controllers/profile.php [L]
-RewriteRule ^galeri$ /controllers/gallery.php [L]
 RewriteRule ^market$ /controllers/store.php [L]
 RewriteRule ^market/([a-z-]*)$ /controllers/store.php?action=$1 [QSA,L]
 RewriteRule ^market/([a-z-]*)/([0-9]*)$ /controllers/store.php?action=$1&id=$2 [QSA,L]
-RewriteRule ^profilim/([a-z-]*)$ /controllers/profile.php?action=$1 [L]
-RewriteRule ^kayit$ /controllers/register.php [L]
+
+RewriteRule ^destek$ /controllers/ticket.php [L]
+RewriteRule ^destek/([a-z-]*)$ /controllers/ticket.php?action=$1 [QSA,L]
+RewriteRule ^destek/([a-z-]*)/([0-9]*)$ /controllers/ticket.php?action=$1&id=$2 [QSA,L]
+
 RewriteRule ^epin-yukle$ /controllers/balance.php [L]
+RewriteRule ^epin-yukle/([a-zA-Z0-9]*)$ /controllers/balance.php?action=$1 [L]
+
+RewriteRule ^profilim/([a-z-]*)$ /controllers/profile.php?action=$1 [L]
+
+RewriteRule ^ranking$ /controllers/ranking.php [L]
+RewriteRule ^ranking/([a-z-]*)/([0-9]*)$ /controllers/ranking.php?action=$1&id=$2 [L]
+
+
+RewriteRule ^kayit$ /controllers/register.php [L]
 RewriteRule ^giris-yap$ /controllers/login.php [L]
 RewriteRule ^cikis /controllers/logout.php [L]
+RewriteRule ^sifre-unuttum /controllers/reset-password.php [L]
+RewriteRule ^download$ /controllers/download.php [L]
+RewriteRule ^profilim$ /controllers/profile.php [L]
+RewriteRule ^galeri$ /controllers/gallery.php [L]
+RewriteRule ^kurallar$ /controllers/rules.php [L]
+RewriteRule ^sss$ /controllers/faq.php [L]
 
 
-
-RewriteRule ^maxigame-tanitim$ https://www.maxigame.com/forum/t/257840-legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikle-uzun-soluklu-22-06-2018
-RewriteRule ^joymax-tanitim$ http://www.joymax.org/silkroad-private-server-tanitimlari/56494-legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikle-uzun-soluklu-22-06-2018-a.html
-RewriteRule ^extraloob-tanitim$ https://www.extraloob.com/forums/threads/legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikleri-uzun-soluklu-22-06-2018.309438/
+#RewriteRule ^maxigame-tanitim$ https://www.maxigame.com/forum/t/257840-legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikle-uzun-soluklu-22-06-2018
+#RewriteRule ^joymax-tanitim$ http://www.joymax.org/silkroad-private-server-tanitimlari/56494-legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikle-uzun-soluklu-22-06-2018-a.html
+#RewriteRule ^extraloob-tanitim$ https://www.extraloob.com/forums/threads/legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikleri-uzun-soluklu-22-06-2018.309438/
 

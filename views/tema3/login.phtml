@@ -1,0 +1,49 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 20.02.2019
+ * Time: 21:32
+ */
+?>
+
+<div class="panel panel-default register-white">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-lock"></i> GİRİŞ YAP</h3>
+    </div>
+    <div class="panel-body">
+        <?php
+        if(getMessage('error')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-8">
+                <div class="alert alert-danger" role="alert"><?= getMessage('error',true); ?></div>
+            </div>
+            <?php
+        }
+        if(getMessage('success')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-8">
+                <div class="alert alert-success" role="alert"><?= getMessage('success',true); ?></div>
+            </div>
+            <?php
+        }
+        ?>
+        <form method="POST">
+            <div class="input-group input-group-sm col-xs-12">
+                <input type="text" required class="form-control" placeholder="Username" name="username" autocomplete="off" />
+            </div>
+            <br/>
+            <div class="input-group input-group-sm col-xs-12">
+                <input type="password" required class="form-control" placeholder="Password" name="password" autocomplete="off" />
+            </div>
+            <br/>
+            <div class="input-group input-group-sm">
+                <input class="btn btn-success btn-sm col-xs-12" type="submit" name="button"  value="Giriş Yap" />
+            </div>
+            <br/>
+            <p class="small text-justify"><a href="/sifre-degistir">Şifre Sıfırla</a></p>
+        </form>
+    </div>
+</div>

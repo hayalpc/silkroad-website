@@ -1,0 +1,43 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 25.02.2019
+ * Time: 22:01
+ */
+
+$class = [
+        'read'=>'panel-success',
+        'closed'=>'panel-warning',
+        'new'=>'panel-danger',
+        'unread'=>'panel-danger',
+];
+$status = [
+        'read'=>'Okudunuz',
+        'closed'=>'Cevaplandı',
+        'new'=>'Yeni',
+        'unread'=>'Okumadınız',
+];
+?>
+<div class="row">
+    <div class="col-xs-12">
+        <a class="btn btn-primary btn-xs pull-right" href="/destek/yeni"><i class="fa fa-plus-circle"></i> Yeni Destek Talebi</a>
+    </div>
+</div>
+<br>
+<div class="panel-group text-white" id="accordion">
+    <?foreach ($tickets as $i=>$ticket) {?>
+        <div class="panel <?= isset($class[$ticket->Status]) ? $class[$ticket->Status] : 'panel-default'?>">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?=$i?>">ID:[<?=$ticket->id?>] - <?=$ticket->ParentTicket > 0 ? '[DESTEK]' : "[$ticket->CharName16]"?> - <?=date('H:i d-m-Y',strtotime($ticket->CreateTime))?> - <?= isset($status[$ticket->Status]) ? $status[$ticket->Status] : '-'?></a>
+                </h4>
+            </div>
+            <div id="collapseOne<?=$i?>" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <?=$ticket->Message?>
+                </div>
+            </div>
+        </div>
+    <?}?>
+</div>

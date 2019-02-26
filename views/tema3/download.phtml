@@ -1,0 +1,112 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 21.02.2019
+ * Time: 01:35
+ */
+?>
+<div class="panel panel-default register-white">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-download"></i> Client İndir</h3>
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-12 text-center  text-primary">
+                <h3>Dosyalar</h3>
+            </div>
+            <div class="col-md-5 text-center">
+                <h3>Link</h3>
+                <?php
+                foreach (Settings::getDownload() as $download) { ?>
+                    <p class="text-normal">
+                        <a href="<?= $download['Dosya_Url'] ?>" target="_blank"> <?= $download['Dosya_Host'] ?></a>
+                    </p>
+                <? } ?>
+            </div>
+            <div class="col-md-2 text-center">
+                <h3>Size</h3>
+                <?php foreach (Settings::getDownload() as $download) { ?>
+                    <p class="text-normal">
+                        <?= $download['Dosya_Boyut'] ?>
+                    </p>
+                <? } ?>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Name</h3>
+                <?php foreach (Settings::getDownload() as $download) { ?>
+                    <p class="text-default">
+                        <?= $download['Dosya_Type'] ?>
+                    </p>
+                <? } ?>
+            </div>
+            <div class="col-md-12 text-center  text-primary">
+                <h3>Gereksinimler</h3>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Component</h3>
+                <p class="text-default">
+                    <strong>Processor (CPU)</strong>
+                </p>
+                <p class="text-default">
+                    <strong>RAM</strong>
+                </p>
+                <p class="text-default">
+                    <strong>Video Card Memory</strong>
+                </p>
+                <p class="text-default">
+                    <strong>Operating System</strong>
+                </p>
+                <p class="text-default">
+                    <strong>Hard Drive Space</strong>
+                </p>
+                <p class="text-default">
+                    <strong>DirectX</strong>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Minimum</h3>
+                <p class="text-default">
+                    Pentium-III 800MHz
+                </p>
+                <p class="text-default">
+                    512MB
+                </p>
+                <p class="text-default">
+                    128MB VRAM
+                </p>
+                <p class="text-default">
+                    Windows XP or higher
+                </p>
+                <p class="text-default">
+                    1.5GB
+                </p>
+                <p class="text-default">
+                    <a href="http://www.microsoft.com/en-us/download/details.aspx?id=35" target="_blank">DirectX 9.0c</a>
+                </p>
+            </div>
+            <div class="col-md-4 text-center">
+                <h3>Suggested</h3>
+                <p class="text-default">
+                    Dual-Core 1.5GHz
+                </p>
+                <p class="text-default">
+                    1GB
+                </p>
+                <p class="text-default">
+                    512MB VRAM
+                </p>
+                <p class="text-default">
+                    Windows 7 or higher
+                </p>
+                <p class="text-default">
+                    2.0GB
+                </p>
+                <p class="text-default">
+                    <a href="http://www.microsoft.com/en-us/download/details.aspx?id=35" target="_blank">DirectX 9.0c</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>

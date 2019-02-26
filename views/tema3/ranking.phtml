@@ -1,0 +1,149 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Alexander
+ * Date: 24.06.2015
+ * Time: 11:46
+ */
+?>
+<div class="panel panel-default register-white">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-area-chart"></i> RANK</h3>
+    </div>
+    <div class="panel-body">
+        <ul id="myTab" class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a href="#ranking-one" data-toggle="tab" class="text-black"><i class="fa fa-user"></i> Player</a>
+            </li>
+            <li class="">
+                <a href="#ranking-two" data-toggle="tab" class="text-black"><i class="fa fa-users"></i> Guild</a>
+            </li>
+            <li class="">
+                <a href="#ranking-three" data-toggle="tab" class="text-black"><i class="fa fa-support"></i> Trader</a>
+            </li>
+            <li class="">
+                <a href="#ranking-four" data-toggle="tab" class="text-black"><i class="fa fa-database"></i> Hunter</a>
+            </li>
+            <li class="">
+                <a href="#ranking-five" data-toggle="tab" class="text-black"><i class="fa fa-database"></i> Thief</a>
+            </li>
+        </ul>
+
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="ranking-one">
+                <hr/>
+                <table class="table table-striped table-striped table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Level</th>
+                        <th>Item points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    foreach ($players as $ranki => $player) {?>
+                        <tr>
+                            <td><?= $ranki + 1; ?></td>
+                            <td><a href="/ranking/char/<?= $player["CharID"];?>"><?= $player["CharName16"] ;?></a></td>
+                            <td><?= $player["CurLevel"] ;?></td>
+                            <td><?= $player["ItemPoints"] ;?></td>
+                        </tr>
+                    <?}?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="ranking-two">
+                <hr/>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Name</th>
+                        <th>Level</th>
+                        <th>Member Count</th>
+                        <th>Item points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($guilds as $ranki => $guild) {?>
+                        <tr>
+                            <td><?= $ranki + 1; ?></td>
+                            <td><a href="/ranking/guild/<?= $guild["GuildID"];?>"><?= $guild["Name"] ;?></a></td>
+                            <td><?= $guild["Lvl"] ;?></td>
+                            <td><?= $guild["MemberCount"] ;?></td>
+                            <td><?= $guild["ItemPoints"] ;?></td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="ranking-three">
+                <hr/>
+                <table class="table table-striped table-striped table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Level</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($jobTrader as $ranki=>$job) {?>
+                        <tr>
+                            <td><?= $ranki + 1; ?></td>
+                            <td><?= $job['NickName16']; ?></td>
+                            <td><?= $job["Level"]; ?></td>
+                        </tr>
+                    <?}?>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="ranking-four">
+                <hr/>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Level</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($jobHunter as $ranki=>$job) {?>
+                        <tr>
+                            <td><?= $ranki + 1; ?></td>
+                            <td><?= $job['NickName16']; ?></td>
+                            <td><?= $job["Level"]; ?></td>
+                        </tr>
+                    <?}?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tab-pane fade" id="ranking-five">
+                <hr/>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player</th>
+                        <th>Level</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($jobThief as $ranki=>$job) {?>
+                        <tr>
+                            <td><?= $ranki + 1; ?></td>
+                            <td><?= $job['NickName16']; ?></td>
+                            <td><?= $job["Level"]; ?></td>
+                        </tr>
+                    <?}?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -13,8 +13,19 @@
     <link href='/assets/<?= getTheme() ?>/css/custom.css?<?= time() ?>' rel='stylesheet' type='text/css'>
     <script src="//code.jquery.com/jquery-1.8.3.min.js" type="text/javascript"></script>
 
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-68588354-5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-68588354-5');
+    </script>
+    <script async defer src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v3.2&appId=368793663709143&autoLogAppEvents=1"></script>
 </head>
 <body>
+<div id="fb-root"></div>
 <div>
     <div id='fb-root'></div>
     <div id="loading" class="loading-invisible">
@@ -25,44 +36,30 @@
         <div id='menu'>
             <div class="part_top" id='part1'>
                 <ul id="css3menu1" style="padding:0;">
-                    <li class="topfirst" onclick='location="/"'><a title=Home><span
-                                    style="font-size:17px;">ANASAYFA</span></a>
-                    </li>
+                    <li class="topfirst"><a href="/" title=Home><span style="font-size:17px;">ANASAYFA</span></a></li>
                     <li class="topfirst" style="position: relative;">
                         <a title="Account Options"><span style="font-size:17px;">HESABIM</span></a>
                         <ul>
-                            <li class="subfirst" onclick='location="/sifre-unuttum"'><a title="Change Passowrd">SIFRE
-                                    DEGISTIR</a>
-                            </li>
-                            <li class="subfirst" onclick='location="/kayit"'><a title="Register a new account">KAYIT
-                                    OL</a>
-                            </li>
-                            <li onclick='location="/giris-yap"'><a title="Reset your password">GIRIS YAP</a></li>
+                            <li class="subfirst"><a href="/sifre-unuttum" title="SIFRE DEGISTIR">SIFRE DEGISTIR</a></li>
+                            <li class="subfirst"><a href="/kayit" title="KAYIT OL">KAYIT OL</a></li>
+                            <li><a href="/giris-yap" title="Reset your password">GIRIS YAP</a></li>
                         </ul>
                     </li>
-                    <li class="topfirst" onclick='location="/epin-yukle"'><a title="TL Yükle"><span
-                                    style="font-size:17px;">TL YÜKLE</span></a>
-                    </li>
+                    <li class="topfirst"><a href="/epin-yukle" title="TL Yükle"><span style="font-size:17px;">TL YÜKLE</span></a></li>
                     <li class="topfirst" style="    height: 100px;text-align: center;">
-                        <a href="/" style="width: 290px;text-align: center;"><img style="margin-top: -50px;"
-                                                                                  src="/assets/tema2/img/logo.png"></a>
+                        <a href="/" style="width: 290px;text-align: center;"><img style="margin-top: -50px;" src="/assets/tema2/img/logo.png"></a>
                     </li>
-
-                    <li class="topfirst" onclick='location="/download"'><a title="Client İndir"><span
-                                    style="font-size:17px;">INDIR</span></a>
-                    </li>
+                    <li class="topfirst"><a title="Client İndir" href="/download"><span style="font-size:17px;">INDIR</span></a></li>
                     <li class="topfirst">
                         <a title="Forum"><span style="font-size:17px;">FORUM</span></a>
                         <ul>
-                            <li class="subfirst" onclick='location="/MaxiGame"'><a title="MaxiGame">MaxiGame</a>
-                            </li>
-                            <li class="subfirst" onclick='location="/ExtraLoob"'><a title="ExtraLoob">ExtraLoob</a>
-                            </li>
-                            <li onclick='location="/Joymax"'><a title="Joymax">Joymax</a></li>
+                            <li class="subfirst"><a href="/MaxiGame" title="MaxiGame">MaxiGame</a></li>
+                            <li class="subfirst"><a href="/ExtraLoob" title="ExtraLoob">ExtraLoob</a></li>
+                            <li><a href="/Joymax" title="Joymax">Joymax</a></li>
                         </ul>
                     </li>
-                    <li class="topfirst" onclick='location="/destek"'><a title="DESTEK"><span
-                                    style="font-size:17px;">DESTEK</span></a>
+                    <li class="topfirst">
+                        <a title="DESTEK" href="/destek"><span style="font-size:17px;">DESTEK</span></a>
                     </li>
                 </ul>
                 <!--      <div class="social_networks">
@@ -71,6 +68,7 @@
                           <div style='margin-left:10px;width:36px;height:37px;background:url(/assets/img/right_panel/facebook.png) no-repeat center;float:left;cursor:pointer'
                                onclick="window.open('');"></div>
                       </div>-->
+                <br>
                 <div class="" style="">
                     0<br>Online User
                 </div>
@@ -93,62 +91,60 @@
                             </div>
                             <input type='submit' value='' name='submit' id='login' style='border:none;'/>
                             <div style='height:40px;margin:80px 0 0 14px;width:230px;'>
-                                <div id="reg" onclick='location="/kayit"'>KAYIT OL</div>
-                                <div id="fpw" onclick='location="/profilim/sifre-degistir"'>ŞİFRE SIFIRLA</div>
+                                <div id="reg"><a href="/kayit">KAYIT OL</a></div>
+                                <div id="fpw"><a href="/profilim/sifre-degistir">ŞİFRE SIFIRLA</a></div>
                             </div>
                         </div>
-
                     </form>
                 <? } else { ?>
                     <div id='box1c'>
                         <div style='color:#fff0a9;font-size:18px;margin:10px 15px 0;text-align:center;'>
                             Hoşgeldin, <?= user()->StrUserID ?>.
                         </div>
-                        <div onclick='location="/profilim"' id='donate' class='left_panel_format rtl'
-                             style='margin-left:17px; margin-top: 5px;'>Pofilim
-                        </div>
-                        <div onclick='location="/profilim/sifre-degistir"' id='myacc' class='left_panel_format rtr'
-                             style='margin-top: 5px;'>Şifre Değiştir
-                        </div>
-                        <div onclick='location="/cikis"' id='loff' class='left_panel_format rbl'
-                             style='margin-left:17px;color:#544b3d;'>Çıkış Yap
-                        </div>
-                        <div onclick='location="/epin-yukle"' id='myfrnd' class='left_panel_format rbr'>TL Yükle</div>
+                        <div id='donate' class='left_panel_format rtl' style='margin-left:17px; margin-top: 5px;'><a href="/profilim">Pofilim</a></div>
+                        <div id='myacc' class='left_panel_format rtr' style='margin-top: 5px;'><a href="/profilim/sifre-degistir">Şifre Değiştir</a></div>
+                        <div id='loff' class='left_panel_format rbl' style='margin-left:17px;color:#544b3d;'><a href="/cikis">Çıkış Yap</a></div>
+                        <div id='myfrnd' class='left_panel_format rbr'><a href="/epin-yukle">TL Yükle</a></div>
                     </div>
                 <? } ?>
-                <div id="leftimg1" onclick='location="./?pg=download"'>
+                <a id="leftimg1" href='/download'>
                     <span style='color:#817865;font-size:15px;'>&nbsp;</span>
-                </div>
-                <div id="leftimg3" onclick='location="./?pg=donate"'>
+                </a>
+                <a id="leftimg3" href="/epin-yukle">
                     <span style='color:#817865;font-size:15px;'>&nbsp;</span>
-                </div>
-                <div id="leftimg2" onclick='location="./?pg=vote"'>
+                </a>
+                <div id="leftimg2" href="/">
                     <span style='color:#817865;font-size:15px;'>&nbsp;</span></div>
 
                 <div id="box2">
                     <div class="box2_t">
                         <span style='color:#fff0a9;font-size:28px;'>
-                            HELP BOARD
+                            DUYURULAR
                         </span>
                         <br>
-                        <span style='color:#fff0a9;font-size:13px;'>
-                            READ THE MOST IMPORTANT ARTICLES</br> FORUM WILL ADD SOON
+                        <span style='color:#fff0a9;font-size:11px;'>
+                           Paylaşılan son bildirimleri buradan takip edebilirsiniz.
                         </span>
                     </div>
-                    <div class="box2_l" onclick="window.open('');">
-                        Test
+                    <div class="box2_l">
+                        <a href="/">
+                            Test
+                        </a>
                     </div>
                     <div class="box2_b"></div>
-                    <br><br>
+                    <br>
                     <div class="box2_t">
                         <span style='color:#fff0a9;font-size:28px;'>BACK LINKS</span>
-                        <br/>
                     </div>
-                    <div class="box2_l" onclick="window.open('');">
-                        Elitepvpers
+                    <div class="box2_l">
+                        <a href="/">
+                            Elitepvpers
+                        </a>
                     </div>
-                    <div class="box2_l" onclick="window.open('http://www.sroinfo.com');">
-                        SroInfo
+                    <div class="box2_l">
+                        <a href="/">
+                            SroInfo
+                        </a>
                     </div>
                     <div class="box2_b"></div>
                     <br><br>

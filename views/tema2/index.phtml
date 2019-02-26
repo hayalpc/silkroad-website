@@ -1,6 +1,23 @@
 
-<div style="margin-top:0px;margin-left:11px;background:url('/assets/<?= getTheme() ?>/img/page_fade.png') no-repeat;width:481px;min-height:411px;">
+<div id="ConWrap" style="margin-top:0px;margin-left:11px;background:url('/assets/<?= getTheme() ?>/img/page_fade.png') no-repeat;width:481px;min-height:411px;">
     <?renderPartial('slider')?>
 
         <br><br>
+
+    <ul id="Haberler">
+        <?php
+        foreach (Settings::getNews() as $news) { ?>
+            <li>
+                <img src="<?= $news['Resim'] ?>" alt="<?= $news['Baslik'] ?>"
+                     title="<?= $news['Baslik'] ?>"
+                     width="230" height="120" style="border-radius: 10px;">
+                <h2><a href="/haberler/<?= $news['ID'] ?>"><?= $news['Baslik'] ?></a></h2>
+                <div>
+                    <?= $news['Tanim'] ?> <a href="/haberler/<?= $news['ID'] ?>">Devamı...</a><br>
+                    <small><?= $news['Tarih'] ?></small>
+                </div>
+            </li>
+            <li class="Spacer"></li>
+        <? } ?>
+    </ul>
 </div>

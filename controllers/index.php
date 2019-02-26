@@ -8,4 +8,5 @@
 
 require_once "../libs/loader.php";
 setTitle('Anasayfa');
+$_GET['slider'] = 1;
 render("index");

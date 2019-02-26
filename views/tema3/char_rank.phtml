@@ -1,0 +1,93 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Alexander
+ * Date: 24.06.2015
+ * Time: 12:02
+ */
+$CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
+
+?>
+<div class="panel panel-default register-white">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-area-chart"></i> <?= $char['CharName16']; ?></h3>
+    </div>
+    <div class="panel-body">
+
+        <div class="row">
+            <div class="col-sm-8">
+                <h2 class="text-info"><?= $char['CharName16']; ?></h2>
+                <div class="row">
+                    <div class="col-sm-6">Level:</div>
+                    <div class="col-sm-6"><?= $char['CurLevel']; ?></div>
+                    <div class="col-sm-12">&nbsp;</div>
+                    <div class="col-sm-6">Health:</div>
+                    <div class="col-sm-6">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                <?= $char['HP']; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">Mana:</div>
+                    <div class="col-sm-6">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                <?= $char['MP']; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4"><img src="<?= $CharImage; ?>"/></div>
+        </div>
+
+        <h2>10 Latest Uniques Kills</h2>
+        <hr/>
+        <?php if(count($uniques) > 0){ ?>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Unique</th>
+                    <th>Ago</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach($uniques AS $unique){
+                    echo '<tr><td>' . $unique['MobRealName'] . '</td><td>' . date('H:i d-m-Y',strtotime($unique['time'])) . '</td></tr>';
+                }
+                ?></tbody>
+            </table>
+            <?php
+        }else{
+            echo '<tr><td>This char never killed a unique.</td></tr>';
+        }
+        ?>
+        <br/>
+        <h2>10 Latest Globals</h2>
+        <hr/>
+        <?php if(count($globals) > 0){ ?>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Message</th>
+                    <th>Ago</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php foreach($globals as $global){
+                    echo '<tr><td>' . $global['Message'] . '</td><td>' . date('H:i d-m-Y',strtoupper($global['msg_sent'])) . '</td></tr>';
+                } ?>
+                </tbody>
+            </table>
+            <?php
+        }else{
+            echo "<tr><td>This char never wrote a global.</td></tr>";
+        }
+        ?>
+
+    </div>
+</div>

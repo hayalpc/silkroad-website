@@ -6,31 +6,27 @@
  * Time: 17:03
  */
 session_start();
-/*if($_GET['beta']){
+if($_GET['beta']){
     $_SESSION['beta'] = 1;
 }
-if(!isset($_SESSION['beta'])){
-    echo "Yakında!<br><br>";
-    die();
-}*/
+define('DIR_CACHE',dirname(dirname(__FILE__))."/cache/");
+
 require_once "Config.php";
 require_once "DB.php";
+require_once "FileCache.php";
 
 DB::getConnection();
 
 require_once __DIR__."/../models/User.php";
 require_once __DIR__."/../models/Settings.php";
+require_once __DIR__."/../models/Rank.php";
 
-if(Settings::getConfig('BakimModu') == 'on'){
-    echo "Bakımda!<br><br>";
+if(Settings::getConfig('BakimModu') == 'on' && !isset($_SESSION['beta'])){
+    echo "Offline!<br><br> Açılış: 8 Mart<br>Beta: 2 Mart";
     die();
 }
 
 setTheme(Settings::getConfig('Theme'));
-
-//$JanganFortress = Settings::getFortress(1);
-//$HotanFortress = Settings::getFortress(3);
-//$BanditFortress = Settings::getFortress(6);
 
 function runSlack($message = null){
     if(!$message){
@@ -253,4 +249,11 @@ function pre($a){
 function diepre($a){
     pre($a);
     die();
+}
+
+/**
+ * @return FileCache
+ */
+function cache(){
+    return new FileCache(3600);
 }

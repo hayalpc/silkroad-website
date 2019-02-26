@@ -1,0 +1,103 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 20.02.2019
+ * Time: 23:58
+ */
+?>
+<div class="panel panel-default register-white">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-lock"></i> KAYIT OL</h3>
+    </div>
+    <div class="panel-body">
+        <?if(Settings::getConfig('KayitAcik')){?>
+        <?php
+        if(getMessage('error')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-8">
+                <div class="alert alert-danger" role="alert"><?= getMessage('error',true); ?></div>
+            </div>
+            <?php
+        }
+        if(getMessage('success')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-8">
+                <div class="alert alert-success" role="alert"><?= getMessage('success',true); ?></div>
+            </div>
+            <?php
+        }
+        ?>
+        <form method="POST">
+            <div class="form-group">
+                <div class="row">
+                    <div class="input-group-sm col-sm-6">
+                        <label for="username">Kullanıcı Adı</label>
+                        <div class="input-group input-group-sm">
+                            <input type="text" minlength=4 maxlength=16 required class="form-control" placeholder="Kullanıcı Adı" name="UserName" value="<?= isset($_POST['UserName']) ? $_POST['UserName'] : '' ?>" autocomplete="off" />
+                            <span class="input-group-addon hidden-sm hidden-xs">Uzunluk 4 - 16</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="input-group-sm col-sm-6">
+                        <label for="password">Şifre</label>
+                        <div class="input-group input-group-sm">
+                            <input type="password" minlength=4 maxlength=16 required class="form-control" placeholder="Şifre" name="Password1" />
+                            <span class="input-group-addon hidden-sm hidden-xs">Uzunluk 4 - 16</span>
+                        </div>
+                    </div>
+                    <div class="input-group-sm col-sm-6">
+                        <label for="password2">Şifre Tekrar</label>
+                        <div class="input-group input-group-sm">
+                            <input type="password" minlength=4 maxlength=16 required class="form-control" placeholder="Şifre Tekrar" name="Password2" />
+                            <span class="input-group-addon hidden-sm hidden-xs">Uzunluk 4 - 16</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="row">
+                    <div class="input-group-sm col-sm-6">
+                        <label for="mail">E-Mail</label>
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Email" name="Email" value="<?= isset($_POST['Email']) ? $_POST['Email'] : '' ?>" autocomplete="off" />
+                            <span class="input-group-addon hidden-sm hidden-xs">Zorunlu</span>
+                        </div>
+                    </div>
+                    <div class="input-group-sm col-sm-6">
+                        <label for="mail">Gizli Yanıt</label>
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" placeholder="Gizli Yanit" name="GizliYanit" value="<?= isset($_POST['GizliYanit']) ? $_POST['GizliYanit'] : '' ?>" autocomplete="off" />
+                            <span class="input-group-addon hidden-sm hidden-xs">Zorunlu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="Sozleme" value="Sozleme" <?= isset($_POST['Sozleme']) ? "checked" : '' ?>> <b><a style="color:#3C9;" href="#">Üyelik sözleşmesini</a></b> okudum ve onaylıyorum
+                </label>
+                <div class="clearfix"></div>
+            </div>
+            <div class="controls form-inline margin-top10">
+                <input class="btn btn-success btn-md col-xs-4 pull-right" type="submit" name="button"  value="Kayıt Ol" />
+                <div class="clearfix"></div>
+            </div>
+            <hr/>
+            <div class="clearfix"></div>
+            <div class="margin-top-10"><a class="text-red" href="/giris-yap">Giriş Yap</a></div>
+        </form>
+        <?}else{?>
+            Kayıt kapalıdır!
+        <?}?>
+    </div>
+</div>
+

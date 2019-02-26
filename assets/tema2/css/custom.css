@@ -196,7 +196,7 @@ div.sitelocku {
 #ProfilePage ul#ProfileMenu li#UseGiftCode a:hover{background-position:-192px -339px;}
 #ProfilePage ul#ProfileMenu li#BuyEpinCode a{background-position:-384px -226px;}
 #ProfilePage ul#ProfileMenu li#BuyEpinCode a:hover{background-position:-384px -339px;}
-#ProfilePage ul#ProfileMenu li#Awaken a{background-position:0px -678;}
+#ProfilePage ul#ProfileMenu li#Awaken a{background-position:0px -678px;}
 #ProfilePage ul#ProfileMenu li#Awaken  a:hover{background-position:0px -791px;}
 #ProfilePage ul#ProfileMenu li#BuyGold a{background-position:0 -452px;}
 #ProfilePage ul#ProfileMenu li#BuyGold a:hover{background-position:0 -565px;}
@@ -213,6 +213,19 @@ div.sitelocku {
 #ProfilePage ul#ProfileMenu li#PaymentNotify a{background-position:-192px -904px;}
 #ProfilePage ul#ProfileMenu li#PaymentNotify a:hover{background-position:0 -904px;}
 
+#Pageislem{padding: 15px;}
+#Pageislem span#beginislembg { background-image:url(/assets/tema1/img/ui/islembgbegin.png); height:7px; display:block; background-repeat:no-repeat;background-size: 100%;}
+#Pageislem .islemicerik{ padding: 10px 15px;*width: 600px;background-image: url(/assets/tema1/img/ui/islembgrepeat.png);background-repeat: repeat-y;display: block;color: #BBA375;font-family: Cuprum, Tahoma;font-size: 13px;background-size:100%}
+#Pageislem span#endislembg { background-image:url(/assets/tema1/img/ui/islembgend.png); height:15px; display:block; background-repeat:no-repeat;
+    -webkit-background-size: 100%;
+    background-size: 100%;}
+#Pageislem .islemicerik table { color:#FFF; }
+#Pageislem .islemicerik table tr{ text-align:center;}
+#Pageislem .islemicerik table .begin{ background-color:#855D2C;}
+#Pageislem .islemicerik .listislem td{border: 1px solid #855D2C;}
+#Pageislem .islemicerik table .num{ width:30px;}
+#Pageislem .islemicerik table .islem{ }
+#Pageislem .islemicerik table .tarih{ width:160px; font-size:13px;}
 
 #Pageislem .islemicerik form .SifremiDegistir{}
 #Pageislem .islemicerik  .SifremiDegistir .label1{ width: 200px;float: left; margin-left:10px;padding-top: 10px;}
@@ -226,3 +239,67 @@ div.sitelocku {
 #Pageislem .islemicerik #bankbg span.bankname {float: left;margin-top: 12px;text-decoration: underline;width: 295px;text-align: center;margin-bottom: 7px;}
 #Pageislem .islemicerik #bankbg span.hesapno {float: left;width: 295px;text-align: center;margin-bottom: 7px;}
 #Pageislem .islemicerik #bankbg span.hesapno em{ color:#F99818;}
+
+
+#Pageislem .islemicerik #awakenbg{ width:180px; background-image:url(/assets/tema1/img/ui/inventory.png); background-repeat:no-repeat; height:166px; float:left; margin-left:15px;}
+#Pageislem .islemicerik #awakenbg #awakenic{ width:145px; padding-left: 19px;padding-top: 15px;}
+#Pageislem .islemicerik #awakenbg #awakenic img{ margin-top: 2px;margin-right: 4px;}
+#Pageislem .islemicerik  #awakeninfo{ margin-right: 15px;margin-left: 220px;text-align: right;}
+#Pageislem .islemicerik  #awakeninfo input.Buton{ margin-left: 10px;background-image: url(/assets/tema1/img/ui/sendform.png);background-position: 0 -45px;background-repeat: no-repeat;border: 0;width: 282px;height: 43px;background-color: transparent;font-size: 19px;color: #000000;padding-left: 10px;padding-right: 14px;outline: none;font-family: Cuprum; margin-top:80px;}
+
+
+#Pageislem .islemicerik table td{border: 1px solid #615A5A;}
+#Pageislem .islemicerik table td{border: 1px solid #615A5A;}
+#Pageislem .islemicerik .Haberlisteleme { margin-top:0px; margin-bottom:25px; padding-left:15px;}
+#Pageislem .islemicerik .Haberlisteleme .List1{border: 1px solid #615A5A;height: 25px;text-align: center;line-height: 25px;background-color: #22272C;}
+#Pageislem .islemicerik .Haberlisteleme .List1 td{background-color: #22272C;}
+#Pageislem .islemicerik .Haberlisteleme .List2 td{background-color: #624723; font-family:Tahoma; font-size:11px;}
+
+#Pageislem .islemicerik .Haberlisteleme .number{width:50px;}
+#Pageislem .islemicerik .Haberlisteleme .islem1{width:70px;}
+#Pageislem .islemicerik .Haberlisteleme .islem2{width:70px;}
+#Pageislem .islemicerik .Haberlisteleme .Baslik{width:800px;}
+#Pageislem .islemicerik .Haberlisteleme .Tarih{ width:150px;}
+#Pageislem .islemicerik .Haberlisteleme img{ margin-top:3px;}
+
+
+#Pageislem .islemicerik form .SifremiDegistir{}
+#Pageislem .islemicerik  .SifremiDegistir .label1{ width: 200px;float: left; margin-left:10px;padding-top: 10px;}
+#Pageislem .islemicerik  .SifremiDegistir span{ display:block; padding-bottom:5px;}
+#Pageislem .islemicerik  .SifremiDegistir .inputstil{ background-image: url(/assets/tema1/img/ui/inputform.png);background-repeat: no-repeat;border: 0;width: 282px;height: 43px;background-color: transparent;font-size: 14px;color: #BBA375;padding-left: 10px;padding-right: 14px;outline: none;}
+#Pageislem .islemicerik  .SifremiDegistir .sendstil{ margin-left:10px; background-image: url(/assets/tema1/img/ui/sendform.png); background-position:0 -45px; background-repeat: no-repeat;border: 0;width: 282px;height: 43px;background-color: transparent;font-size: 19px;color: #000000;padding-left: 10px;padding-right: 14px;outline: none; font-family:Cuprum;}
+#Pageislem .islemicerik  .SifremiDegistir .sendstil:hover{ background-position:0 0}
+#Pageislem #bakiyeyukle {padding-left: 1px;width: 595px;color: #000000;font-family: Cuprum, Tahoma;font-size: 16px; margin-bottom:20px;}
+#Pageislem .islemicerik #bankbg {background-image:url(/assets/tema1/img/ui/bankbg.png); background-repeat:no-repeat; width:290px; height:150px; display:inline-block; }
+#Pageislem .islemicerik #bankbg span {color: #CAC6C6;}
+#Pageislem .islemicerik #bankbg span.bankname {float: left;margin-top: 12px;text-decoration: underline;width: 295px;text-align: center;margin-bottom: 7px;}
+#Pageislem .islemicerik #bankbg span.hesapno {float: left;width: 295px;text-align: center;margin-bottom: 7px;}
+#Pageislem .islemicerik #bankbg span.hesapno em{ color:#F99818;}
+
+
+
+#ConWrap ul#Haberler{margin:0;padding: 0;}
+#ConWrap ul#Haberler>li{font-family:Tahoma; list-style:none; color:white;height: 80px;}
+#ConWrap ul#Haberler>li.Spacer{ margin:0px; width:100%;height:30px;background:url('/assets/tema1/img/ui/contentleftspacer.png') no-repeat 0 0;background-position:0 12px;}
+#ConWrap ul#Haberler>li>img{-webkit-box-shadow:-2px 1px 14px 0 rgba(51,50,50,0.9);-moz-box-shadow:-2px 1px 14px 0 rgba(51,50,50,0.9);box-shadow:-2px 1px 14px 0 rgba(51,50,50,0.9);float:left;margin:3px 5px 0 0;width:100px;height:75px;display: block;}
+#ConWrap ul#Haberler>li>h2{    float: right;font-size: 15px;margin: 0;width: 75%;}
+#ConWrap ul#Haberler>li>h2>a{color:brown;text-decoration:none;}
+#ConWrap ul#Haberler>li>h2>a:hover{text-decoration:underline;}
+#ConWrap ul#Haberler>li>div{font-size: 12px;line-height: 14px;text-align: left;float: right;width: 74%;}
+#ConWrap ul#Haberler>li>div b{font-weight:bold;}
+#ConWrap ul#Haberler>li>div a{color:brown;text-decoration:none;}
+#ConWrap ul#Haberler>li>div a:hover{text-decoration:underline;}
+#ConWrap ul#Haberler>li>div small{display:block;color:gray;font-size:11px;margin-top:5px;}
+
+#ConWrap .ConRight{float:right;width:255px;margin:20px 55px 0 0;}
+#ConWrap .ConRight #AnlikUniq h2 {text-indent: -99999px;background: url('/assets/tema1/img/ui/Event-AnlikUniq.png');height: 64px;}
+#ConWrap .ConRight #Anlikpvp h2 {text-indent: -99999px;background: url('/assets/tema1/img/ui/Event-Anlikpvp.png');height: 64px;}
+#ConWrap .ConRight #SagBariceriktop { margin-top:3px; height:5px; background-image:url(/assets/tema1/img/ui/eventbasla.png); background-repeat:no-repeat;}
+#ConWrap .ConRight #SagBaricerikmain {height:auto; background-image:url(/assets/tema1/img/ui/eventrepeat.png); background-repeat:repeat-y;}
+#ConWrap .ConRight #SagBaricerikend {height:6px; background-image:url(/assets/tema1/img/ui/eventbitis.png); background-repeat:no-repeat;}
+#ConWrap .ConRight .Sagbaricerik1 { color:Black; font-family:Tahoma; font-size:12px; margin-left:12px; margin-right:12px;}
+#ConWrap .ConRight #SagBaricerikmain .Sagbaricerik1 Table{ width:230px; margin-top:-12px;}
+#ConWrap .ConRight #SagBaricerikmain .Sagbaricerik1 .ilksira{ background-color: #1F2939;color: #FFF;height: 20px;text-align: center;line-height: 25px;}
+#ConWrap .ConRight #SagBaricerikmain .Sagbaricerik1 .othersira{ background-color: #1F2939;color: #FFF;height: 20px;text-align: center;line-height: 25px;}
+#ConWrap .ConRight #SagBaricerikmain .Sagbaricerik1 .othersira td{ border: 1px solid #626F83;}
+#ConWrap .ConRight #SagBaricerikmain .Sagbaricerik1 .othersira em{ font-weight:bold;}

@@ -1,0 +1,356 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 20.02.2019
+ * Time: 21:17
+ */
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Alexander Frank">
+
+    <title><?= strlen(getTitle()) ? getTitle() . ' - ' : '' ?> <?= Settings::getConfig('OyunAd') ?></title>
+
+    <link href="/assets/<?= getTheme() ?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/<?= getTheme() ?>/css/modern-business.css" rel="stylesheet">
+    <link href="/assets/<?= getTheme() ?>/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link href="/assets/<?= getTheme() ?>/css/silkroad.css" rel="stylesheet" type="text/css">
+
+    <script src="/assets/<?= getTheme() ?>/js/jquery.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script async defer
+            src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v3.2&appId=368793663709143&autoLogAppEvents=1"></script>
+</head>
+<body>
+<div id="fb-root"></div>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/"><img src="/assets/img/logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <? if (check_login()) { ?>
+                    <li>
+                        <a href='/profilim'><i class="fa fa-user"></i> HESABIM</a>
+                    </li>
+                <? } else { ?>
+                    <li class="a-register">
+                        <a href='/kayit'><i class="fa fa-lock"></i> KAYIT OL</a>
+                    </li>
+                    <li class="a-login">
+                        <a href='/giris-yap'><i class="fa fa-user"></i> GİRİŞ YAP</a>
+                    </li>
+                <? } ?>
+
+                <li>
+                    <a href="/download"><i class="fa fa-download"></i> İNDİR</a>
+                </li>
+                <li>
+                    <a href="/ranking"><i class="fa fa-area-chart"></i> RANK</a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-table"></i> Serverinfo <b
+                                class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="/ozellikler">Özellikler</a>
+                        </li>
+                        <li>
+                            <a href="/kurallar">Kurallar</a>
+                        </li>
+                        <li>
+                            <a href="/sss">SSS</a>
+                        </li>
+<!--                        <li>-->
+<!--                            <a href="/takim">Takım</a>-->
+<!--                        </li>-->
+                    </ul>
+                </li>
+<!--                <li>-->
+<!--                    <a href="#">Forum</a>-->
+<!--                </li>-->
+<!--                <li>-->
+<!--                    <a href="https://www.facebook.com/" target="_blank"><i-->
+<!--                                class="fa fa-facebook-square"></i></a>-->
+<!--                </li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<?// if (isset($_GET['slider'])) {
+    renderPartial('layouts/slider');
+//}
+?>
+
+<div class="container">
+    <div class="row">
+        <img style="height: 35px;" src="/assets/<?= getTheme() ?>/img/buffer.png" class="img-responsive center-block"/>
+        <hr/>
+        <div class="col-md-3">
+            <!---BLOCK 1-->
+            <div class="well">
+                <?php if (!user()) { ?>
+                    <h4 class="text-center text-uppercase well-title">Giriş Yap</h4>
+                    <div class="well-content">
+                        <form method='post' autocomplete="off" action="/giris-yap">
+                            <div class="form-group">
+                                <div class="input-group input-group-sm col-xs-12">
+                                    <input type="text" minlength=4 maxlength=16 required class="form-control"
+                                           placeholder="Kullanıcı Adı" name="username" autocomplete="off"
+                                           style="margin-bottom: 10px;"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group input-group-sm col-xs-12">
+                                    <input type="password" minlength=4 maxlength=16 required class="form-control"
+                                           placeholder="Şifre" name="password" autocomplete="off"
+                                           style="margin-bottom: 10px;"/>
+                                </div>
+                            </div>
+
+                            <input class="btn btn-success btn-sm col-xs-12" type="submit" name="button"
+                                   value="Giriş Yap"/>
+                        </form>
+                        <div class="row">
+
+                            <div class="col-lg-6">
+                                <a href="/kayit">
+                                    <small>KAYIT OL</small>
+                                </a>
+                            </div>
+                            <div class="col-lg-6">
+                                <a href="/sifre-degistir">
+                                    <small>ŞİFRE SIFIRLA</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <? } else { ?>
+                    <h4 class="text-center text-uppercase well-title">Hesabım</h4>
+                    <div class="text-center">
+                        Hoşgeldin, <?= user()->StrUserID ?>.
+                    </div>
+                    <div class="well-content">
+                        <div class="btn-group-vertical" role="group" style="width: 100%;" aria-label="...">
+                            <a class="btn btn-primary" type="button" href="/profilim"><i class="fa fa-user"></i>
+                                Hesabım</a>
+                            <a class="btn btn-primary" type="button" href="/destek"><i class="fa fa-ticket"></i>
+                                Destek Talebi</a>
+                            <a class="btn btn-primary" type="button" href="/epin-yukle"><i class="fa fa-money"></i>
+                                Bakiye [<?= user()->BakiyeTL ?>]</a>
+                            <a class="btn btn-primary" type="button" href="/profilim/ayarlar"><i
+                                        class="fa fa-cogs"></i> Ayarlar</a>
+<!--                            <a class="btn btn-warning" type="button" href="/vote"><i class="fa fa-bullhorn"></i>Vote</a>-->
+                            <a class="btn btn-primary" type="button" href="/cikis"><i class="fa fa-sign-out"></i>
+                                Çıkış Yap</a>
+                        </div>
+                    </div>
+                <? } ?>
+            </div>
+            <!---BLOCK 1-->
+
+            <!---BLOCK 3-->
+            <div class="well">
+                <h4 class="text-center text-uppercase well-title">Sunucu Zamanı</h4>
+                <div class="well-content">
+                    <p class="small"><i class="fa fa-fw fa-clock-o"></i> Time:<span class="text-info pull-right"
+                                                                                    id="tServerTime"></span></p>
+                    <p class="small"><i class="fa fa-fw fa-shield"></i> BA-Arena:<span class="text-info pull-right"
+                                                                                       id="tBattleArena"> 00:00:00 </span>
+                    </p>
+                    <p class="small"><i class="fa fa-fw fa-shield"></i> Fortress:<span class="text-info pull-right"
+                                                                                       id="tFortress"> 00:00:00 </span>
+                    </p>
+                    <p class="small"><i class="fa fa-fw fa-clock-o"></i> CTF:<span class="text-info pull-right"
+                                                                                   id="ctfTimer"> 00:00:00 </span></p>
+                </div>
+            </div>
+            <!---BLOCK 3-->
+
+            <!---BLOCK 5-->
+            <div class="well">
+                <h4 class="text-center text-uppercase well-title">Unique geçmişi</h4>
+                <div class="well-content">
+                    <?php
+                    $list = Rank::getUniqueHistory();
+                    foreach ($list as $item) {
+                        echo '<p class="small"><span class="text-info"><a href="/ranking/char/' . $item['CharID'] . '"><small>' . $item['CharName'] . '</small></a></span><small> killed ' . $item['Name'] . '</small> <span class="text-info pull-right"><small>' . date('H:i:s', strtotime($item['time'])) . '</small></span></p>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <!---BLOCK 5-->
+
+        </div>
+        <div class="col-md-6">
+            <?= $content ?>
+        </div>
+        <div class="col-md-3">
+            <!---BLOCK 2-->
+            <div class="well">
+                <h4 class="text-center text-uppercase well-title">Sunucu Bilgileri</h4>
+                <div class="well-content">
+                    <?php
+                    $onlineUser = Settings::getToplamOnlineOyuncu();
+                    $capacity = Settings::getConfig('Capacity');
+                    $bosAlan = $capacity - $onlineUser;
+                    $xx = $onlineUser * 100 / $capacity;
+                    $class = $xx > 90 ? "progress-bar-danger" : ($xx > 70 ? "progress-bar-warning" : "progress-bar-success");
+                    ?>
+                    <div class="progress">
+                        <div class="progress-bar <?=$class?>" style="width: <?=$onlineUser * 100 / $capacity?>%">
+                            <?if($bosAlan * 100 / $capacity < 75){ echo "$onlineUser / $capacity"; }?>
+                        </div>
+                        <div class="progress-bar progress-bar-default" style="width: <?=$bosAlan * 100 / $capacity?>%">
+                            <?if($bosAlan * 100 / $capacity >= 75){ echo "$onlineUser / $capacity"; }?>
+                        </div>
+                    </div>
+
+                    <p class="small"><i class="fa fa-fw fa-desktop"></i> Online:<span
+                                class="text-info pull-right"><?= $onlineUser ?>
+                            / <?= $capacity ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-check"></i> Cap:<span
+                                class="text-info pull-right"><?= Settings::getSwProperty('cap'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-users"></i> Irk<span
+                                class="text-info pull-right">EU & CH</span></p>
+                    <p class="small"><i class="fa fa-fw fa-flask"></i> EXP & SP<span
+                                class="text-info pull-right"><?= Settings::getSwProperty('exp'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-users"></i> Party<span
+                                class="text-info pull-right"><?= Settings::getSwProperty('ptexp'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-money"></i> Gold & Drop<span
+                                class="text-info pull-right"><?= Settings::getSwProperty('drop'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-star"></i> Tradegoods<span
+                                class="text-info pull-right"><?= Settings::getSwProperty('tradegoods'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-exclamation"></i> IP Limit<span
+                                class="text-warning pull-right"><?= Settings::getSwProperty('iplimit'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-exclamation"></i> PC Limit<span
+                                class="text-warning pull-right"><?= Settings::getSwProperty('pclimit'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-exclamation"></i> JOB Limit<span
+                                class="text-warning pull-right"><?= Settings::getSwProperty('joblimit'); ?></span></p>
+                    <hr/>
+                    <? $hotanFW = Settings::getFortress(3); ?>
+                    <p class="text-justify small">
+                        <img style='vertical-align:middle;'
+                             src='/assets/<?= getTheme() ?>/img/fortress/fort-hotan.png'/>
+                        Hotan <i class="text-info"> <?= $hotanFW['Tax'] ?>%</i> Tax
+                        <span class="text-info pull-right">
+                        <?php echo $hotanFW['Name'] == 'Dummy' ? '< Hiç kimse >' : $hotanFW['Name'] ?>
+                    </span>
+                    </p>
+                    <hr/>
+                    <? $job = Settings::getJob(); ?>
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" style="width: <?= $job[1]['size']; ?>%">
+                            Trader <?= $job[1]['size']; ?>%
+                            <span class="sr-only">Trader</span>
+                        </div>
+                        <div class="progress-bar progress-bar-info" style="width: <?= $job[3]['size']; ?>%">
+                            Hunter <?= $job[3]['size']; ?>%
+                            <span class="sr-only">Hunter</span>
+                        </div>
+                        <div class="progress-bar progress-bar-danger" style="width: <?= $job[2]['size']; ?>%">
+                            Thief <?= $job[2]['size']; ?>%
+                            <span class="sr-only">Thief</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!---BLOCK 2-->
+
+            <!---BLOCK 4-->
+            <div class="well">
+                <h4 class="text-center text-uppercase well-title">SOSYAL MEDYA</h4>
+                <div class="fb-page" data-href="https://www.facebook.com/eicsilkroad" data-tabs="timeline,messages"
+                     data-width="262" data-height="400" data-small-header="true" data-adapt-container-width="true"
+                     data-hide-cover="false" data-show-facepile="true">
+                    <blockquote cite="https://www.facebook.com/eicsilkroad" class="fb-xfbml-parse-ignore"><a
+                                href="https://www.facebook.com/eicsilkroad">Eic Game Facebook</a></blockquote>
+                </div>
+            </div>
+            <!---BLOCK 4-->
+
+
+        </div>
+    </div>
+
+    <hr/>
+</div>
+<footer class="container">
+    <div class="row">
+        <div class="col-lg-5">
+            <p class="small">Copyright &copy; <?= Settings::getConfig('OyunAd') ?> <?= date("Y"); ?> </p>
+            <p class="small" style="font-size:10px;">Coded by gia-tech.net <span class="text-danger"
+                                                                                 style="font-size:14px;">&hearts;</span></small>
+            </p>
+        </div>
+        <div class="col-lg-7">
+            <div class="pull-right ">
+                <?php
+                //                    $qry = $sql->Query("SELECT * FROM " . database5 . "..db_Backlink ORDER by ID ASC");
+                //                    while ($data = $sql->getQueryFetch_Object($qry)) {
+                //                        ?>
+                <p class="small"><a href="<?= $data->backlink; ?>" target="_blank"><?= "asd" ?></a></p>
+                <!--                        --><?php
+                //                    }
+                //                    ?>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="/assets/<?= getTheme() ?>/js/bootstrap.min.js"></script>
+<script src="/assets/<?= getTheme() ?>/js/silkroad.js"></script>
+<script src="/assets/<?= getTheme() ?>/js/map.js"></script>
+<script type="text/javascript">
+    $('.carousel').carousel({
+        interval: 5000,
+        pause: false
+    });
+    var ServerTime = new Date();
+</script>
+<?php
+if ($_GET["page"] === "vote") {
+    ?>
+    <script src="/assets/<?= getTheme() ?>/js/voteScript.js"></script>
+    <script type="text/javascript">
+        var oldHist = history.length;
+
+        function validate() {
+            interval = setInterval(function () {
+                if (oldHist != history.length) {
+                    window.opener.document.getElementById("response").innerHTML = '<strong><a href="/vote/" class="text-danger">Refresh</a></strong>';
+                    oldHist = history.length;
+                    clearInterval(interval);
+                    window.opener.validate();
+                } else {
+                    if (window.opener === null) {
+                        clearInterval(interval);
+                    } else {
+                        window.opener.document.getElementById("response").innerHTML = "Still not voted...";
+                    }
+                }
+            }, 1000);
+        }
+    </script>
+    <?php
+}
+?>

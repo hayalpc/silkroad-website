@@ -455,11 +455,11 @@ body {
 
 a:link, a:visited {
     color: #ddd;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:hover {
-    color: orangered;
+    /*color: orangered;*/
     text-decoration: none;
 }
 
@@ -472,6 +472,7 @@ a:hover {
     margin-top: 3px;
     text-align: right;
     padding-top: 1px;
+    display: block;
 }
 
 #leftimg2 {
@@ -483,6 +484,7 @@ a:hover {
     margin-top: 3px;
     text-align: right;
     padding-top: 1px;
+    display: block;
 }
 
 #leftimg3 {
@@ -494,6 +496,7 @@ a:hover {
     margin-top: 3px;
     text-align: right;
     padding-top: 1px;
+    display: block;
 }
 
 #SC_Guide {

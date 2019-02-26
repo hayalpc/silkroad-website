@@ -15,6 +15,7 @@ $user = user();
 setTitle('Profilim');
 switch ($_GET['action']) {
     case 'gecmis':
+        setTitle('Hesap Geçmişi');
         $histories = User::getHistory($user->StrUserID);
         render('profile-history',['histories'=>$histories]);
         break;
@@ -51,6 +52,7 @@ switch ($_GET['action']) {
                 addMessage('error','Lütfen captcha doğrulamasını yapınız!');
             }
         }
+        setTitle('Şifre Değiştir');
         render('profile-password');
         break;
     default:

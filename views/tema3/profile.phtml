@@ -1,0 +1,192 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 21.02.2019
+ * Time: 02:08
+ */
+?>
+
+<div class="panel panel-default register-white">
+    <div class="panel-heading">
+        <h3 class="panel-title">Hoşgeldin <?=user()->StrUserID?></h3>
+    </div>
+    <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label for="Username" class="control-label col-xs-3">Kullanıcı Adı :</label>
+                <div class="col-xs-9">
+                    <p class="form-control-static"><?=user()->StrUserID?></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Mail" class="control-label col-xs-3">Mail :</label>
+                <div class="col-xs-9">
+                    <p class="form-control-static"><?=user()->Email?></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Silk" class="control-label col-xs-3">TL :</label>
+                <div class="col-xs-9">
+                    <p class="form-control-static"><?=user()->BakiyeTL?></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Silk" class="control-label col-xs-3">Job Point :</label>
+                <div class="col-xs-9">
+                    <p class="form-control-static"><?=user()->JobPoint?></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Silk" class="control-label col-xs-3">Silk :</label>
+                <div class="col-xs-9">
+                    <p class="form-control-static"><?=user()->BakiyeSilk?></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+
+                </div>
+            </div>
+            <hr/>
+        </div>
+        <?php foreach (User::getChars($user->JID) as $getChar) { ?>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h3 class="text-info">
+                            <?= $getChar['CharName16']; ?>
+                           <small> <small><a href="/ranking/char/<?= $getChar['CharID'];?>"><i class="fa fa-external-link"></i> Rank</a></small></small>
+                        </h3>
+                        <div class="row">
+                            <div class="col-sm-6"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">Level:</div>
+                            <div class="col-sm-6"><?= $getChar['CurLevel']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Skillpoints:</div>
+                            <div class="col-sm-6"><?= $getChar['RemainSkillPoint']; ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Gold:</div>
+                            <div class="col-sm-6"><?= number_format($getChar['RemainGold']); ?></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Last Online:</div>
+                            <div class="col-sm-6"><?= date('H:i d-m-Y',strtotime($getChar['LastLogout'])); ?></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="row">
+                            <div class="col-sm-6">Health:</div>
+                            <div class="col-sm-6">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="100"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                        <?= $getChar['HP'] ;?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">Mana:</div>
+                            <div class="col-sm-6">
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="100"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                        <?= $getChar['MP'] ;?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--  <div class="col-sm-6">
+                                        <br/>
+                                        <div id="silkroadMap" class="sroIngameMap" data-posx="<?/*= $getChar['PosX'] ;*/?>" data-posy="<?/*= $getChar['PosZ'] ;*/?>" ></div>
+                                        <img id="silkroadDot" src="/assets/<?/*=getTheme()*/?>/img/map/dot.png" style="position: absolute; visibility: visible; top: 75px; left: 85px;" />
+                                        <small>Under testing!!</small>
+                                    </div>-->
+                </div>
+            </div>
+            <hr/>
+            <?php
+        }
+        ?>
+
+        <?php
+        if($_SESSION["user.charid"][0] != 0){
+            /*?>
+        <form action="/account/" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-xs-3">Unstuck your Char</label>
+                <div class="col-xs-3 selectContainer">
+                    <select class="form-control" name="unstuckChar">
+                    <?php
+                        for($i = 0; $i < $_SESSION["user.charcount"]; $i++){
+                            echo '<option value="' . $_SESSION["user.charid"][$i] .'">' . $_SESSION['user.account.charname'][$i] . '</option>';
+                        } ?>
+                        </select>
+                </div>
+                <div class="col-xs-6 selectContainer">
+                    <input class="btn btn-success" type="submit" name="button"  value="Unstuck">
+                </div>
+            </div>
+        </form>
+        <?php*/
+        }
+        ?>
+
+        <?php
+        //            for($i = 0; $i < $_SESSION["user.charcount"]; $i++){
+        //                echo $_SESSION['user.account.charname'][$i] . " - HWAN: " .  $_SESSION["user.account.hwan"][$i] . "<br/>";
+        //            }
+        //            echo count($_SESSION["user.account.hwan"]);
+        ?>
+
+        <?php
+        /*
+        if($_SESSION["user.charid"][0] != 0){
+            ?>
+        <form action="/account/" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label class="control-label col-xs-3">Set Title</label>
+                <div class="col-xs-3 selectContainer">
+                    <select class="form-control" name="selectChar">
+                    <?php
+                        for($i = 0; $i < $_SESSION["user.charcount"]; $i++){
+                            echo '<option value="' . $_SESSION["user.charid"][$i] .'">' . $_SESSION['user.account.charname'][$i] . '</option>';
+                        } ?>
+                    </select>
+                </div>
+                <div class="col-xs-3">
+                    <select class="form-control" name="selectChar">
+                        <option value="baronet">Baronet</option>
+                    </select>
+                </div>
+                <div class="col-xs-3 selectContainer">
+                    <input class="btn btn-success" type="submit" name="button"  value="Set it!">
+                </div>
+            </div>
+        </form>
+        <hr/>
+        <?php
+        }*/
+        ?>
+
+
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $(".sroIngameMap").each(function (k,v) {
+            posX = $(v).data('posx');
+            posY = $(v).data('posy');
+            anzeigen(posX, posY, v);
+        });
+    });
+</script>
+

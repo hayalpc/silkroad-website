@@ -32,6 +32,10 @@ switch ($_GET['action']) {
         redirect("/panel/news");
         break;
     case "yayinla":
+        News::updateStatus($_GET['id'],1);
+        redirect("/panel/news");
+        break;
+    case "kapat":
         News::close($_GET['id']);
         redirect("/panel/news");
         break;
