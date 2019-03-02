@@ -6,7 +6,7 @@
  * Time: 22:09
  */
 
-include_once "../libs/loader.php";
+include_once __DIR__."/../libs/loader.php";
 
 cache()->checkTime();
 

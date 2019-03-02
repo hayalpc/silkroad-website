@@ -72,7 +72,7 @@ class User
 
     public static function login($StrUserID, $password)
     {
-        $sql = "SELECT TB_User.*,(SELECT BakiyeTL FROM SRO_VT_PANEL.dbo._Bakiye WHERE StrUserID COLLATE SQL_Latin1_General_CP1_CI_AS =TB_User.StrUserID) AS BakiyeTL,(SELECT silk_own FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS BakiyeSilk,(SELECT silk_gift FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS JobPoint FROM SRO_VT_ACCOUNT.dbo.TB_User  Where StrUserID=:StrUserID AND password=:password";
+        $sql = "SELECT TB_User.*,(SELECT TOP 1 BakiyeTL FROM SRO_VT_PANEL.dbo._Bakiye WHERE StrUserID COLLATE SQL_Latin1_General_CP1_CI_AS = TB_User.StrUserID) AS BakiyeTL,(SELECT TOP 1 silk_own FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS BakiyeSilk,(SELECT TOP 1 silk_gift FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS JobPoint FROM SRO_VT_ACCOUNT.dbo.TB_User  Where StrUserID=:StrUserID AND password=:password";
         $con = DB::getConnection();
         $sta = $con->prepare($sql);
         $sta->execute([':StrUserID' => $StrUserID, ':password' => md5($password)]);

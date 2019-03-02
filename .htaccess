@@ -3,7 +3,6 @@ ErrorDocument 404 /controllers/error.php?action=404
 
 RewriteRule ^$ /controllers/index.php [L]
 
-
 RewriteRule ^market$ /controllers/store.php [L]
 RewriteRule ^market/([a-z-]*)$ /controllers/store.php?action=$1 [QSA,L]
 RewriteRule ^market/([a-z-]*)/([0-9]*)$ /controllers/store.php?action=$1&id=$2 [QSA,L]
@@ -30,6 +29,7 @@ RewriteRule ^profilim$ /controllers/profile.php [L]
 RewriteRule ^galeri$ /controllers/gallery.php [L]
 RewriteRule ^kurallar$ /controllers/rules.php [L]
 RewriteRule ^sss$ /controllers/faq.php [L]
+RewriteRule ^ozellikler$ /controllers/information.php [L]
 
 
 #RewriteRule ^maxigame-tanitim$ https://www.maxigame.com/forum/t/257840-legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikle-uzun-soluklu-22-06-2018

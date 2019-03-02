@@ -44,7 +44,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/"><img src="/assets/img/logo.png"></a>
+            <a class="navbar-brand" href="/"><img src="https://i.hizliresim.com/ZXz4qk.png"></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -68,9 +68,12 @@
                     <a href="/ranking"><i class="fa fa-area-chart"></i> RANK</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-table"></i> Serverinfo <b
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-table"></i> SERVER INFO <b
                                 class="caret"></b></a>
                     <ul class="dropdown-menu">
+                        <li>
+                            <a href="https://play-eic.com/sozlesme.html">Sözleşme</a>
+                        </li>
                         <li>
                             <a href="/ozellikler">Özellikler</a>
                         </li>
@@ -80,25 +83,25 @@
                         <li>
                             <a href="/sss">SSS</a>
                         </li>
-<!--                        <li>-->
-<!--                            <a href="/takim">Takım</a>-->
-<!--                        </li>-->
+                        <!--                        <li>-->
+                        <!--                            <a href="/takim">Takım</a>-->
+                        <!--                        </li>-->
                     </ul>
                 </li>
-<!--                <li>-->
-<!--                    <a href="#">Forum</a>-->
-<!--                </li>-->
-<!--                <li>-->
-<!--                    <a href="https://www.facebook.com/" target="_blank"><i-->
-<!--                                class="fa fa-facebook-square"></i></a>-->
-<!--                </li>-->
+                <!--                <li>-->
+                <!--                    <a href="#">Forum</a>-->
+                <!--                </li>-->
+                <!--                <li>-->
+                <!--                    <a href="https://www.facebook.com/" target="_blank"><i-->
+                <!--                                class="fa fa-facebook-square"></i></a>-->
+                <!--                </li>-->
             </ul>
         </div>
     </div>
 </nav>
 
 <?// if (isset($_GET['slider'])) {
-    renderPartial('layouts/slider');
+renderPartial('layouts/slider');
 //}
 ?>
 
@@ -139,7 +142,7 @@
                                 </a>
                             </div>
                             <div class="col-lg-6">
-                                <a href="/sifre-degistir">
+                                <a href="/sifre-unuttum">
                                     <small>ŞİFRE SIFIRLA</small>
                                 </a>
                             </div>
@@ -158,9 +161,11 @@
                                 Destek Talebi</a>
                             <a class="btn btn-primary" type="button" href="/epin-yukle"><i class="fa fa-money"></i>
                                 Bakiye [<?= user()->BakiyeTL ?>]</a>
+                            <a class="btn btn-primary" type="button" href="/market"><i class="fa fa-shopping-cart"></i>
+                                Market</a>
                             <a class="btn btn-primary" type="button" href="/profilim/ayarlar"><i
                                         class="fa fa-cogs"></i> Ayarlar</a>
-<!--                            <a class="btn btn-warning" type="button" href="/vote"><i class="fa fa-bullhorn"></i>Vote</a>-->
+                            <!--                            <a class="btn btn-warning" type="button" href="/vote"><i class="fa fa-bullhorn"></i>Vote</a>-->
                             <a class="btn btn-primary" type="button" href="/cikis"><i class="fa fa-sign-out"></i>
                                 Çıkış Yap</a>
                         </div>
@@ -170,42 +175,17 @@
             <!---BLOCK 1-->
 
             <!---BLOCK 3-->
-            <div class="well">
-                <h4 class="text-center text-uppercase well-title">Sunucu Zamanı</h4>
-                <div class="well-content">
-                    <p class="small"><i class="fa fa-fw fa-clock-o"></i> Time:<span class="text-info pull-right"
-                                                                                    id="tServerTime"></span></p>
-                    <p class="small"><i class="fa fa-fw fa-shield"></i> BA-Arena:<span class="text-info pull-right"
-                                                                                       id="tBattleArena"> 00:00:00 </span>
-                    </p>
-                    <p class="small"><i class="fa fa-fw fa-shield"></i> Fortress:<span class="text-info pull-right"
-                                                                                       id="tFortress"> 00:00:00 </span>
-                    </p>
-                    <p class="small"><i class="fa fa-fw fa-clock-o"></i> CTF:<span class="text-info pull-right"
-                                                                                   id="ctfTimer"> 00:00:00 </span></p>
-                </div>
-            </div>
+<!--            <div class="well">-->
+<!--                <h4 class="text-center text-uppercase well-title">Sunucu Zamanı</h4>-->
+<!--                <div class="well-content">-->
+<!--                    <p class="small"><i class="fa fa-fw fa-clock-o"></i> Time:<span class="text-info pull-right" id="tServerTime"></span></p>-->
+                    <!--                    <p class="small"><i class="fa fa-fw fa-shield"></i> BA-Arena:<span class="text-info pull-right" id="tBattleArena"> 00:00:00 </span></p>-->
+                    <!--                    <p class="small"><i class="fa fa-fw fa-shield"></i> Fortress:<span class="text-info pull-right" id="tFortress"> 00:00:00 </span></p>-->
+                    <!--                    <p class="small"><i class="fa fa-fw fa-clock-o"></i> CTF:<span class="text-info pull-right" id="ctfTimer"> 00:00:00 </span></p>-->
+<!--                </div>-->
+<!--            </div>-->
             <!---BLOCK 3-->
 
-            <!---BLOCK 5-->
-            <div class="well">
-                <h4 class="text-center text-uppercase well-title">Unique geçmişi</h4>
-                <div class="well-content">
-                    <?php
-                    $list = Rank::getUniqueHistory();
-                    foreach ($list as $item) {
-                        echo '<p class="small"><span class="text-info"><a href="/ranking/char/' . $item['CharID'] . '"><small>' . $item['CharName'] . '</small></a></span><small> killed ' . $item['Name'] . '</small> <span class="text-info pull-right"><small>' . date('H:i:s', strtotime($item['time'])) . '</small></span></p>';
-                    }
-                    ?>
-                </div>
-            </div>
-            <!---BLOCK 5-->
-
-        </div>
-        <div class="col-md-6">
-            <?= $content ?>
-        </div>
-        <div class="col-md-3">
             <!---BLOCK 2-->
             <div class="well">
                 <h4 class="text-center text-uppercase well-title">Sunucu Bilgileri</h4>
@@ -225,12 +205,14 @@
                             <?if($bosAlan * 100 / $capacity >= 75){ echo "$onlineUser / $capacity"; }?>
                         </div>
                     </div>
-
+                    <p class="small"><i class="fa fa-fw fa-clock-o"></i> Time:<span class="text-info pull-right" id="tServerTime"></span></p>
                     <p class="small"><i class="fa fa-fw fa-desktop"></i> Online:<span
                                 class="text-info pull-right"><?= $onlineUser ?>
                             / <?= $capacity ?></span></p>
                     <p class="small"><i class="fa fa-fw fa-check"></i> Cap:<span
                                 class="text-info pull-right"><?= Settings::getSwProperty('cap'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-check"></i> Mastery Cap:<span
+                                class="text-info pull-right"><?= Settings::getSwProperty('mastery_cap'); ?></span></p>
                     <p class="small"><i class="fa fa-fw fa-users"></i> Irk<span
                                 class="text-info pull-right">EU & CH</span></p>
                     <p class="small"><i class="fa fa-fw fa-flask"></i> EXP & SP<span
@@ -241,6 +223,8 @@
                                 class="text-info pull-right"><?= Settings::getSwProperty('drop'); ?></span></p>
                     <p class="small"><i class="fa fa-fw fa-star"></i> Tradegoods<span
                                 class="text-info pull-right"><?= Settings::getSwProperty('tradegoods'); ?></span></p>
+                    <p class="small"><i class="fa fa-fw fa-star"></i> Alchemy<span
+                                class="text-info pull-right"><?= Settings::getSwProperty('alchemy'); ?></span></p>
                     <p class="small"><i class="fa fa-fw fa-exclamation"></i> IP Limit<span
                                 class="text-warning pull-right"><?= Settings::getSwProperty('iplimit'); ?></span></p>
                     <p class="small"><i class="fa fa-fw fa-exclamation"></i> PC Limit<span
@@ -252,9 +236,9 @@
                     <p class="text-justify small">
                         <img style='vertical-align:middle;'
                              src='/assets/<?= getTheme() ?>/img/fortress/fort-hotan.png'/>
-                        Hotan <i class="text-info"> <?= $hotanFW['Tax'] ?>%</i> Tax
+                        Hotan <i class="text-info"> <?= $hotanFW['TaxRatio'] ? $hotanFW['TaxRatio'] : "0" ?>%</i> Tax
                         <span class="text-info pull-right">
-                        <?php echo $hotanFW['Name'] == 'Dummy' ? '< Hiç kimse >' : $hotanFW['Name'] ?>
+                        <?php echo $hotanFW['Name'] == 'Dummy' || !strlen($hotanFW['Name']) ? '< Hiç kimse >' : $hotanFW['Name'] ?>
                     </span>
                     </p>
                     <hr/>
@@ -277,6 +261,31 @@
             </div>
             <!---BLOCK 2-->
 
+        </div>
+        <div class="col-md-6">
+            <?= $content ?>
+        </div>
+        <div class="col-md-3">
+            <!---BLOCK 5-->
+            <div class="well">
+                <h4 class="text-center text-uppercase well-title">Unique geçmişi</h4>
+                <div class="well-content">
+                    <?php
+                    $list = Rank::getUniqueHistory();
+                    foreach ($list as $item) {
+                        echo '<p class="small"><span class="text-info"><a href="/ranking/char/' . $item['CharID'] . '"><small>' . $item['CharName'] . '</small></a></span><small> killed ' . $item['Name'] . '</small> <span class="text-info pull-right"><small>' . date('H:i:s', strtotime($item['time'])) . '</small></span></p>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <!---BLOCK 5-->
+
+            <div class="well">
+                <iframe src="https://discordapp.com/widget?id=551356237850083361&theme=dark" width="262" height="400" allowtransparency="true" frameborder="0"></iframe><br>
+                <a href="https://discord.gg/cFc5wWT" target="_blank">Discord'a Katıl</a>
+            </div>
+            <!---BLOCK 4-->
+
             <!---BLOCK 4-->
             <div class="well">
                 <h4 class="text-center text-uppercase well-title">SOSYAL MEDYA</h4>
@@ -288,7 +297,6 @@
                 </div>
             </div>
             <!---BLOCK 4-->
-
 
         </div>
     </div>
@@ -304,15 +312,14 @@
             </p>
         </div>
         <div class="col-lg-7">
-            <div class="pull-right ">
-                <?php
-                //                    $qry = $sql->Query("SELECT * FROM " . database5 . "..db_Backlink ORDER by ID ASC");
-                //                    while ($data = $sql->getQueryFetch_Object($qry)) {
-                //                        ?>
-                <p class="small"><a href="<?= $data->backlink; ?>" target="_blank"><?= "asd" ?></a></p>
-                <!--                        --><?php
-                //                    }
-                //                    ?>
+            <div class="pull-right backlink">
+                <p class="small"><a href="/">Anasayfa</a></p>
+                <p class="small"><a href="/kayit">Kayıt Ol</a></p>
+                <p class="small"><a href="/giris-yap">Giriş Yap</a></p>
+                <p class="small"><a href="/destek">Destek</a></p>
+                <p class="small"><a href="/ozellikler">Tanıtım</a></p>
+                <p class="small"><a href="https://play-eic.com/sozlesme.html">Üyelik Sözleşmesi</a></p>
+                <p class="small"><a href="https://fb.com/eicsilkroad" target="_blank">İletişim</a></p>
             </div>
         </div>
     </div>

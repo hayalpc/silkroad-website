@@ -21,7 +21,7 @@ require_once __DIR__."/../models/User.php";
 require_once __DIR__."/../models/Settings.php";
 require_once __DIR__."/../models/Rank.php";
 
-if(Settings::getConfig('BakimModu') == 'on' && !isset($_SESSION['beta'])){
+if(Settings::getConfig('BakimModu') == 'on' && !isset($_SESSION['beta']) && !isCli()){
     echo "Offline!<br><br> Açılış: 8 Mart<br>Beta: 2 Mart";
     die();
 }
@@ -256,4 +256,9 @@ function diepre($a){
  */
 function cache(){
     return new FileCache(3600);
+}
+
+function isCli()
+{
+    return (php_sapi_name() === 'cli');
 }

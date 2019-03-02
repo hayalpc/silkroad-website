@@ -8,6 +8,10 @@
 
 include_once "../libs/loader.php";
 include_once "../models/Sliders.php";
+if (!check_login(true)) {
+    redirect("/panel/login");
+}
+
 switch ($_GET['action']) {
     case "update":
 

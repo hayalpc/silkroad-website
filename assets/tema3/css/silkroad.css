@@ -108,3 +108,463 @@ header.carousel{
 .text-black{
     color:black;
 }
+
+
+.bg-equipment {
+    background: url('/assets/img/equipment/com_bg_tile_d.png') no-repeat !important;
+    background-size: 100% 100% !important;
+    width: 181px;
+    height: 357px;
+}
+
+.bg-equipment-avatar {
+    background: url('/assets/img/equipment/com_bg_tile_d.png') no-repeat !important;
+    background-size: 100% 100% !important;
+    width: 181px;
+    height: 357px;
+}
+
+.slots {
+    width: 40px;
+    height: 40px;
+}
+
+.itemslot {
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 1px;
+    padding: 0 !important;
+}
+
+.weapon .itemslot {
+    width: 56px !important;
+    height: 56px !important;
+    margin-bottom: 25px;
+    background: url('/assets/img/equipment/equip_slot_weapon.PNG') no-repeat !important;
+    background-size: 56px 56px !important;
+}
+
+.shield .itemslot {
+    width: 56px !important;
+    height: 56px !important;
+    margin-bottom: 25px;
+    background: url('/assets/img/equipment/equip_slot_shield.PNG') no-repeat !important;
+    background-size: 56px 56px !important;
+}
+
+.head .itemslot {
+    background: url('/assets/img/equipment/equip_slot_helm.PNG') no-repeat !important;
+}
+
+.chest .itemslot {
+    background: url('/assets/img/equipment/equip_slot_mail.PNG') no-repeat !important;
+}
+
+.shoulder .itemslot {
+    background: url('/assets/img/equipment/equip_slot_shoulderguard.PNG') no-repeat !important;
+}
+
+.hands .itemslot {
+    background: url('/assets/img/equipment/equip_slot_gauntlet.PNG') no-repeat !important;
+}
+
+.legs .itemslot {
+    background: url('/assets/img/equipment/equip_slot_pants.PNG') no-repeat !important;
+}
+
+.foot .itemslot {
+    background: url('/assets/img/equipment/equip_slot_boots.PNG') no-repeat !important;
+}
+
+.earring .itemslot {
+    background: url('/assets/img/equipment/equip_slot_earring.PNG') no-repeat !important;
+}
+
+.necklace .itemslot {
+    background: url('/assets/img/equipment/equip_slot_necklace.PNG') no-repeat !important;
+}
+
+.lring .itemslot {
+    background: url('/assets/img/equipment/equip_slot_l_ring.PNG') no-repeat !important;
+}
+
+.rring .itemslot {
+    background: url('/assets/img/equipment/equip_slot_r_ring.PNG') no-repeat !important;
+}
+
+.specdress .itemslot {
+    background: url('/assets/img/equipment/equip_slot_specialdress.PNG') no-repeat !important;
+    margin-top: 10px !important;
+}
+
+.hat .itemslot {
+    background: url('/assets/img/equipment/equip_slot_helm.PNG') no-repeat !important;
+}
+
+.dress .itemslot {
+    background: url('/assets/img/equipment/equip_slot_cloth.PNG') no-repeat !important;
+}
+
+.attach .itemslot {
+    background: url('/assets/img/equipment/equip_slot_pandernt.PNG') no-repeat !important;
+}
+
+.flag .itemslot {
+    background: url('/assets/img/equipment/equip_slot_plag.PNG') no-repeat !important;
+}
+
+.spec .itemslot {
+    background: url('/assets/img/equipment/equip_slot_extraneous01.PNG') no-repeat !important;
+}
+
+.slots {
+    width: 23% !important;
+    margin-bottom: 3px !important;
+}
+
+.bg-equipment-avatar .slots {
+    width: 23% !important;
+    margin-bottom: 3px !important;
+}
+
+.avatar-margin {
+    margin-top: 80px !important;
+}
+
+.slots.right {
+    float: right;
+    clear: right;
+    margin-right: 0;
+    margin-left: 10%;
+}
+
+.slots.left {
+    float: left;
+    clear: left;
+    margin-left: 0;
+    margin-right: 10%;
+}
+
+.slots.weapon,
+.slots.shield {
+    width: 31% !important;
+    margin-bottom: 40px !important;
+
+}
+
+.image .itemslot .image {
+    margin: 3px;
+}
+
+.itemslot .image .qinfo {
+    font-size: 9px;
+    font-weight: lighter;
+    font-style: normal;
+    text-shadow: 0 -0.5px #000;
+    color: #fff;
+    padding: 0 0;
+    float: left;
+}
+
+.move .image.activeItem {
+    box-shadow: 0 0 7px 4px gray;
+}
+
+.itemslot .image {
+    width: 100%;
+    height: 100%;
+    float: left;
+    padding: 0 !important;
+    margin: 3px;
+}
+
+.itemslot .imageavatar {
+    width: 34px !important;
+    height: 34px !important;
+    float: left;
+    margin: 3px;
+    padding: 0 !important;
+    margin-top: 84px !important;
+}
+
+.slots.left .itemslot .imageavatar {
+    margin-left: 2px !important;
+}
+
+.weapon .itemslot .image {
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin: 3px;
+    padding: 0 !important;
+    margin-top: 11px !important;
+    margin-left: 11px !important;
+}
+
+.shield .itemslot .image {
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin: 3px;
+    padding: 0 !important;
+    margin-top: 11px !important;
+    margin-left: 11px !important;
+}
+
+.imageclear {
+    margin-top: -2px;
+    display: inline-block;
+}
+
+.itemInfo {
+    color: #fff;
+    z-index: 80;
+    position: absolute;
+    left: 34px;
+    top: 3px;
+    width: 180px;
+    background: rgba(88, 98, 170, 0.85);
+    border: 2px solid #303d4d;
+    padding: 5px;
+    display: none;
+    line-height: 18px;
+    font-size: 10px;
+}
+
+.ui-tooltip {
+    position: absolute;
+    z-index: 9999;
+    max-width: 190px;
+    padding: 8px !important;
+    background: url('/assets/img/equipment/com_bg_tile_tl.PNG') no-repeat !important;
+    background-size: 100% 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    -webkit-border-radius: 1px !important;
+    -moz-border-radius: 1px !important;
+    border-radius: 1px !important;
+}
+
+.ui-tooltip-content {
+    font-family: Tahoma, Geneva, sans-serif;
+    font-size: 11px !important;
+    line-height: 15px;
+    font-weight: lighter;
+    font-style: normal;
+    text-shadow: 1px 1px #000;
+    color: #fff;
+}
+
+.equip-suit-slot {
+    background: url('/assets/img/equipment/equip_slot_specialdress.PNG') no-repeat !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: 10px;
+    float: right;
+    clear: right;
+}
+
+.bg-equipment-avatar .equip-suit-slot {
+    background: url('/assets/img/equipment/equip_slot_specialdress.PNG') no-repeat !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: 96px;
+    float: right;
+    clear: right;
+}
+
+.equip-suit-slot .image {
+    width: 34px !important;
+    height: 34px !important;
+    margin-left: 2px !important;
+    margin-top: 2px !important;
+}
+
+.btn-equip-avatar {
+    background: url('/assets/img/equipment/equip_slot_avata_button.PNG') no-repeat !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: 10px;
+    float: left;
+    clear: left;
+    border: none;
+    outline: 0;
+}
+
+.btn-equip-avatar:hover {
+    background: url('/assets/img/equipment/equip_slot_avata_button_focus.PNG') no-repeat !important;
+}
+
+.btn-equip-avatar:active {
+    background: url('/assets/img/equipment/equip_slot_avata_button_press.PNG') no-repeat !important;
+}
+
+.btn-equip-set {
+    background: url('/assets/img/equipment/equip_slot_equipment_button.PNG') no-repeat !important;
+    width: 40px !important;
+    height: 40px !important;
+    margin-top: 96px;
+    float: left;
+    clear: left;
+    border: none;
+    outline: 0;
+}
+
+.btn-equip-set:hover {
+    background: url('/assets/img/equipment/equip_slot_equipment_button_focus.PNG') no-repeat !important;
+}
+
+.btn-equip-set:active {
+    background: url('/assets/img/equipment/equip_slot_equipment_button_press.PNG') no-repeat !important;
+}
+
+.btn-rotate-group {
+    position: relative;
+    left: 12px;
+    top: 32px;
+    display: inline-block;
+}
+
+.bg-equipment-avatar .btn-rotate-group {
+    position: relative;
+    left: -7px;
+    margin-top: 134px;
+    display: inline-block;
+}
+
+.btn-rotate-left {
+    background: url('/assets/img/equipment/equip_rotate_left_button.PNG') no-repeat !important;
+    width: 28px !important;
+    height: 16px !important;
+    margin-right: -5px;
+    margin-left: 5px;
+    border: none;
+    outline: 0;
+}
+
+.btn-rotate-left:hover {
+    background: url('/assets/img/equipment/equip_rotate_left_button_focus.PNG') no-repeat !important;
+}
+
+.btn-rotate-left:active {
+    background: url('/assets/img/equipment/equip_rotate_left_button_press.PNG') no-repeat !important;
+}
+
+.btn-rotate-right {
+    background: url('/assets/img/equipment/equip_rotate_right_button.PNG') no-repeat !important;
+    width: 28px !important;
+    height: 16px !important;
+    margin-left: -5px;
+    border: none;
+    outline: 0;
+}
+
+.btn-rotate-right:hover {
+    background: url('/assets/img/equipment/equip_rotate_right_button_focus.PNG') no-repeat !important;
+}
+
+.btn-rotate-right:active {
+    background: url('/assets/img/equipment/equip_rotate_right_button_press.PNG') no-repeat !important;
+}
+
+.btn-rotate-top {
+    background: url('/assets/img/equipment/equip_rotate_reset_button.PNG') no-repeat !important;
+    width: 16px !important;
+    height: 16px !important;
+    border: none;
+    outline: 0;
+}
+
+.btn-rotate-top:hover {
+    background: url('/assets/img/equipment/equip_rotate_reset_button_focus.PNG') no-repeat !important;
+}
+
+.btn-rotate-top:active {
+    background: url('/assets/img/equipment/equip_rotate_reset_button_press.PNG') no-repeat !important;
+}
+
+div.image span.plus {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(/assets/img/itemplus.png) left top;
+    -webkit-animation: play 1.8s steps(32) infinite;
+    -moz-animation: play 1.8s steps(32) infinite;
+    -ms-animation: play 1.8s steps(32) infinite;
+    -o-animation: play 1.8s steps(32) infinite;
+    animation: play 1.8s steps(32) infinite;
+}
+
+@-webkit-keyframes play {
+    100% {
+        background-position: -1024px;
+    }
+}
+
+@-moz-keyframes play {
+    100% {
+        background-position: -1024px;
+    }
+}
+
+@-ms-keyframes play {
+    100% {
+        background-position: -1024px;
+    }
+}
+
+@-o-keyframes play {
+    100% {
+        background-position: -1024px;
+    }
+}
+
+@keyframes play {
+    100% {
+        background-position: -1024px;
+    }
+}
+
+.balance{
+    list-style: none;
+    text-align: center;
+}
+.balance li{
+    display: block;
+    /*line-height: 100px;*/
+}
+.balance li a img{
+    /*border: 1px solid;*/
+    /*padding: 20px;*/
+    /*font-size: 30px;*/
+    /*background: #375a7f;*/
+    /*color: white;*/
+    /*text-decoration: none;*/
+    /*min-width: 175px;*/
+    /*display: block;*/
+    /*height: auto;*/
+    width: 250px;
+    padding: 10px;
+}
+
+/*.balance li a:hover {*/
+    /*text-decoration:underline;*/
+/*}*/
+
+
+.backlink p {
+    display: inline-block;
+    border-right: 1px solid #375a7f;
+    padding: 5px 10px;
+    height: 25px;
+    line-height: 15px;
+}
+
+.backlink p a{
+    color: white;
+}
+
+.backlink p:last-child {
+    border: none;
+}

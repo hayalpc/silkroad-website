@@ -15,6 +15,7 @@ switch($_GET['action']){
     case "satin-al":
         setTitle('TL Yükle');
         if($_GET['id']>0){
+            $mall = Store::get($_GET['id']);
             if(!empty($_POST['char'])) {
                 $mall = Store::get($_GET['id']);
                 $user = User::get(user()->JID);
@@ -35,7 +36,7 @@ switch($_GET['action']){
                     redirect("/market");
                 }
             }else{
-                render("store-char");
+                render("store-char",['mall'=>$mall]);
             }
             die();
         }
@@ -44,5 +45,5 @@ switch($_GET['action']){
 setTitle('Mağaza');
 
 $urunler = Store::getMall();
-render("store");
+render("store",['urunler'=>$urunler]);
 

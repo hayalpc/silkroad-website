@@ -9,6 +9,7 @@ require_once "../libs/loader.php";
 if(check_login()){
     redirect("/profilim");
 }
+
 if(!empty($_POST)){
 //    if (isset($_POST['g-recaptcha-response'])) {
 //        $captcha = $_POST['g-recaptcha-response'];

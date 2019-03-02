@@ -12,6 +12,25 @@
         <h3 class="panel-title">Hoşgeldin <?=user()->StrUserID?></h3>
     </div>
     <div class="panel-body">
+        <?php
+        if(getMessage('error')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-12">
+                <div class="alert alert-danger" role="alert"><?= getMessage('error',true); ?></div>
+            </div>
+            <?php
+        }
+        if(getMessage('success')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-12">
+                <div class="alert alert-success" role="alert"><?= getMessage('success',true); ?></div>
+            </div>
+            <?php
+        }
+        ?>
+
         <div class="form-horizontal">
             <div class="form-group">
                 <label for="Username" class="control-label col-xs-3">Kullanıcı Adı :</label>

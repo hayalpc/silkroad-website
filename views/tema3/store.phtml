@@ -1,0 +1,45 @@
+
+
+<div class="panel panel-default register-white">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-credit-card"></i> Web Market</h3>
+    </div>
+    <div class="panel-body">
+        <?php
+        if(getMessage('error')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-12">
+                <div class="alert alert-danger" role="alert"><?= getMessage('error',true); ?></div>
+            </div>
+            <?php
+        }
+        if(getMessage('success')){
+            ?>
+            <br/>
+            <div class="input-group input-group-sm col-xs-12">
+                <div class="alert alert-success" role="alert"><?= getMessage('success',true); ?></div>
+            </div>
+            <?php
+        }
+        ?>
+        <table class="table table-striped table-striped table-condensed">
+            <tr>
+                <th>#</th>
+                <th>Adı</th>
+                <th>Fiyatı</th>
+                <th></th>
+            </tr>
+            <? foreach($urunler as $Market) { ?>
+                <tr>
+                    <td><img src="<?=$Market['ItemResim'] ?>" width="32" height="32" alt=""></td>
+                    <td><?=$Market['ItemName'] ?></td>
+                    <td><?=number_format($Market['Fiyat'],2)?> ₺</td>
+                    <td> <a class="btn btn-success btn-xs" href="/market/satin-al/<?=$Market['ID']?>"><i class="fa fa-credit-card"></i> Satın Al</a></td>
+                </tr>
+            <?}?>
+
+        </table>
+
+    </div>
+</div>

@@ -6,17 +6,13 @@
  * Time: 17:03
  */
 session_start();
-/*if($_GET['beta']){
-    $_SESSION['beta'] = 1;
-}
-if(!isset($_SESSION['beta'])){
-    echo "Yakında!<br><br>";
-    die();
-}*/
+
 require_once "Config.php";
 require_once "DB.php";
+require_once "FileCache.php";
 
 DB::getConnection();
+define('DIR_CACHE',dirname(dirname(__FILE__))."/../cache/");
 
 function runSlack($message = null){
     if(!$message){
@@ -224,4 +220,11 @@ function pre($a){
 function diepre($a){
     pre($a);
     die();
+}
+
+/**
+ * @return FileCache
+ */
+function cache(){
+    return new FileCache(3600);
 }

@@ -20,7 +20,7 @@
                 <?php
                 foreach (Settings::getDownload() as $download) { ?>
                     <p class="text-normal">
-                        <a href="<?= $download['Dosya_Url'] ?>" target="_blank"> <?= $download['Dosya_Host'] ?></a>
+                        <a href="<?= $download['Dosya_Url'] ?>" target="_blank"><i class="fa fa-download"></i>  <?= $download['Dosya_Host'] ?></a>
                     </p>
                 <? } ?>
             </div>

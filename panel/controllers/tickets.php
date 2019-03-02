@@ -7,6 +7,10 @@
  */
 require_once "../libs/loader.php";
 require_once "../models/Tickets.php";
+if (!check_login(true)) {
+    redirect("/panel/login");
+}
+
 if(isset($_GET['action'])){
     switch ($_GET['action']){
         case "sil":

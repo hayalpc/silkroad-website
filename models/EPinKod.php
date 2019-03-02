@@ -74,7 +74,7 @@ class EPinKod
     public static function check($val1 = '', $val2 = '', $val3 = '')
     {
         $con = DB::getConnection();
-        $sql = 'SELECT * FROM SRO_VT_PANEL.dbo._EpinKod WHERE Val1 = :Val1 AND Val2 = :Val2 AND Val3 = :Val3';
+        $sql = 'SELECT * FROM SRO_VT_PANEL.dbo._EpinKod WHERE Val1 = :Val1 AND Val2 = :Val2 AND (Val3 = :Val3 OR Val3 is null)';
         $sta = $con->prepare($sql);
         $sta->execute([
             ':Val1' => $val1,
@@ -129,16 +129,16 @@ class EPinKod
                 $bonus = 0;
                 break;
             case 50 :
-                $bonus = 10;
+                $bonus = 0;
                 break;
             case 75 :
-                $bonus = 15;
+                $bonus = 5;
                 break;
             case 100 :
-                $bonus = 25;
+                $bonus = 15;
                 break;
             case 250 :
-                $bonus = 75;
+                $bonus = 50;
                 break;
             default :
                 $bonus = 0;

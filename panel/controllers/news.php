@@ -6,7 +6,13 @@
  * Time: 03:30
  */
 
-include_once "../libs/loader.php";
+require_once "../libs/loader.php";
+
+if (!check_login(true)) {
+    redirect("/panel/login");
+}
+setTitle('Duyurular - GiaPanel');
+
 include_once "../models/News.php";
 switch ($_GET['action']) {
     case "update":

@@ -15,8 +15,9 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
     <div class="panel-body">
 
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <h2 class="text-info"><?= $char['CharName16']; ?></h2>
+                <img src="<?= $CharImage; ?>"/>
                 <div class="row">
                     <div class="col-sm-6">Level:</div>
                     <div class="col-sm-6"><?= $char['CurLevel']; ?></div>
@@ -41,53 +42,348 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                     </div>
                 </div>
             </div>
-            <div class="col-sm-4"><img src="<?= $CharImage; ?>"/></div>
-        </div>
+            <div class="col-md-4">
+                <?/*
+                <h4 class="classic-title"><span>Item Bilgileri</span></h4>
+                <div id="idInventorySet" class="bg-equipment pull-left">
 
-        <h2>10 Latest Uniques Kills</h2>
-        <hr/>
-        <?php if(count($uniques) > 0){ ?>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Unique</th>
-                    <th>Ago</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach($uniques AS $unique){
-                    echo '<tr><td>' . $unique['MobRealName'] . '</td><td>' . date('H:i d-m-Y',strtotime($unique['time'])) . '</td></tr>';
+                    <div class="slots 6 left weapon">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/icon_default.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                                <span class="plus"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="color:#f2e43d;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Poison Horn Spear (+52)</span><br><br>                                                                <span style="color:#f2e43d;font-weight: bold;">Seal of Sun</span><br>                                                                                                                                <span style="color:#efdaa4;">Sort of item: Spear<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Advanced elixir is in effect [+2]</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 7 right shield">
+                        <div class="itemslot">
+                            <div class="image">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear">  </span><br><br>                                                                                                                                                                                                                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;"></span>
+                        </div>
+                    </div>
+
+                    <div class="slots 0 left head">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_ha.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Hat </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Head<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 2 right shoulder">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_sa.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Talisman </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Shoulder<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 1 left chest">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_ba.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Suit </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Chest<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 3 right hands">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_aa.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Wristlet </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Hands<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 4 left legs">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_la.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Trousers </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Legs<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 5 right foot">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_fa.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Shoes </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Foot<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 9 left earring">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/earring_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Earring </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Earring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 10 right necklace">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/necklace_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Necklace </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Necklace<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 11 left lring">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/ring_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Ring </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+
+                    <div class="slots 12 right rring">
+                        <div class="itemslot">
+                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/ring_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                <span class="qinfo"></span>
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Ring </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                    </div>
+                    <button id="idShowAvatar" class="btn-equip-avatar"></button>
+                    <div class="equip-suit-slot">
+                        <div class="itemslot">
+                            <div class="image">
+                            </div>
+                        </div>
+                        <div class="itemInfo">
+                            <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>                                                                                                                                                                                                                                                                                                                                                                            <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="idInventoryAvatar" class="bg-equipment-avatar pull-left hidden">
+                    <div class="avatar-margin">
+                        <div class="slots 0 left hat">
+                            <div class="itemslot">
+                                <div class="image" style="background:url(/assets/img/equipment/item/avatar/e060529_golddragonflag.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                </div>
+                            </div>
+                            <div class="itemInfo">
+                                <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Gold Dragon Flag</span><br><br>                                                                    <span style="color:#efdaa4;">Sort of item: Avatar Flag</span><br>                                                                    Flag with enormous, magnificent dragon pattern engraved. The gold colored embroidery surrounding the dragon makes the flag look even classier. Can be equipped in the job slot.                                                                                                                                                                                                                <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                            </div>
+                        </div>
+
+                        <div class="slots 1 right flag">
+                            <div class="itemslot">
+                                <div class="image">
+                                </div>
+                            </div>
+                            <div class="itemInfo">
+                                <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                            </div>
+                        </div>
+
+                        <div class="slots 2 left dress">
+                            <div class="itemslot">
+                                <div class="image">
+                                </div>
+                            </div>
+                            <div class="itemInfo">
+                                <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                            </div>
+                        </div>
+
+                        <div class="slots 3 right attach">
+                            <div class="itemslot">
+                                <div class="image">
+                                </div>
+                            </div>
+                            <div class="itemInfo">
+                                <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                            </div>
+                        </div>
+
+                        <div class="slots 4 left spec">
+                            <div class="itemslot">
+                                <div class="image" style="background:url('/assets/img/equipment/item/avatar/mall_avatar_m_nasrun.PNG') no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                                </div>
+                            </div>
+                            <div class="itemInfo">
+                                <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Devil's Spirit S grade(M)</span><br><br>                                                                    <span style="color:#efdaa4;">Sort of item: Devil's Spirit</span><br>                                                                    When you equip this Devil's spirit, you will gain basic options(HP/MP) of your character. If you use its power, you can transform and able to use devil's power for limited time.                                                                    <br><br><span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>                                                                                                                                            <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                            </div>
+                        </div>
+
+                        <button id="idShowSet" class="btn-equip-set"></button>
+                        <div class="equip-suit-slot">
+                            <div class="itemslot">
+                                <div class="image">
+                                </div>
+                            </div>
+                            <div class="itemInfo">
+                                <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>                                                                                                                                                                                                                                                                                                                                                                                                    <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+*/?>
+            </div>
+
+        </div>
+        <ul id="myTab" class="nav nav-tabs nav-justified">
+            <li class="active">
+                <a href="#ranking-one" data-toggle="tab" class="text-black"><i class="fa fa-user"></i> <small>Job Rank</small></a>
+            </li>
+            <li class="">
+                <a href="#ranking-two" data-toggle="tab" class="text-black"><i class="fa fa-users"></i> <small>Unique Rank</small></a>
+            </li>
+            <li class="">
+                <a href="#ranking-three" data-toggle="tab" class="text-black"><i class="fa fa-support"></i> <small>Unique Geç.</small></a>
+            </li>
+            <li class="">
+                <a href="#ranking-four" data-toggle="tab" class="text-black"><i class="fa fa-globe"></i> <small>Global Geçmişi</small></a>
+            </li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="ranking-one">
+                <h2>Job Rank</h2>
+                <hr/>
+            </div>
+            <div class="tab-pane fade" id="ranking-two">
+                <h2>Unique Rank</h2>
+                <hr/>
+            </div>
+            <div class="tab-pane fade" id="ranking-three">
+                <h2>10 Latest Uniques Kills</h2>
+                <hr/>
+                <?php if(count($uniques) > 0){ ?>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Unique</th>
+                            <th>Ago</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach($uniques AS $unique){
+                            echo '<tr><td>' . $unique['MobRealName'] . '</td><td>' . date('H:i d-m-Y',strtotime($unique['time'])) . '</td></tr>';
+                        }
+                        ?></tbody>
+                    </table>
+                    <?php
+                }else{
+                    echo '<tr><td>This char never killed a unique.</td></tr>';
                 }
-                ?></tbody>
-            </table>
-            <?php
-        }else{
-            echo '<tr><td>This char never killed a unique.</td></tr>';
-        }
-        ?>
-        <br/>
-        <h2>10 Latest Globals</h2>
-        <hr/>
-        <?php if(count($globals) > 0){ ?>
-            <table class="table table-striped">
-                <thead>
-                <tr>
-                    <th>Message</th>
-                    <th>Ago</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach($globals as $global){
-                    echo '<tr><td>' . $global['Message'] . '</td><td>' . date('H:i d-m-Y',strtoupper($global['msg_sent'])) . '</td></tr>';
-                } ?>
-                </tbody>
-            </table>
-            <?php
-        }else{
-            echo "<tr><td>This char never wrote a global.</td></tr>";
-        }
-        ?>
+                ?>
+            </div>
+            <div class="tab-pane fade" id="ranking-four">
+
+                <h2>10 Latest Globals</h2>
+                <hr/>
+                <?php if(count($globals) > 0){ ?>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Message</th>
+                            <th>Ago</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach($globals as $global){
+                            echo '<tr><td>' . $global['Message'] . '</td><td>' . date('H:i d-m-Y',strtoupper($global['msg_sent'])) . '</td></tr>';
+                        } ?>
+                        </tbody>
+                    </table>
+                    <?php
+                }else{
+                    echo "<tr><td>This char never wrote a global.</td></tr>";
+                }
+                ?>
+            </div>
+        </div>
 
     </div>
 </div>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js" integrity="sha256-xNjb53/rY+WmG+4L6tTl9m6PpqknWZvRt0rO1SRnJzw=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    function itemInfo() {
+        $("idInventorySet").tooltip({
+            items: "[data-itemInfo], [title]",
+            position: {my: "left+5 center", at: "right center"},
+            content: function () {
+                var element = jQuery(this);
+                if (jQuery(this).prop("tagName").toUpperCase() == 'IFRAME') {
+                    return;
+                }
+                if (element.is("[data-itemInfo]")) {
+                    if (element.parent().parent().find('.itemInfo').html() == '') {
+                        return;
+                    }
+                    return element.parent().parent().find('.itemInfo').html();
+                }
+                if (element.is("[title]")) {
+                    return element.attr("title");
+                }
+            }
+        });
+    }
+
+    jQuery(document).ready(function () {
+        // itemInfo();
+        // jQuery(".itemslot").mouseover(function () {
+        //     console.log(jQuery(this).find('.itemInfo'));
+        //     jQuery(this).find('.itemInfo').show();
+        // });
+        jQuery('#idShowAvatar').click(function () {
+            jQuery('#idInventorySet').addClass('hidden');
+            jQuery('#idInventoryAvatar').removeClass('hidden');
+        });
+        jQuery('#idShowSet').click(function () {
+            jQuery('#idInventoryAvatar').addClass('hidden');
+            jQuery('#idInventorySet').removeClass('hidden');
+        });
+
+    });
+</script>

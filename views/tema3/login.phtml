@@ -16,7 +16,7 @@
         if(getMessage('error')){
             ?>
             <br/>
-            <div class="input-group input-group-sm col-xs-8">
+            <div class="input-group input-group-sm col-xs-12">
                 <div class="alert alert-danger" role="alert"><?= getMessage('error',true); ?></div>
             </div>
             <?php
@@ -24,7 +24,7 @@
         if(getMessage('success')){
             ?>
             <br/>
-            <div class="input-group input-group-sm col-xs-8">
+            <div class="input-group input-group-sm col-xs-12">
                 <div class="alert alert-success" role="alert"><?= getMessage('success',true); ?></div>
             </div>
             <?php
@@ -43,7 +43,7 @@
                 <input class="btn btn-success btn-sm col-xs-12" type="submit" name="button"  value="Giriş Yap" />
             </div>
             <br/>
-            <p class="small text-justify"><a href="/sifre-degistir">Şifre Sıfırla</a></p>
+            <p class="small text-justify"><a href="/sifre-unuttum">Şifre Sıfırla</a></p>
         </form>
     </div>
 </div>

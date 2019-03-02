@@ -11,6 +11,7 @@ require_once "../models/Settings.php";
 if (!check_login(true)) {
     redirect("/panel/login");
 }
+
 $settings = Settings::get();
 if(!empty($_POST)){
     $data = $_POST;

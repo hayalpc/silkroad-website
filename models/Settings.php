@@ -92,7 +92,7 @@ class Settings
     {
         $cache = cache()->get("getFortress-$id");
         if (!$cache) {
-            $sql = "SELECT _Guild.Name,_SiegeFortress.Tax FROM SRO_VT_SHARD.dbo._SiegeFortress,SRO_VT_SHARD.dbo._Guild WHERE GuildID=ID AND FortressID = :FortressID";
+            $sql = "SELECT _Guild.Name,_SiegeFortress.TaxRatio FROM SRO_VT_SHARD.dbo._SiegeFortress,SRO_VT_SHARD.dbo._Guild WHERE GuildID=ID AND FortressID = :FortressID";
             $con = DB::getConnection();
             $sta = $con->prepare($sql);
             $sta->execute([':FortressID' => $id]);
@@ -165,6 +165,7 @@ class Settings
     public static function getSwProperties()
     {
         return [
+            'mastery_cap' => '220/440',
             'exp' => '25x',
             'ptexp' => '35x',
             'sp' => '10x',
