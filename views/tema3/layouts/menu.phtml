@@ -20,6 +20,9 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="/"><i class="fa fa-home"></i> ANASAYFA</a>
+                </li>
                 <? if (check_login()) { ?>
                     <li>
                         <a href='/profilim'><i class="fa fa-user"></i> HESABIM</a>
@@ -29,7 +32,7 @@
                         <a href='/kayit'><i class="fa fa-lock"></i> KAYIT OL</a>
                     </li>
                     <li class="a-login">
-                        <a href='/giris-yap'><i class="fa fa-user"></i> GİRİŞ YAP</a>
+                        <a href='/giris-yap'><i class="fa fa-key"></i> GİRİŞ YAP</a>
                     </li>
                 <? } ?>
 
@@ -40,10 +43,10 @@
                     <a href="/ranking"><i class="fa fa-area-chart"></i> RANK</a>
                 </li>
                 <li>
-                    <a href="/destek"><i class="fa fa-area-chart"></i> DESTEK</a>
+                    <a href="/destek"><i class="fa fa-ticket"></i> DESTEK</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-table"></i> SERVER INFO <b
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-info-circle"></i> SERVER INFO <b
                             class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
