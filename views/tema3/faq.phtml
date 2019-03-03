@@ -5,32 +5,61 @@
  * Date: 25.02.2019
  * Time: 22:01
  */
+
+$sss = [
+    [
+        'title'=>'Neden Kayıt kapalıdır?',
+        'question'=>'Beta ve büyük açılış öncesi kayıtlar kapatılır. Bu veri kaybını önlemek içindir.',
+    ],
+    [
+        'title'=>'Oto ekipmana nasıl sahip slurum?',
+        'question'=>'Oto ekipman belli levellerde verilmektedir. Level atladığınızda otomatik olarak ekipman değişecektir. <br>Her bir degre sadece bir kez alınır. Eğer oto ekipman gelmez ise Samarkand\'daki NPC\'lerden temin edebilirsiniz.
+                <br><br> Hangi levelde kaç degre verildiği aşağıdaki listededir.<br>
+
+                3DG: 19,20,21,22,23,24,25,26<br>
+                4DG: 27,28,29,30,31,32,33,34,35<br>
+                5DG: 36,37,38,39,40,41,42,43,44,45,46<br>
+                6DG: 47,48,49,50,51,52,53,54,55,56<br>
+                7DG: 57,58,59,60,61,62,63,64,65,66,67,68,69<br>
+                8DG: 70,71,72,73,74,75,76,77,78<br>
+                9DG: 79,80<br>',
+    ],
+    [
+        'title'=>'+18 Uyarısı neden alıyorum?',
+        'question'=>'Bunun sebebi bilgisayarınızda PC Limit için gerekli bilgileri alamadığımızdan kaynaklanıyor. Oyun klasöründe EicFilter.dll olduğundan emin olunuz. Var ise bilgisayarınızı işletim sistemini ve bit versiyonunu facebook üzerinden bize iletiniz.',
+    ],
+    [
+        'title'=>'Karakterin tepesindeki sarı soru işareti nedir?',
+        'question'=>'Belli bir süre oyunda hareket etmediğinizde sistem sizi AFK olarak işaretlemektedir. Hareket ettiğinizde o işaret gidecektir.',
+    ],
+    [
+        'title'=>'Ticket sistemi nasıl çalışıyor?',
+        'question'=>'Ticket sistemi 2 şekilde çalışmaktadır. Oyun içinde TICKET2019 karakterine PM atarak yada sitemizden giriş yaptıktan sonra Destek menüsünden oluşutrabilirsiniz.<br>Takibini ise isterseniz oyunda TICKET2019 karakterine ? yazarak yada sitemizden ulaşabilirsiniz.',
+    ],
+    [
+            'title'=>'IP Limit kaçtır?',
+        'question'=>'IP limit 3 olarak belirlenmiştir. Eğer internetinizi ortak kullanıyorsanız IP adresinizi ve ortamınızın bir resmini facebook sayfamızdan gönderip CAFE IP talebinde bulununuz.'
+    ],
+    [
+            'title'=>'Ödeme yöntemleri neden yok?',
+        'question'=>'Ödeme yöntemlerini oyunumuz açıldığında paylaşacağız.'
+    ],
+];
 ?>
 
 <div class="panel-group text-white" id="accordion">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Neden Kayıt kapalıdır?</a>
-            </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse">
-            <div class="panel-body">
-                Beta ve büyük açılış öncesi kayıtlar kapatılır. Bu veri kaybını önlemek içindir.
+    <?foreach ($sss as $i=>$s) {?>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse<?=$i?>"><?=$s['title']?></a>
+                </h4>
+            </div>
+            <div id="collapse<?=$i?>" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <?=$s['question']?>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h4 class="panel-title">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">+18 Uyarısı neden alıyorum?</a>
-            </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse">
-            <div class="panel-body">
-                Bunun sebebi bilgisayarınızda PC Limit için gerekli bilgileri alamadığımızdan kaynaklanıyor. Oyun klasöründe EicFilter.dll olduğundan emin olunuz. Var ise bilgisayarınızı işletim sistemini ve bit versiyonunu facebook üzerinden bize iletiniz.
-            </div>
-        </div>
-    </div>
+    <?}?>
 </div>

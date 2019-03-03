@@ -46,7 +46,7 @@ if (!empty($_POST)) {
                                                 $user->sec_primary = 3;
                                                 $user->sec_content = 3;
                                                 if ($user->addUser() !== false) {
-                                                    User::addSilk($user->JID, 500000);
+                                                    User::addSilk($user->JID, 500000,25);
                                                     User::addBakiye($user->StrUserID, 0);
                                                     $login = User::login($user->StrUserID, $Password1);
                                                     $_SESSION['User'] = $login;

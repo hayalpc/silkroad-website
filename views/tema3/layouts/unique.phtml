@@ -1,0 +1,22 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 3.03.2019
+ * Time: 03:31
+ */
+?>
+
+<!---BLOCK 5-->
+<div class="well">
+    <h4 class="text-center text-uppercase well-title">Unique geçmişi</h4>
+    <div class="well-content">
+        <?php
+        $list = Rank::getUniqueHistory();
+        foreach ($list as $item) {
+            echo '<p class="small"><span class="text-info"><a href="/ranking/char/' . $item['CharID'] . '"><small>' . $item['CharName'] . '</small></a></span><small> killed ' . $item['Name'] . '</small> <span class="text-info pull-right"><small>' . date('H:i:s', strtotime($item['time'])) . '</small></span></p>';
+        }
+        ?>
+    </div>
+</div>
+<!---BLOCK 5-->

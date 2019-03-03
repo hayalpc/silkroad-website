@@ -1,0 +1,72 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 3.03.2019
+ * Time: 03:30
+ */
+?>
+
+<!---BLOCK 1-->
+<div class="well">
+    <?php if (!user()) { ?>
+        <h4 class="text-center text-uppercase well-title">Giriş Yap</h4>
+        <div class="well-content">
+            <form method='post' autocomplete="off" action="/giris-yap">
+                <div class="form-group">
+                    <div class="input-group input-group-sm col-xs-12">
+                        <input type="text" minlength=4 maxlength=16 required class="form-control"
+                               placeholder="Kullanıcı Adı" name="username" autocomplete="off"
+                               style="margin-bottom: 10px;"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="input-group input-group-sm col-xs-12">
+                        <input type="password" minlength=4 maxlength=16 required class="form-control"
+                               placeholder="Şifre" name="password" autocomplete="off"
+                               style="margin-bottom: 10px;"/>
+                    </div>
+                </div>
+
+                <input class="btn btn-success btn-sm col-xs-12" type="submit" name="button"
+                       value="Giriş Yap"/>
+            </form>
+            <div class="row">
+
+                <div class="col-lg-6">
+                    <a href="/kayit">
+                        <small>KAYIT OL</small>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="/sifre-unuttum">
+                        <small>ŞİFRE SIFIRLA</small>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <? } else { ?>
+        <h4 class="text-center text-uppercase well-title">Hesabım</h4>
+        <div class="text-center">
+            Hoşgeldin, <?= user()->StrUserID ?>.
+        </div>
+        <div class="well-content">
+            <div class="btn-group-vertical" role="group" style="width: 100%;" aria-label="...">
+                <a class="btn btn-primary" type="button" href="/profilim"><i class="fa fa-user"></i>
+                    Hesabım</a>
+                <a class="btn btn-primary" type="button" href="/destek"><i class="fa fa-ticket"></i>
+                    Destek Talebi</a>
+                <a class="btn btn-primary" type="button" href="/epin-yukle"><i class="fa fa-money"></i>
+                    Bakiye [<?= user()->BakiyeTL ?>]</a>
+                <a class="btn btn-primary" type="button" href="/market"><i class="fa fa-shopping-cart"></i>
+                    Market</a>
+                <a class="btn btn-primary" type="button" href="/profilim/ayarlar"><i
+                        class="fa fa-cogs"></i> Ayarlar</a>
+                <!--                            <a class="btn btn-warning" type="button" href="/vote"><i class="fa fa-bullhorn"></i>Vote</a>-->
+                <a class="btn btn-primary" type="button" href="/cikis"><i class="fa fa-sign-out"></i>
+                    Çıkış Yap</a>
+            </div>
+        </div>
+    <? } ?>
+</div>
+<!---BLOCK 1-->

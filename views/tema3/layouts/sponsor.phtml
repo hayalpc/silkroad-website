@@ -1,0 +1,38 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 3.03.2019
+ * Time: 02:25
+ */
+
+$sponsorlar = [
+    [
+        'name'=>'Maxigame',
+        'image'=>'/assets/img/sponsorlar/m1.png',
+        'url'=>'https://www.maxigame.com/',
+    ],
+    [
+        'name'=>'Extraloob',
+        'image'=>'/assets/img/sponsorlar/e1.png',
+        'url'=>'https://www.extraloob.com/',
+    ],
+    [
+        'name'=>'Extraloob',
+        'image'=>'/assets/img/sponsorlar/j4.png',
+        'url'=>'https://www.joymax.org/',
+    ],
+];
+?>
+
+<!---BLOCK 5-->
+<div class="well">
+    <h4 class="text-center text-uppercase well-title">SPONSORLAR</h4>
+    <div class="well-content text-center" style="    padding: 15px 60px;">
+        <?php
+        foreach ($sponsorlar as $item) {?>
+            <a href="<?=$item['url']?>" target="_blank"><img style="width: 100%" src="<?=$item['image']?>" alt="<?=$item['name']?>"></a><br><br>
+        <?} ?>
+    </div>
+</div>
+<!---BLOCK 5-->

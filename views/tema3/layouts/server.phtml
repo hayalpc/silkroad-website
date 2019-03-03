@@ -1,0 +1,83 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 3.03.2019
+ * Time: 03:30
+ */
+
+?>
+<!---BLOCK 2-->
+<div class="well">
+    <h4 class="text-center text-uppercase well-title">Sunucu Bilgileri</h4>
+    <div class="well-content">
+        <?php
+        $onlineUser = Settings::getToplamOnlineOyuncu();
+        $capacity = Settings::getConfig('Capacity');
+        $bosAlan = $capacity - $onlineUser;
+        $xx = $onlineUser * 100 / $capacity;
+        $class = $xx > 90 ? "progress-bar-danger" : ($xx > 70 ? "progress-bar-warning" : "progress-bar-success");
+        ?>
+        <div class="progress">
+            <div class="progress-bar <?=$class?>" style="width: <?=$onlineUser * 100 / $capacity?>%">
+                <?if($bosAlan * 100 / $capacity < 75){ echo "$onlineUser / $capacity"; }?>
+            </div>
+            <div class="progress-bar progress-bar-default" style="width: <?=$bosAlan * 100 / $capacity?>%">
+                <?if($bosAlan * 100 / $capacity >= 75){ echo "$onlineUser / $capacity"; }?>
+            </div>
+        </div>
+        <p class="small"><i class="fa fa-fw fa-clock-o"></i> Time:<span class="text-info pull-right" id="tServerTime"></span></p>
+        <p class="small"><i class="fa fa-fw fa-desktop"></i> Online:<span
+                class="text-info pull-right"><?= $onlineUser ?>
+                / <?= $capacity ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-check"></i> Cap:<span
+                class="text-info pull-right"><?= Settings::getSwProperty('cap'); ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-check"></i> Mastery Cap:<span
+                class="text-info pull-right"><?= Settings::getSwProperty('mastery_cap'); ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-users"></i> Irk<span
+                class="text-info pull-right">EU & CH</span></p>
+        <p class="small"><i class="fa fa-fw fa-flask"></i> EXP & SP<span
+                class="text-info pull-right"><?= Settings::getSwProperty('exp'); ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-users"></i> Party<span
+                class="text-info pull-right"><?= Settings::getSwProperty('ptexp'); ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-money"></i> Gold & Drop<span
+                class="text-info pull-right"><?= Settings::getSwProperty('drop'); ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-star"></i> Tradegoods<span
+                class="text-info pull-right"><?= Settings::getSwProperty('tradegoods'); ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-star"></i> Alchemy<span
+                class="text-info pull-right"><?= Settings::getSwProperty('alchemy'); ?></span></p>
+        <!--                    <p class="small"><i class="fa fa-fw fa-exclamation"></i> IP Limit<span-->
+        <!--                                class="text-warning pull-right">--><?//= Settings::getSwProperty('iplimit'); ?><!--</span></p>-->
+        <p class="small"><i class="fa fa-fw fa-exclamation"></i> PC Limit<span
+                class="text-warning pull-right"><?= Settings::getSwProperty('pclimit'); ?></span></p>
+        <p class="small"><i class="fa fa-fw fa-exclamation"></i> JOB Limit<span
+                class="text-warning pull-right"><?= Settings::getSwProperty('joblimit'); ?></span></p>
+        <hr/>
+        <? $hotanFW = Settings::getFortress(3); ?>
+        <p class="text-justify small">
+            <img style='vertical-align:middle;'
+                 src='/assets/<?= getTheme() ?>/img/fortress/fort-hotan.png'/>
+            Hotan <i class="text-info"> <?= $hotanFW['TaxRatio'] ? $hotanFW['TaxRatio'] : "0" ?>%</i> Tax
+            <span class="text-info pull-right">
+                        <?php echo $hotanFW['Name'] == 'Dummy' || !strlen($hotanFW['Name']) ? '< Hiç kimse >' : $hotanFW['Name'] ?>
+                    </span>
+        </p>
+        <hr/>
+        <? $job = Settings::getJob(); ?>
+        <div class="progress">
+            <div class="progress-bar progress-bar-success" style="width: <?= $job[1]['size']; ?>%">
+                Trader <?= $job[1]['size']; ?>%
+                <span class="sr-only">Trader</span>
+            </div>
+            <div class="progress-bar progress-bar-info" style="width: <?= $job[3]['size']; ?>%">
+                Hunter <?= $job[3]['size']; ?>%
+                <span class="sr-only">Hunter</span>
+            </div>
+            <div class="progress-bar progress-bar-danger" style="width: <?= $job[2]['size']; ?>%">
+                Thief <?= $job[2]['size']; ?>%
+                <span class="sr-only">Thief</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!---BLOCK 2-->

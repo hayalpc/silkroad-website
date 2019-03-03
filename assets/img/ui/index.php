@@ -1,1 +1,1 @@
-﻿<H2><blink><font color="red">DESIGN AND CODED</font><font color="blue">Pant Silkroad</font></blink></H2>
+﻿

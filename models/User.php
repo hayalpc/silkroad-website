@@ -120,14 +120,15 @@ class User
         }
     }
 
-    public static function addSilk($JID, $silk)
+    public static function addSilk($JID, $silk,$gift = 0)
     {
-        $sql = "INSERT INTO SRO_VT_ACCOUNT.dbo.SK_Silk (JID,silk_own,silk_gift,silk_point) VALUES (:JID,:silk_own,'0','0')";
+        $sql = "INSERT INTO SRO_VT_ACCOUNT.dbo.SK_Silk (JID,silk_own,silk_gift,silk_point) VALUES (:JID,:silk_own,:silk_gift,'0')";
         $con = DB::getConnection();
         $sta = $con->prepare($sql);
         $sta->execute([
             ':JID' => $JID,
             ':silk_own' => $silk,
+            ':silk_gift' => $gift,
         ]);
     }
 

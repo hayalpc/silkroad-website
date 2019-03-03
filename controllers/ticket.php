@@ -9,7 +9,7 @@ require_once "../libs/loader.php";
 require_once "../models/Tickets.php";
 
 if(!check_login()){
-    redirectLogin();
+    redirectLogin('/destek');
 }
 switch ($_GET['action']){
     case "yeni":
