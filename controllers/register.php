@@ -42,6 +42,7 @@ if (!empty($_POST)) {
                                                 $user->StrUserID = $UserName;
                                                 $user->password = md5($Password1);
                                                 $user->Email = $Email;
+                                                $user->reg_ip = get_client_ip();
                                                 $user->certificate_num = $GizliYanit;
                                                 $user->sec_primary = 3;
                                                 $user->sec_content = 3;

@@ -43,156 +43,167 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                 </div>
             </div>
             <div class="col-md-4">
-                <?/*
+                <?/**/?>
                 <h4 class="classic-title"><span>Item Bilgileri</span></h4>
                 <div id="idInventorySet" class="bg-equipment pull-left">
 
                     <div class="slots 6 left weapon">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/icon_default.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[6]['dummy'] ? "" : "background:url(".$items[6]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <span class="plus"></span>
+                                <?=$items[6]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="color:#f2e43d;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Poison Horn Spear (+52)</span><br><br>                                                                <span style="color:#f2e43d;font-weight: bold;">Seal of Sun</span><br>                                                                                                                                <span style="color:#efdaa4;">Sort of item: Spear<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#f2e43d;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[6]['name']?></span><br><br>                                                                <span style="color:#f2e43d;font-weight: bold;">Seal of Sun</span><br>                                                                                                                                <span style="color:#efdaa4;">Sort of item: Spear<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Advanced elixir is in effect [+2]</b>                                                            </div>
                     </div>
 
                     <div class="slots 7 right shield">
                         <div class="itemslot">
-                            <div class="image">
+                            <div class="image" style="<?= $items[7]['dummy'] ? "" : "background:url(".$items[7]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[7]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear">  </span><br><br>                                                                                                                                                                                                                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[7]['name']?>  </span><br><br>                                                                                                                                                                                                                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;"></span>
                         </div>
                     </div>
 
                     <div class="slots 0 left head">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_ha.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[0]['dummy'] ? "" : "background:url(".$items[0]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[0]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Hat </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Head<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[0]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Head<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 2 right shoulder">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_sa.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[2]['dummy'] ? "" : "background:url(".$items[2]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[1]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Talisman </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Shoulder<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[2]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Shoulder<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 1 left chest">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_ba.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[1]['dummy'] ? "" : "background:url(".$items[1]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[2]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Suit </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Chest<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[1]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Chest<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 3 right hands">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_aa.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[3]['dummy'] ? "" : "background:url(".$items[3]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[3]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Wristlet </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Hands<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[3]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Hands<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 4 left legs">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_la.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[4]['dummy'] ? "" : "background:url(".$items[4]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[4]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Trousers </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Legs<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[4]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Legs<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 5 right foot">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/man_item/clothes_10_fa.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[5]['dummy'] ? "" : "background:url(".$items[5]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[5]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> King Taesang Shoes </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Foot<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[5]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Foot<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 9 left earring">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/earring_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[9]['dummy'] ? "" : "background:url(".$items[9]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[9]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Earring </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Earring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[9]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Earring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 10 right necklace">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/necklace_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[10]['dummy'] ? "" : "background:url(".$items[10]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[10]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Necklace </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Necklace<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[10]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Necklace<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 11 left lring">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/ring_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[11]['dummy'] ? "" : "background:url(".$items[11]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[11]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Ring </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[11]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
 
                     <div class="slots 12 right rring">
                         <div class="itemslot">
-                            <div class="image" style="background:url(/assets/img/equipment/item/china/acc/ring_10.PNG) no-repeat; background-size: 34px 34px;" data-iteminfo="1">
+                            <div class="image" style="<?= $items[12]['dummy'] ? "" : "background:url(".$items[12]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
+                                <?=$items[12]['plus'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
                         <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Shine Tiger's Eye Ring </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[12]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
                             <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
                             <br><b>Able to use Advanced elixir</b>                                                            </div>
                     </div>
-                    <button id="idShowAvatar" class="btn-equip-avatar"></button>
-                    <div class="equip-suit-slot">
+<!--                    <button id="idShowAvatar" class="btn-equip-avatar"></button>-->
+                   <!-- <div class="equip-suit-slot">
                         <div class="itemslot">
                             <div class="image">
                             </div>
@@ -200,7 +211,7 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                         <div class="itemInfo">
                             <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>                                                                                                                                                                                                                                                                                                                                                                            <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
                         </div>
-                    </div>
+                    </div>-->
                 </div>
                 <div id="idInventoryAvatar" class="bg-equipment-avatar pull-left hidden">
                     <div class="avatar-margin">
@@ -254,8 +265,9 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                             </div>
                         </div>
 
-                        <button id="idShowSet" class="btn-equip-set"></button>
-                        <div class="equip-suit-slot">
+<!--                        <button id="idShowSet" class="btn-equip-set"></button>-->
+
+                       <!-- <div class="equip-suit-slot">
                             <div class="itemslot">
                                 <div class="image">
                                 </div>
@@ -263,11 +275,11 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                             <div class="itemInfo">
                                 <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>                                                                                                                                                                                                                                                                                                                                                                                                    <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
                 <div class="clearfix"></div>
-*/?>
+<?/**/?>
             </div>
 
         </div>
@@ -372,10 +384,13 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
 
     jQuery(document).ready(function () {
         // itemInfo();
-        // jQuery(".itemslot").mouseover(function () {
-        //     console.log(jQuery(this).find('.itemInfo'));
-        //     jQuery(this).find('.itemInfo').show();
-        // });
+        jQuery(".itemslot .image").mouseover(function () {
+            jQuery(this).parent().next().show();
+            // jQuery(this).parent().next().style();
+        });
+        jQuery(".itemslot .image").mouseout(function () {
+            jQuery(this).parent().next().hide();
+        });
         jQuery('#idShowAvatar').click(function () {
             jQuery('#idInventorySet').addClass('hidden');
             jQuery('#idInventoryAvatar').removeClass('hidden');

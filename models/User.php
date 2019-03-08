@@ -100,7 +100,7 @@ class User
     public function addUser()
     {
         try {
-            $sql = "INSERT INTO [SRO_VT_ACCOUNT].[dbo].[TB_User](StrUserID,password,Email,certificate_num,sec_primary,sec_content) VALUES (:StrUserID,:password,:Email,:certificate_num,:sec_primary,:sec_content)";
+            $sql = "INSERT INTO [SRO_VT_ACCOUNT].[dbo].[TB_User](StrUserID,password,Email,certificate_num,sec_primary,sec_content,reg_ip) VALUES (:StrUserID,:password,:Email,:certificate_num,:sec_primary,:sec_content,:reg_ip)";
             $con = DB::getConnection();
             $sta = $con->prepare($sql);
             $sta->execute([
@@ -110,11 +110,13 @@ class User
                 ':certificate_num' => $this->certificate_num,
                 ':sec_primary' => $this->sec_primary,
                 ':sec_content' => $this->sec_content,
+                ':reg_ip' => $this->reg_ip,
             ]);
             $this->JID = $con->lastInsertId();
             //            $this->JID = $sta->fetchColumn(0);
             return $this;
         } catch(Exception $e) {
+            runSlack("Register: ".json_encode($this)." ".$e->getMessage());
             echo $e->getMessage();
             return false;
         }

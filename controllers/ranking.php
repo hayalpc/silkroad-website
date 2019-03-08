@@ -14,6 +14,7 @@ switch ($_GET['action']){
     case "char":
         $id = $_GET['id'];
         $data['char'] = Char::get($id);
+        $data['items'] = Char::generateItemList(Char::getItems($id));
         $data['uniques'] = Char::getUniques($id);
         $data['globals'] = Char::getGlobals($id);
         render("char_rank",$data);
