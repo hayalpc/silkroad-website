@@ -37,7 +37,7 @@ class User
 
     public static function get($JID)
     {
-        $sql = "SELECT TB_User.*,(SELECT BakiyeTL FROM SRO_VT_PANEL.dbo._Bakiye WHERE StrUserID COLLATE SQL_Latin1_General_CP1_CI_AS =TB_User.StrUserID) AS BakiyeTL,(SELECT silk_own FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS BakiyeSilk FROM SRO_VT_ACCOUNT.dbo.TB_User  Where JID=:JID";
+        $sql = "SELECT TB_User.*,(SELECT TOP 1 BakiyeTL FROM SRO_VT_PANEL.dbo._Bakiye WHERE StrUserID COLLATE SQL_Latin1_General_CP1_CI_AS = TB_User.StrUserID) AS BakiyeTL,(SELECT TOP 1 silk_own FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS BakiyeSilk,(SELECT TOP 1 silk_point FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS JobPoint FROM SRO_VT_ACCOUNT.dbo.TB_User  Where JID=:JID";
         $con = DB::getConnection();
         $sta = $con->prepare($sql);
         $sta->execute([':JID' => $JID]);
@@ -72,7 +72,7 @@ class User
 
     public static function login($StrUserID, $password)
     {
-        $sql = "SELECT TB_User.*,(SELECT TOP 1 BakiyeTL FROM SRO_VT_PANEL.dbo._Bakiye WHERE StrUserID COLLATE SQL_Latin1_General_CP1_CI_AS = TB_User.StrUserID) AS BakiyeTL,(SELECT TOP 1 silk_own FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS BakiyeSilk,(SELECT TOP 1 silk_gift FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS JobPoint FROM SRO_VT_ACCOUNT.dbo.TB_User  Where StrUserID=:StrUserID AND password=:password";
+        $sql = "SELECT TB_User.*,(SELECT TOP 1 BakiyeTL FROM SRO_VT_PANEL.dbo._Bakiye WHERE StrUserID COLLATE SQL_Latin1_General_CP1_CI_AS = TB_User.StrUserID) AS BakiyeTL,(SELECT TOP 1 silk_own FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS BakiyeSilk,(SELECT TOP 1 silk_point FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = TB_User.JID) AS JobPoint FROM SRO_VT_ACCOUNT.dbo.TB_User  Where StrUserID=:StrUserID AND password=:password";
         $con = DB::getConnection();
         $sta = $con->prepare($sql);
         $sta->execute([':StrUserID' => $StrUserID, ':password' => md5($password)]);
@@ -116,21 +116,22 @@ class User
             //            $this->JID = $sta->fetchColumn(0);
             return $this;
         } catch(Exception $e) {
+            error_log(json_encode($this)." ".$e->getMessage());
             runSlack("Register: ".json_encode($this)." ".$e->getMessage());
-            echo $e->getMessage();
             return false;
         }
     }
 
     public static function addSilk($JID, $silk,$gift = 0)
     {
-        $sql = "INSERT INTO SRO_VT_ACCOUNT.dbo.SK_Silk (JID,silk_own,silk_gift,silk_point) VALUES (:JID,:silk_own,:silk_gift,'0')";
+        $sql = "INSERT INTO SRO_VT_ACCOUNT.dbo.SK_Silk (JID,silk_own,silk_gift,silk_point) VALUES (:JID,:silk_own,:silk_gift,:silk_point)";
         $con = DB::getConnection();
         $sta = $con->prepare($sql);
         $sta->execute([
             ':JID' => $JID,
             ':silk_own' => $silk,
-            ':silk_gift' => $gift,
+            ':silk_gift' => 0,
+            ':silk_point' => $gift,
         ]);
     }
 
@@ -239,13 +240,13 @@ class User
     public static function getJobHonorBuffList()
     {
         $sql = 'SELECT
-                    c.CharID,c.CharName16,c.NickName16, ctj.JobType,c.CurLevel,sks.silk_gift,ctj.Level
+                    c.CharID,c.CharName16,c.NickName16, ctj.JobType,c.CurLevel,sks.silk_point,ctj.Level
                 FROM
                     SRO_VT_SHARD.dbo._Char c
                     JOIN SRO_VT_SHARD.dbo._CharTrijob ctj ON ctj.CharID=c.CharID 
                     JOIN SRO_VT_SHARD.dbo._User u ON u.CharID=c.CharID
                     JOIN SRO_VT_ACCOUNT.dbo.SK_Silk sks ON sks.JID=u.UserJID
-                WHERE ctj.Level>=1 AND sks.silk_gift>=100 AND c.CurLevel>=105 AND LEN(c.NickName16)>1 ORDER BY ctj.Level DESC,sks.silk_gift DESC,c.CharName16 ASC';
+                WHERE ctj.Level>=1 AND sks.silk_point>=100 AND c.CurLevel>=105 AND LEN(c.NickName16)>1 ORDER BY ctj.Level DESC,sks.silk_point DESC,c.CharName16 ASC';
         $con = DB::getConnection();
         $sta = $con->prepare($sql);
         $sta->execute();

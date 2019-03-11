@@ -6,7 +6,18 @@
  * Time: 12:02
  */
 $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
-
+$JobImage = [
+    1=>'/assets/img/trader.jpg',
+    2=>'/assets/img/thief.jpg',
+    3=>'/assets/img/hunter.jpg',
+    0=>'/assets/img/hunter.jpg',
+];
+$sosType = [
+    'nova'=>'Seal of Nova',
+    'sos'=>'Seal of Star',
+    'som'=>'Seal of Moon',
+    'sun'=>'Seal of Sun',
+]
 ?>
 <div class="panel panel-default register-white">
     <div class="panel-heading">
@@ -16,11 +27,34 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
 
         <div class="row">
             <div class="col-sm-7">
-                <h2 class="text-info"><?= $char['CharName16']; ?></h2>
                 <img src="<?= $CharImage; ?>"/>
                 <div class="row">
                     <div class="col-sm-6">Level:</div>
+                    <div class="col-sm-6"><?= $char['CharName16']; ?></div>
+                    <div class="clearfix"></div>
+                    <div class="col-sm-6">Karakter:</div>
                     <div class="col-sm-6"><?= $char['CurLevel']; ?></div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-sm-6">Guild:</div>
+                    <div class="col-sm-6"><?=strlen($guild['Name']) ? '<a href="">'.$guild['Name'].'</a>' : '-'?></div>
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-sm-6">Job:</div>
+                    <div class="col-sm-6"><?=$job['JobType'] > 0 ? '<img src="'.$JobImage[$job['JobType']].'">' : '-'?></div>
+                    <div class="clearfix"></div>
+                    <?if( $job['JobType'] > 0){?>
+                        <div class="col-sm-6">Job Nick:</div>
+                        <div class="col-sm-6"><?= $char['NickName16']; ?>&nbsp;</div>
+                        <div class="clearfix"></div>
+                        <div class="col-sm-6">Job Level:</div>
+                        <div class="col-sm-6"><?= $job['Level']; ?>&nbsp;</div>
+                        <div class="clearfix"></div>
+                        <div class="col-sm-6">Job Point:</div>
+                        <div class="col-sm-6"><?= $char['JobPoint']; ?>&nbsp;</div>
+                    <?}?>
+
                     <div class="col-sm-12">&nbsp;</div>
                     <div class="col-sm-6">Health:</div>
                     <div class="col-sm-6">
@@ -31,6 +65,7 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                             </div>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
                     <div class="col-sm-6">Mana:</div>
                     <div class="col-sm-6">
                         <div class="progress">
@@ -42,176 +77,238 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                     </div>
                 </div>
             </div>
+
+
             <div class="col-md-4">
                 <?/**/?>
-                <h4 class="classic-title"><span>Item Bilgileri</span></h4>
                 <div id="idInventorySet" class="bg-equipment pull-left">
 
                     <div class="slots 6 left weapon">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[6]['dummy'] ? "" : "background:url(".$items[6]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[6]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[6]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="color:#f2e43d;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[6]['name']?></span><br><br>                                                                <span style="color:#f2e43d;font-weight: bold;">Seal of Sun</span><br>                                                                                                                                <span style="color:#efdaa4;">Sort of item: Spear<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Advanced elixir is in effect [+2]</b>                                                            </div>
+                        <?if(!$items[6]['dummy']){?>
+                            <div class="itemInfo" style="left: 75px;">
+                                <span style="<?if($items[6]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" > <?= $items[6]['name']?> <?= !empty($items[6]['plus']) ? "(+".$items[6]['plus'].")" : ""?></span><br><br>
+                                <?if($items[6]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[6]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[6]['sortofitem']) ? $items[6]['sortofitem'] : ""?><br>Degree: <?=$items[6]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b></b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 7 right shield">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[7]['dummy'] ? "" : "background:url(".$items[7]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[7]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[7]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[7]['name']?>  </span><br><br>                                                                                                                                                                                                                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;"></span>
-                        </div>
+                        <?if(!$items[7]['dummy']){?>
+                            <div class="itemInfo" style="left: -45px;">
+                                <span style="<?if($items[7]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[7]['name']?>  <?= !empty($items[7]['plus']) ? "(+".$items[7]['plus'].")" : ""?></span><br><br>
+                                <?if($items[7]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[7]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[7]['sortofitem']) ? $items[7]['sortofitem'] : ""?><br><br>Degree: <?=$items[7]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <span style="color:#efdaa4;"></span>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 0 left head">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[0]['dummy'] ? "" : "background:url(".$items[0]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[0]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[0]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[0]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Head<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[0]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: 65px;">
+                                <span style="<?if($items[0]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[0]['name']?> <?= !empty($items[0]['plus']) ? "(+".$items[0]['plus'].")" : ""?></span><br><br>
+                                <?if($items[0]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[0]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[0]['sortofitem']) ? $items[0]['sortofitem'] : ""?><br>Mounting part: Head<br>Degree: <?=$items[0]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 2 right shoulder">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[2]['dummy'] ? "" : "background:url(".$items[2]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[1]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[1]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[2]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Shoulder<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[2]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: -35px;">
+                                <span style="<?if($items[2]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[2]['name']?> <?= !empty($items[2]['plus']) ? "(+".$items[2]['plus'].")" : ""?></span><br><br>
+                                <?if($items[2]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[2]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[2]['sortofitem']) ? $items[2]['sortofitem'] : ""?><br>Mounting part: Shoulder<br>Degree: <?=$items[2]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 1 left chest">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[1]['dummy'] ? "" : "background:url(".$items[1]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[2]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[2]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[1]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Chest<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[1]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: 65px;">
+                                <span style="<?if($items[1]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[1]['name']?> <?= !empty($items[1]['plus']) ? "(+".$items[1]['plus'].")" : ""?></span><br><br>
+                                <?if($items[1]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[1]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[1]['sortofitem']) ? $items[1]['sortofitem'] : ""?><br>Mounting part: Chest<br>Degree: <?=$items[1]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 3 right hands">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[3]['dummy'] ? "" : "background:url(".$items[3]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[3]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[3]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[3]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Hands<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[3]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: -35px;">
+                                <span style="<?if($items[3]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[3]['name']?> <?= !empty($items[3]['plus']) ? "(+".$items[3]['plus'].")" : ""?></span><br><br>
+                                <?if($items[3]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[3]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[3]['sortofitem']) ? $items[3]['sortofitem'] : ""?><br>Mounting part: Hands<br>Degree: <?=$items[3]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 4 left legs">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[4]['dummy'] ? "" : "background:url(".$items[4]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[4]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[4]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[4]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Legs<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[4]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: 65px;">
+                                <span style="<?if($items[4]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[4]['name']?> <?= !empty($items[4]['plus']) ? "(+".$items[4]['plus'].")" : ""?></span><br><br>
+                                <?if($items[4]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[4]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[4]['sortofitem']) ? $items[4]['sortofitem'] : ""?><br>Mounting part: Legs<br>Degree: <?=$items[4]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 5 right foot">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[5]['dummy'] ? "" : "background:url(".$items[5]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[5]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[5]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[5]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Garment<br>Mounting part: Foot<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[5]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: -35px;">
+                                <span style="<?if($items[5]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[5]['name']?> <?= !empty($items[5]['plus']) ? "(+".$items[5]['plus'].")" : ""?></span><br><br>
+                                <?if($items[5]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[5]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: <?=strlen($items[5]['sortofitem']) ? $items[5]['sortofitem'] : ""?><br>Mounting part: Foot<br>Degree: <?=$items[5]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 9 left earring">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[9]['dummy'] ? "" : "background:url(".$items[9]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[9]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[9]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[9]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Earring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[9]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: 65px;">
+                                <span style="<?if($items[9]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[9]['name']?> <?= !empty($items[9]['plus']) ? "(+".$items[9]['plus'].")" : ""?></span><br><br>
+                                <?if($items[9]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[9]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: Earring<br>Degree: <?=$items[9]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 10 right necklace">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[10]['dummy'] ? "" : "background:url(".$items[10]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[10]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[10]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[10]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Necklace<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[10]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: -35px;">
+                                <span style="<?if($items[10]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[10]['name']?> <?= !empty($items[10]['plus']) ? "(+".$items[10]['plus'].")" : ""?></span><br><br>
+                                <?if($items[10]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[10]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: Necklace<br>Degree: <?=$items[10]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 11 left lring">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[11]['dummy'] ? "" : "background:url(".$items[11]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[11]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[11]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[11]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[11]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: 65px;">
+                                <span style="<?if($items[11]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[11]['name']?> <?= !empty($items[11]['plus']) ? "(+".$items[11]['plus'].")" : ""?></span><br><br>
+                                <?if($items[11]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[11]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: <?=$items[11]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
 
                     <div class="slots 12 right rring">
                         <div class="itemslot">
                             <div class="image" style="<?= $items[12]['dummy'] ? "" : "background:url(".$items[12]['url'].") no-repeat;"?> background-size: 34px 34px;" data-iteminfo="1">
                                 <span class="qinfo"></span>
-                                <?=$items[12]['plus'] ? '<span class="plus"></span>' : ''?>
+                                <?=$items[12]['is_sos'] ? '<span class="plus"></span>' : ''?>
                             </div>
                         </div>
-                        <div class="itemInfo">
-                            <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[12]['name']?> </span><br><br>                                                                                                                                                                                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: 10 degrees</span><br>                                                                                                                                    <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
-                            <span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
-                            <br><b>Able to use Advanced elixir</b>                                                            </div>
+                        <?if(!$items[12]['dummy']){?>
+                            <div class="itemInfo" style="top: 80px;left: -35px;">
+                                <span style="<?if($items[12]['is_sos']){?>color:#f2e43d;<?}?>font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> <?= $items[12]['name']?> <?= !empty($items[12]['plus']) ? "(+".$items[12]['plus'].")" : ""?></span><br><br>
+                                <?if($items[12]['rare']){?><span style="color:#f2e43d;font-weight: bold;"><?=$sosType[$items[12]['rare']]?></span><br><?}?>
+                                <span style="color:#efdaa4;">Sort of item: Ring<br>Degree: <?=$items[12]['level']?> degrees</span><br>
+                                <br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span><br><br>
+                                <br><b>Able to use Advanced elixir</b>
+                            </div>
+                        <?}?>
                     </div>
-<!--                    <button id="idShowAvatar" class="btn-equip-avatar"></button>-->
-                   <!-- <div class="equip-suit-slot">
-                        <div class="itemslot">
-                            <div class="image">
-                            </div>
-                        </div>
-                        <div class="itemInfo">
-                            <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>                                                                                                                                                                                                                                                                                                                                                                            <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
-                        </div>
-                    </div>-->
+                    <!--                    <button id="idShowAvatar" class="btn-equip-avatar"></button>-->
+                    <!-- <div class="equip-suit-slot">
+                         <div class="itemslot">
+                             <div class="image">
+                             </div>
+                         </div>
+                         <div class="itemInfo">
+                             <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>
+                             <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                         </div>
+                     </div>-->
                 </div>
                 <div id="idInventoryAvatar" class="bg-equipment-avatar pull-left hidden">
                     <div class="avatar-margin">
@@ -221,7 +318,9 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                                 </div>
                             </div>
                             <div class="itemInfo">
-                                <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Gold Dragon Flag</span><br><br>                                                                    <span style="color:#efdaa4;">Sort of item: Avatar Flag</span><br>                                                                    Flag with enormous, magnificent dragon pattern engraved. The gold colored embroidery surrounding the dragon makes the flag look even classier. Can be equipped in the job slot.                                                                                                                                                                                                                <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                                <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Gold Dragon Flag</span><br><br>                                                                    <span style="color:#efdaa4;">Sort of item: Avatar Flag</span>
+                                <br>Flag with enormous, magnificent dragon pattern engraved. The gold colored embroidery surrounding the dragon makes the flag look even classier. Can be equipped in the job slot.
+                                <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
                             </div>
                         </div>
 
@@ -261,25 +360,29 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                                 </div>
                             </div>
                             <div class="itemInfo">
-                                <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Devil's Spirit S grade(M)</span><br><br>                                                                    <span style="color:#efdaa4;">Sort of item: Devil's Spirit</span><br>                                                                    When you equip this Devil's spirit, you will gain basic options(HP/MP) of your character. If you use its power, you can transform and able to use devil's power for limited time.                                                                    <br><br><span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>                                                                                                                                            <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                                <span style="font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> Devil's Spirit S grade(M)</span><br><br>
+                                <span style="color:#efdaa4;">Sort of item: Devil's Spirit</span><br>When you equip this Devil's spirit, you will gain basic options(HP/MP) of your character. If you use its power, you can transform and able to use devil's power for limited time.
+                                <br><br><span style="color:#efdaa4;">Max. no. of magic options: 9 Unit</span>
+                                <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
                             </div>
                         </div>
 
-<!--                        <button id="idShowSet" class="btn-equip-set"></button>-->
+                        <!--                        <button id="idShowSet" class="btn-equip-set"></button>-->
 
-                       <!-- <div class="equip-suit-slot">
-                            <div class="itemslot">
-                                <div class="image">
-                                </div>
-                            </div>
-                            <div class="itemInfo">
-                                <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>                                                                                                                                                                                                                                                                                                                                                                                                    <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
-                            </div>
-                        </div>-->
+                        <!-- <div class="equip-suit-slot">
+                             <div class="itemslot">
+                                 <div class="image">
+                                 </div>
+                             </div>
+                             <div class="itemInfo">
+                                 <span style="color:#00eaff;font-weight: bold;"><img src="/assets/img/equipment/com_itemsign.PNG" class="imageclear"> </span><br><br>
+                                 <br><br><span style="color: red;">Item detayları Yönetici tarafından kısıtlanmış</span>
+                             </div>
+                         </div>-->
                     </div>
                 </div>
                 <div class="clearfix"></div>
-<?/**/?>
+                <?/**/?>
             </div>
 
         </div>
@@ -288,10 +391,10 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                 <a href="#ranking-one" data-toggle="tab" class="text-black"><i class="fa fa-user"></i> <small>Job Rank</small></a>
             </li>
             <li class="">
-                <a href="#ranking-two" data-toggle="tab" class="text-black"><i class="fa fa-users"></i> <small>Unique Rank</small></a>
+                <a href="#ranking-two" data-toggle="tab" class="text-black"><i class="fa fa-shield"></i> <small>Unique Rank</small></a>
             </li>
             <li class="">
-                <a href="#ranking-three" data-toggle="tab" class="text-black"><i class="fa fa-support"></i> <small>Unique Geç.</small></a>
+                <a href="#ranking-three" data-toggle="tab" class="text-black"><i class="fa fa-history"></i> <small>Unique Geç.</small></a>
             </li>
             <li class="">
                 <a href="#ranking-four" data-toggle="tab" class="text-black"><i class="fa fa-globe"></i> <small>Global Geçmişi</small></a>
@@ -310,7 +413,7 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                 <h2>10 Latest Uniques Kills</h2>
                 <hr/>
                 <?php if(count($uniques) > 0){ ?>
-                    <table class="table table-striped">
+                    <table class="table table-striped" style="color:white;">
                         <thead>
                         <tr>
                             <th>Unique</th>
@@ -335,7 +438,7 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
                 <h2>10 Latest Globals</h2>
                 <hr/>
                 <?php if(count($globals) > 0){ ?>
-                    <table class="table table-striped">
+                    <table class="table table-striped" style="color:white;">
                         <thead>
                         <tr>
                             <th>Message</th>
@@ -384,12 +487,12 @@ $CharImage = "/assets/".getTheme()."/img/chars/" . $char['RefObjID'] . ".gif";
 
     jQuery(document).ready(function () {
         // itemInfo();
-        jQuery(".itemslot .image").mouseover(function () {
-            jQuery(this).parent().next().show();
-            // jQuery(this).parent().next().style();
+        jQuery(".itemslot").mouseover(function (event) {
+            jQuery(this).next().show();
         });
-        jQuery(".itemslot .image").mouseout(function () {
-            jQuery(this).parent().next().hide();
+
+        jQuery(".itemslot").mouseout(function () {
+            jQuery(this).next().hide();
         });
         jQuery('#idShowAvatar').click(function () {
             jQuery('#idInventorySet').addClass('hidden');

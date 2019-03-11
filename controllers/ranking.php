@@ -8,12 +8,17 @@
 require_once "../libs/loader.php";
 require_once "../models/Rank.php";
 require_once "../models/Char.php";
+require_once "../models/Guild.php";
+require_once "../models/CharTrijob.php";
 
 setTitle('Rank');
-switch ($_GET['action']){
+$action = !empty($_GET['action']) ? $_GET['action'] : "";
+switch ($action){
     case "char":
         $id = $_GET['id'];
         $data['char'] = Char::get($id);
+        $data['guild'] = Guild::getByCharID($id);
+        $data['job'] = CharTrijob::getByCharID($id);
         $data['items'] = Char::generateItemList(Char::getItems($id));
         $data['uniques'] = Char::getUniques($id);
         $data['globals'] = Char::getGlobals($id);

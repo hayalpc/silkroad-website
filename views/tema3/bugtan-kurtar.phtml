@@ -1,7 +1,15 @@
+<?php
+/**
+ * Created by IntelliJ IDEA.
+ * User: ekrmn60600
+ * Date: 10.03.2019
+ * Time: 02:46
+ */
 
+?>
 <div class="panel panel-default register-white">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-credit-card"></i> Web Market Satın Al</h3>
+        <h3 class="panel-title"><i class="fa fa-history"></i> Bugtan Kurtar</h3>
     </div>
     <div class="panel-body">
         <?php
@@ -22,25 +30,17 @@
             <?php
         }
         ?>
-        <b>Bakiyeniz :</b> <?php echo number_format(user()->BakiyeTL,2) ?> ₺<br>
-        <b>Satın alınmak istenen ürün:</b> <?=$mall->ItemName?> <br>
-        <b>Fiyatı:</b> <?=number_format($mall->ItemName,2)?> ₺ <br>
-<br><br>
         <form method="post">
             <div class="form-group">
                 <label class="control-label">Karakter Seçiniz</label>
-                <select name="char" class="form-control input-sm">
-                    <?foreach (User::getChars(user()->JID) as $getChar) {?>
+                <select name="CharName" class="form-control input-sm">
+                    <?foreach ($charList as $getChar) {?>
                         <option><?=$getChar['CharName16']?></option>
                     <?}?>
                 </select>
-                <div class="alert alert-danger">
-                    Lütfen karakteriniz oyunda olmasın!
-                </div>
             </div>
             <button type="submit" class="btn btn-success">Gönder</button>
         </form>
 
     </div>
 </div>
-

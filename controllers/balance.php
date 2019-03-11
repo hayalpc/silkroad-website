@@ -165,6 +165,7 @@ switch ($_GET['action']) {
                 addMessage("error", "Lütfen captcha doğrulamasını yapınız!");
             }
         }
+        addMessage('error','Bu sayfadan sistem tarafından kazanılan Epinler yüklenebilir. <br>Maxicard için <a href="https://mira.play-eic.com/epin-yukle/maxigame">buraya tıklayınız.</a>');
         render("maxigame");
         break;
     case 'paywant':

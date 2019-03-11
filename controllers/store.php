@@ -11,7 +11,8 @@ require_once "../models/EPinKod.php";
 if(!check_login()){
     redirectLogin('/market');
 }
-switch($_GET['action']){
+$action = !empty($_GET['action']) ? $_GET['action'] : "";
+switch ($action){
     case "satin-al":
         setTitle('TL Yükle');
         if($_GET['id']>0){

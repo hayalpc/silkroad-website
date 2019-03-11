@@ -15,4 +15,4 @@ switch ($_GET['action']){
         break;
 
 }
-include_once "../views/errorMessage.phtml";
+render("errorMessage");

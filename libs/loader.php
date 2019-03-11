@@ -6,7 +6,7 @@
  * Time: 17:03
  */
 session_start();
-if($_GET['beta']){
+if(isset($_GET['beta'])){
     $_SESSION['beta'] = 1;
 }
 define('DIR_CACHE',dirname(dirname(__FILE__))."/cache/");
@@ -161,7 +161,7 @@ function get_client_ip()
     if (filter_var($last, FILTER_VALIDATE_IP) === false) {
         $last = $_SERVER["REMOTE_ADDR"];
     }
-    return $last;
+    return strlen($last) > 14 ? "" : $last;
 }
 
 function render($view,array $data = null,$return=false,$layout = "main"){
@@ -169,7 +169,7 @@ function render($view,array $data = null,$return=false,$layout = "main"){
         $output = renderPartial($view,$data,true);
         if(($layoutFile = getLayoutFile($layout)) !== false) {
             $data['content'] = $output;
-            $data['pageTitle'] = $_SESSION['pageTitle'];
+            $data['pageTitle'] = isset($_SESSION['pageTitle']) ? $_SESSION['pageTitle'] : '';
             unset($_SESSION['pageTitle']);
             $output = renderFile($layoutFile, $data);
         }

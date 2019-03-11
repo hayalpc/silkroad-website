@@ -34,7 +34,7 @@ class Settings
             $sta = $con->prepare($sql);
             $sta->execute();
             $cache = $sta->fetchColumn(0);
-            cache()->add("getToplamOnlineOyuncu", $cache, 60 * 3);
+            cache()->add("getToplamOnlineOyuncu", $cache, 60);
         }
         return $cache;
     }

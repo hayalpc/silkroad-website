@@ -30,6 +30,7 @@ RewriteRule ^galeri$ /controllers/gallery.php [L]
 RewriteRule ^kurallar$ /controllers/rules.php [L]
 RewriteRule ^sss$ /controllers/faq.php [L]
 RewriteRule ^ozellikler$ /controllers/information.php [L]
+RewriteRule ^bugtan-kurtar$ /controllers/bugtan-kurtar.php [L]
 
 
 #RewriteRule ^maxigame-tanitim$ https://www.maxigame.com/forum/t/257840-legendary-sro-110-cap-emek-server-unique-job-pvp-etkinlikle-uzun-soluklu-22-06-2018

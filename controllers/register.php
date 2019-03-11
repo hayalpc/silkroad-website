@@ -21,13 +21,15 @@ if (!empty($_POST)) {
     $Password2 = $_POST["Password2"];
     $GizliYanit = $_POST["GizliYanit"];
     $Email = $_POST["Email"];
-    $Sozleme = $_POST["Sozleme"];
+    $Sozleme = isset($_POST['Sozleme']);
 
-    if (isset($_POST['g-recaptcha-response']) || true) {
-        $captcha = $_POST['g-recaptcha-response'];
-        $response = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LeCbVwUAAAAALJUr9P_xN7Al99yizxFp7wnBk_G&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']));
-        if (true || $response->success === true) {
-            if (isset($_POST['Sozleme'])) {
+    if (true) {
+//    if (isset($_POST['g-recaptcha-response']) || true) {
+//        $captcha = $_POST['g-recaptcha-response'];
+//        $response = json_decode(file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LeCbVwUAAAAALJUr9P_xN7Al99yizxFp7wnBk_G&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']));
+//        if (true || $response->success === true) {
+        if (true) {
+            if ($Sozleme) {
                 if (!empty($UserName) && !empty($Password1) && !empty($Password2) && !empty($GizliYanit) && !empty($Email)) {
                     if (strlen($UserName) > 3 && strlen($UserName) <= 16 && preg_match('/[^a-zA-Z0-9_-]/', $UserName) == 0) {
                         if (strlen($Password1) > 3 && strlen($Password1) <= 16) {
@@ -58,7 +60,7 @@ if (!empty($_POST)) {
                                                     addMessage("error","Hesap oluşturulurken bir hata ile karşılaşıldı.");
                                                 }
                                             } else {
-                                                addMessage("error","Girmiş Olduğunuz Kullanıcı Adı Zaten Kullanılmakta!");
+                                                addMessage("error","Girmiş Olduğunuz Mail Zaten Kullanılmakta!");
                                             }
                                         } else {
                                             addMessage("error","Girmiş Olduğunuz Kullanıcı Adı Zaten Kullanılmakta!" );

@@ -12,18 +12,23 @@
     <h4 class="text-center text-uppercase well-title">Sunucu Bilgileri</h4>
     <div class="well-content">
         <?php
-        $onlineUser = Settings::getToplamOnlineOyuncu();
+        $onlineUser = Settings::getToplamOnlineOyuncu()  ;
+        $onlineUser = $onlineUser < 50 ? $onlineUser : ( $onlineUser < 100 ? $onlineUser * 2 : $onlineUser * 3 );
         $capacity = Settings::getConfig('Capacity');
         $bosAlan = $capacity - $onlineUser;
         $xx = $onlineUser * 100 / $capacity;
         $class = $xx > 90 ? "progress-bar-danger" : ($xx > 70 ? "progress-bar-warning" : "progress-bar-success");
+
         ?>
+        <div class="text-center">
+            <small><?="$onlineUser / $capacity"?></small>
+        </div>
         <div class="progress">
             <div class="progress-bar <?=$class?>" style="width: <?=$onlineUser * 100 / $capacity?>%">
-                <?if($bosAlan * 100 / $capacity < 75){ echo "$onlineUser / $capacity"; }?>
+                <?if($bosAlan * 100 / $capacity < 75){ echo round($onlineUser * 100 / $capacity)."%"; }?>
             </div>
             <div class="progress-bar progress-bar-default" style="width: <?=$bosAlan * 100 / $capacity?>%">
-                <?if($bosAlan * 100 / $capacity >= 75){ echo "$onlineUser / $capacity"; }?>
+                <?if($bosAlan * 100 / $capacity >= 75){ echo round($onlineUser * 100 / $capacity)."%"; }?>
             </div>
         </div>
         <p class="small"><i class="fa fa-fw fa-clock-o"></i> Time:<span class="text-info pull-right" id="tServerTime"></span></p>
@@ -65,16 +70,16 @@
         <hr/>
         <? $job = Settings::getJob(); ?>
         <div class="progress">
-            <div class="progress-bar progress-bar-success" style="width: <?= $job[1]['size']; ?>%">
-                Trader <?= $job[1]['size']; ?>%
+            <div class="progress-bar progress-bar-success" style="width: <?= isset($job[1]['size']) ? $job[1]['size'] : 0; ?>%">
+                Trader <?= isset($job[1]['size']) ? $job[1]['size'] : 0; ?>%
                 <span class="sr-only">Trader</span>
             </div>
-            <div class="progress-bar progress-bar-info" style="width: <?= $job[3]['size']; ?>%">
-                Hunter <?= $job[3]['size']; ?>%
+            <div class="progress-bar progress-bar-info" style="width: <?= isset($job[3]['size']) ? $job[3]['size'] : 0; ?>%">
+                Hunter <?= isset($job[3]['size']) ? $job[3]['size'] : 0; ?>%
                 <span class="sr-only">Hunter</span>
             </div>
-            <div class="progress-bar progress-bar-danger" style="width: <?= $job[2]['size']; ?>%">
-                Thief <?= $job[2]['size']; ?>%
+            <div class="progress-bar progress-bar-danger" style="width: <?= isset($job[2]['size']) ? $job[2]['size'] : 0; ?>%">
+                Thief <?= isset($job[2]['size']) ? $job[2]['size'] : 0; ?>%
                 <span class="sr-only">Thief</span>
             </div>
         </div>

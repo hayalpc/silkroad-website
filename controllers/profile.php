@@ -13,7 +13,8 @@ if (!check_login()) {
 }
 $user = user();
 setTitle('Profilim');
-switch ($_GET['action']) {
+$action = !empty($_GET['action']) ? $_GET['action'] : "";
+switch ($action) {
     case 'gecmis':
         setTitle('Hesap Geçmişi');
         $histories = User::getHistory($user->StrUserID);

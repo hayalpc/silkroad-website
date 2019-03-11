@@ -11,7 +11,7 @@ class Char extends stdClass
 
     public static function get($id)
     {
-        $sql = "SELECT * FROM SRO_VT_SHARD.dbo._Char WHERE CharID=:CharID";
+        $sql = "SELECT _Char.*,(SELECT TOP 1 silk_point FROM SRO_VT_ACCOUNT.dbo.SK_Silk WHERE JID = UserJID) AS JobPoint FROM SRO_VT_SHARD.dbo._Char,SRO_VT_SHARD.dbo._User  WHERE _Char.CharID=:CharID AND _User.CharID=_Char.CharID";
         $sta = Db::getConnection()->prepare($sql);
         $sta->execute([':CharID'=>$id]);
         return $sta->fetch(PDO::FETCH_ASSOC);
@@ -19,9 +19,12 @@ class Char extends stdClass
 
     public static function getUniques($id)
     {
-        $sql = "SELECT TOP 10 t.*,un.Name AS MobRealName FROM SRO_VT_ACCOUNT.dbo.Evangelion_uniques t
+        $sql = "SELECT TOP 10 t.time,un.Name AS MobRealName FROM SRO_VT_ACCOUNT.dbo.Evangelion_uniques t
 JOIN FILTER.dbo._UniqueName un ON un.CodeName128 COLLATE SQL_Latin1_General_CP1_CI_AS = t.MobName COLLATE SQL_Latin1_General_CP1_CI_AS
-WHERE t.CharName in(SELECT CharName16 COLLATE Latin1_General_CI_AS FROM SRO_VT_SHARD.dbo._Char WHERE CharID=:CharID) ORDER BY ID DESC";
+WHERE t.CharName in(SELECT CharName16 COLLATE Latin1_General_CI_AS FROM SRO_VT_SHARD.dbo._Char WHERE CharID=:CharID) 
+GROUP BY t.time,un.Name 
+    ORDER BY
+        SRO_VT_ACCOUNT.dbo.UNIX_TIMESTAMP(t.time) DESC";
         $sta = DB::getConnection()->prepare($sql);
         $sta->execute([':CharID'=>$id]);
         return $sta->fetchAll(PDO::FETCH_ASSOC);
@@ -37,7 +40,7 @@ WHERE t.CharName in(SELECT CharName16 COLLATE Latin1_General_CI_AS FROM SRO_VT_S
 
     public static function getItems($id)
     {
-        $sql = "SELECT inv.CharID, inv.Slot, i.ID64, co.ID, co.CodeName128, it.Name FROM SRO_VT_SHARD.dbo._Inventory inv, SRO_VT_SHARD.dbo._Items i, SRO_VT_SHARD.dbo._RefObjCommon co LEFT OUTER JOIN FILTER.dbo._ItemName it ON co.NameStrID128 COLLATE SQL_Latin1_General_CP1_CI_AS = it.CodeName128 WHERE inv.CharID= :CharID AND inv.ItemID= i.ID64 AND i.RefItemID= co.ID AND inv.Slot< 13 ORDER BY inv.Slot ASC";
+        $sql = "SELECT inv.CharID, inv.Slot,i.OptLevel, i.ID64, co.ID, co.CodeName128, it.Name FROM SRO_VT_SHARD.dbo._Inventory inv, SRO_VT_SHARD.dbo._Items i, SRO_VT_SHARD.dbo._RefObjCommon co LEFT OUTER JOIN FILTER.dbo._ItemName it ON co.NameStrID128 COLLATE SQL_Latin1_General_CP1_CI_AS = it.CodeName128 WHERE inv.CharID= :CharID AND inv.ItemID= i.ID64 AND i.RefItemID= co.ID AND inv.Slot< 13 ORDER BY inv.Slot ASC";
         $sta = DB::getConnection()->prepare($sql);
         $sta->execute([':CharID'=>$id]);
         return $sta->fetchAll(PDO::FETCH_ASSOC);
@@ -111,11 +114,11 @@ WHERE t.CharName in(SELECT CharName16 COLLATE Latin1_General_CI_AS FROM SRO_VT_S
         $a = substr($code,0,strlen("ITEM_EU_W"));
         $ex = explode("_",$code);
         if($a == "ITEM_EU_W" || $a == "ITEM_CH_W" || $a == "ITEM_EU_M" || $a == "ITEM_CH_M"){
-            return $ex[4];
+            return !empty($ex[4]) ? $ex[4] : '';
         }elseif(strpos($code,'_EARRING_') !== false || strpos($code,'_NECKLACE_') !== false || strpos($code,'_RING_') !== false) {
-            return $ex[3];
+            return !empty($ex[3]) ? $ex[3] : '';
         }else{
-            return $ex[3];
+            return !empty($ex[3]) ? $ex[3] : '';
         }
     }
 
@@ -158,6 +161,10 @@ WHERE t.CharName in(SELECT CharName16 COLLATE Latin1_General_CI_AS FROM SRO_VT_S
                 return "Light Armor";
             }elseif(strpos($code,'HEAVY') !== false) {
                 return "Heavy Armor";
+            }elseif(strpos($code,'SHIELD') !== false) {
+                return "Shield";
+            }else{
+                return "Weapon";
             }
         }elseif($a == "ITEM_CH"){
             if(strpos($code,'CLOTHES') !== false) {
@@ -166,22 +173,58 @@ WHERE t.CharName in(SELECT CharName16 COLLATE Latin1_General_CI_AS FROM SRO_VT_S
                 return "Protector";
             }elseif(strpos($code,'HEAVY') !== false) {
                 return "Armor";
+            }elseif(strpos($code,'SHIELD') !== false) {
+                return "Shield";
+            }else{
+                return "Weapon";
             }
+        }
+        return "";
+    }
+
+    public static function getRareType($code)
+    {
+        $code = strtolower($code);
+        if(strpos($code,'a_rare') !== false && self::getLevel($code) < 11) {
+            return "sos";
+        }elseif(strpos($code,'b_rare') !== false && self::getLevel($code) < 11) {
+            return "som";
+        }elseif(strpos($code,'c_rare') !== false && self::getLevel($code) < 11) {
+            return "sun";
+        }elseif(strpos($code,'rare') !== false){
+            return "nova";
         }else{
             return "";
         }
-
     }
 
     public static function generateItemList($list)
     {
         $data = [];
-            foreach ($list as $item) {
-                $data[$item['Slot']] = ['level'=>self::getLevel($item['CodeName128']),'dummy'=>$item['CodeName128'] == 'DUMMY_OBJECT','code'=>$item['CodeName128'],'url'=>self::getItemFileName($item['CodeName128']),'name'=>$item['Name'],'plus'=>self::getPlus($item['CodeName128']),'sortofitem'=>self::getSortOfItem($item['CodeName128'])];
-            }
+        foreach ($list as $item) {
+            $data[$item['Slot']] = [
+                'level'=>self::getLevel($item['CodeName128']),
+                'dummy'=>$item['CodeName128'] == 'DUMMY_OBJECT',
+                'code'=>$item['CodeName128'],
+                'url'=>self::getItemFileName($item['CodeName128']),
+                'name'=>$item['Name'],
+                'is_sos'=>self::getPlus($item['CodeName128']),
+                'rare'=>self::getRareType($item['CodeName128']),
+                'plus'=>$item['OptLevel'],
+                'sortofitem'=>self::getSortOfItem($item['CodeName128'])
+            ];
+        }
         if(get_client_ip() == '85.97.8.34') {
             pre($data);
         }
         return $data;
     }
+
+    public static function bugKurtar($CharName)
+    {
+        $sql = "UPDATE [SRO_VT_SHARD].[dbo].[_Char] SET LatestRegion = 26752, PosX = 1285, PosY = 206451218, PosZ = 176 WHERE CharName16 = :CharName";
+        $sta = DB::getConnection()->prepare($sql);
+        $sta->execute([':CharName'=>$CharName]);
+    }
+
 }

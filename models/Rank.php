@@ -33,13 +33,13 @@ class Rank extends stdClass
                         FROM SRO_VT_SHARD.dbo.[_Char] 
                             INNER JOIN SRO_VT_SHARD.dbo.[_Inventory] ON [_Char].[CharID] = [_Inventory].[CharID] 
                             INNER JOIN SRO_VT_SHARD.dbo.[_Items] ON [_Inventory].[ItemID] = [_Items].[ID64]
-                        WHERE [_Char].[CharName16] NOT LIKE '%GM%' AND [_Char].[CharName16] NOT LIKE '%GA%' AND [_Inventory].[Slot] between 1 and 50
+                        WHERE [_Char].[CharName16] NOT LIKE '%GM%' AND [_Char].[CharName16] NOT LIKE '%GA%' AND [_Char].[CharName16]<>'EventBot' AND [_Inventory].[Slot] between 1 and 50
                             GROUP BY [_Char].[CharName16],[_Char].[CurLevel],[_Char].[CharID]
                             ORDER BY [_Char].[CurLevel] DESC ,SUM([_Items].[Optlevel]) DESC";
             $sta = DB::getConnection()->prepare($sql);
             $sta->execute();
             $cache = $sta->fetchAll(PDO::FETCH_ASSOC);
-            cache()->add("getPlayer", $cache, 60 * 60);
+            cache()->add("getPlayer", $cache, 60 * 3);
         }
         return $cache;
     }
@@ -60,21 +60,27 @@ class Rank extends stdClass
             $sta = DB::getConnection()->prepare($sql);
             $sta->execute();
             $cache = $sta->fetchAll(PDO::FETCH_ASSOC);
-            cache()->add("getGuild", $cache, 60 * 60);
+            cache()->add("getGuild", $cache, 60 * 3);
         }
         return $cache;
     }
 
     public static function getUniqueHistory($top = 10)
     {
-        $sql = 'SELECT TOP '.$top.' c.CharID, t.CharName, un.CodeName128, un.Name, t.time FROM SRO_VT_ACCOUNT.dbo.Evangelion_uniques t
+        $cache = cache()->get("getUniqueHistory");
+        if (!$cache) {
+            $sql = 'SELECT TOP ' . $top . ' c.CharID, t.CharName, un.CodeName128, un.Name, t.time FROM SRO_VT_ACCOUNT.dbo.Evangelion_uniques t
         JOIN SRO_VT_SHARD.dbo._Char c ON c.CharName16 COLLATE SQL_Latin1_General_CP1_CI_AS = t.CharName COLLATE SQL_Latin1_General_CP1_CI_AS
-        JOIN FILTER.dbo._UniqueName un ON un.CodeName128 COLLATE SQL_Latin1_General_CP1_CI_AS = t.MobName COLLATE SQL_Latin1_General_CP1_CI_AS 
+        JOIN FILTER.dbo._UniqueName un ON un.CodeName128 COLLATE SQL_Latin1_General_CP1_CI_AS = t.MobName COLLATE SQL_Latin1_General_CP1_CI_AS
+        GROUP BY c.CharID, t.CharName, un.CodeName128, un.Name, t.time 
     ORDER BY
-        t.ID DESC';
+        SRO_VT_ACCOUNT.dbo.UNIX_TIMESTAMP(t.time) DESC';
 
-        $sta = DB::getConnection()->prepare($sql);
-        $sta->execute();
-        return $sta->fetchAll(PDO::FETCH_ASSOC);
+            $sta = DB::getConnection()->prepare($sql);
+            $sta->execute();
+            $cache = $sta->fetchAll(PDO::FETCH_ASSOC);
+            cache()->add("getUniqueHistory", $cache, 60);
+        }
+        return $cache;
     }
 }
