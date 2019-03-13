@@ -111,9 +111,10 @@ GROUP BY t.time,un.Name
 
     public static function getLevel($code)
     {
-        $a = substr($code,0,strlen("ITEM_EU_W"));
+        $a = substr($code,0,strlen(strtolower("ITEM_EU_W")));
+        $a = strtolower($a);
         $ex = explode("_",$code);
-        if($a == "ITEM_EU_W" || $a == "ITEM_CH_W" || $a == "ITEM_EU_M" || $a == "ITEM_CH_M"){
+        if($a == strtolower("ITEM_EU_W") || $a == strtolower("ITEM_CH_W") || $a == strtolower("ITEM_EU_M") || $a == strtolower("ITEM_CH_M")){
             return !empty($ex[4]) ? $ex[4] : '';
         }elseif(strpos($code,'_EARRING_') !== false || strpos($code,'_NECKLACE_') !== false || strpos($code,'_RING_') !== false) {
             return !empty($ex[3]) ? $ex[3] : '';
@@ -186,7 +187,7 @@ GROUP BY t.time,un.Name
     {
         $code = strtolower($code);
         if(strpos($code,'a_rare') !== false && self::getLevel($code) < 11) {
-            return "sos";
+            return "sos". self::getLevel($code);
         }elseif(strpos($code,'b_rare') !== false && self::getLevel($code) < 11) {
             return "som";
         }elseif(strpos($code,'c_rare') !== false && self::getLevel($code) < 11) {
@@ -214,7 +215,7 @@ GROUP BY t.time,un.Name
                 'sortofitem'=>self::getSortOfItem($item['CodeName128'])
             ];
         }
-        if(get_client_ip() == '85.97.8.34') {
+        if(get_client_ip() == '85.96.54.62') {
             pre($data);
         }
         return $data;
