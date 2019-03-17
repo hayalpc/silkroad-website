@@ -14,6 +14,7 @@ if (!check_login()) {
 $user = user();
 setTitle('Profilim');
 $action = !empty($_GET['action']) ? $_GET['action'] : "";
+
 switch ($action) {
     case 'gecmis':
         setTitle('Hesap Geçmişi');

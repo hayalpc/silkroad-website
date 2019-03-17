@@ -228,4 +228,16 @@ GROUP BY t.time,un.Name
         $sta->execute([':CharName'=>$CharName]);
     }
 
+    public static function pet($CharName)
+    {
+        $sql1 = "exec SRO_VT_SHARD.dbo._ADD_ITEM_EXTERN :CharName,'ITEM_COS_P_BROWNIE_SCROLL',1,0";
+        $sql2 = "exec SRO_VT_SHARD.dbo._ADD_ITEM_EXTERN :CharName,'ITEM_COS_P_RACCOONDOG_SCROLL',1,0;";
+        $sql3 = "exec SRO_VT_SHARD.dbo._ADD_ITEM_EXTERN :CharName,'ITEM_COS_C_TIGER_SCROLL',50,0;";
+        $sql4 = "exec SRO_VT_SHARD.dbo._ADD_ITEM_EXTERN :CharName,'ITEM_COS_C_SCARABAEUS_SCROLL',50,0;";
+        DB::getConnection()->prepare($sql1)->execute([':CharName'=>$CharName]);
+        DB::getConnection()->prepare($sql2)->execute([':CharName'=>$CharName]);
+        DB::getConnection()->prepare($sql3)->execute([':CharName'=>$CharName]);
+        DB::getConnection()->prepare($sql4)->execute([':CharName'=>$CharName]);
+    }
+
 }

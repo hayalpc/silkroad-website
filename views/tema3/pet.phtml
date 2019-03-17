@@ -2,14 +2,14 @@
 /**
  * Created by IntelliJ IDEA.
  * User: ekrmn60600
- * Date: 28.02.2019
- * Time: 00:16
+ * Date: 10.03.2019
+ * Time: 02:46
  */
-?>
 
+?>
 <div class="panel panel-default register-white">
     <div class="panel-heading">
-        <h3 class="panel-title"><i class="fa fa-money"></i> TL / E-PIN Yükle</h3>
+        <h3 class="panel-title"><i class="fa fa-history"></i> Pet Aktar</h3>
     </div>
     <div class="panel-body">
         <?php
@@ -30,21 +30,20 @@
             <?php
         }
         ?>
-        <ul class="balance">
-            <?if(Settings::getConfig('Maxigame_aktif')){?>
-                <li>
-                    <a href="/epin-yukle/maxigame"><img src="/assets/img/maxicard.png"> </a>
-                </li>
-            <?}?>
-            <?if(Settings::getConfig('Paywant_aktif')){?>
-                <li>
-                    <a href="/epin-yukle/paywant"><img src="/assets/img/paywant_ile_ode_whmcs.png"></a>
-                </li>
-            <?}?>
-            <li>
-                <a href="/epin-yukle/epin"><img src="/assets/img/epin.jpg"></a>
-            </li>
-        </ul>
+        <form method="post">
+            <div class="form-group">
+                <label class="control-label">Karakter Seçiniz</label>
+                <select name="CharName" class="form-control input-sm">
+                    <?foreach ($charList as $getChar) {?>
+                        <option><?=$getChar['CharName16']?></option>
+                    <?}?>
+                </select>
+                <div class="alert alert-danger">
+                    Lütfen karakteriniz oyunda olmasın!
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success">Gönder</button>
+        </form>
 
     </div>
 </div>
